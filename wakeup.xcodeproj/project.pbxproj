@@ -57,6 +57,7 @@
 		8BF94544176A3918001DBBFC /* i got a hole1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BF9453B176A3918001DBBFC /* i got a hole1.mp3 */; };
 		8BF94545176A3918001DBBFC /* get up7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BF9453C176A3918001DBBFC /* get up7.mp3 */; };
 		8BF94546176A3918001DBBFC /* turn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BF9453D176A3918001DBBFC /* turn.mp3 */; };
+		8BF9454C176A5EB1001DBBFC /* CalHeaderView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9454B176A5EB1001DBBFC /* CalHeaderView.xib */; };
 		A612043A17631A120082D519 /* CalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A612043917631A120082D519 /* CalendarViewCell.m */; };
 		A612043D176337650082D519 /* BadgeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A612043C176337650082D519 /* BadgeHeaderView.m */; };
 		A638A8AD17676FFC004B3844 /* progress0.png in Resources */ = {isa = PBXBuildFile; fileRef = A638A8AB17676FFC004B3844 /* progress0.png */; };
@@ -97,7 +98,6 @@
 		A65238D1173A4DEA0030BDC7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A65238D0173A4DEA0030BDC7 /* Default@2x.png */; };
 		A65238D3173A4DEA0030BDC7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A65238D2173A4DEA0030BDC7 /* Default-568h@2x.png */; };
 		A65238D9173A4DEA0030BDC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65238D8173A4DEA0030BDC7 /* ViewController.m */; };
-		A65256861764C8DB007B05E9 /* CalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65256851764C8DB007B05E9 /* CalHeaderView.xib */; };
 		A679B2951753AA3D00A01CB0 /* PCLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A679B28B1753987900A01CB0 /* PCLineChartView.m */; };
 		A679B2961753AA3F00A01CB0 /* RecordScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A679B28F175399DF00A01CB0 /* RecordScrollView.m */; };
 		A679B2971753AA4100A01CB0 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A679B29217539BA700A01CB0 /* RecordViewController.m */; };
@@ -218,6 +218,7 @@
 		8BF9453B176A3918001DBBFC /* i got a hole1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "i got a hole1.mp3"; path = "wakeup/src/sound/i got a hole1.mp3"; sourceTree = "<group>"; };
 		8BF9453C176A3918001DBBFC /* get up7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "get up7.mp3"; path = "wakeup/src/sound/get up7.mp3"; sourceTree = "<group>"; };
 		8BF9453D176A3918001DBBFC /* turn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = turn.mp3; path = wakeup/src/sound/turn.mp3; sourceTree = "<group>"; };
+		8BF9454B176A5EB1001DBBFC /* CalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalHeaderView.xib; sourceTree = "<group>"; };
 		A612043817631A120082D519 /* CalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewCell.h; sourceTree = "<group>"; };
 		A612043917631A120082D519 /* CalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewCell.m; sourceTree = "<group>"; };
 		A612043B176337650082D519 /* BadgeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeHeaderView.h; sourceTree = "<group>"; };
@@ -269,7 +270,6 @@
 		A65238D2173A4DEA0030BDC7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A65238D7173A4DEA0030BDC7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A65238D8173A4DEA0030BDC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A65256851764C8DB007B05E9 /* CalHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalHeaderView.xib; path = ../CalHeaderView.xib; sourceTree = "<group>"; };
 		A679B28A1753987900A01CB0 /* PCLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCLineChartView.h; sourceTree = "<group>"; };
 		A679B28B1753987900A01CB0 /* PCLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCLineChartView.m; sourceTree = "<group>"; };
 		A679B28E175399DE00A01CB0 /* RecordScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordScrollView.h; sourceTree = "<group>"; };
@@ -724,7 +724,7 @@
 		A6E708941760A9E500B89091 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				A65256851764C8DB007B05E9 /* CalHeaderView.xib */,
+				8BF9454B176A5EB1001DBBFC /* CalHeaderView.xib */,
 				A6D9D11B175F8A0E0086830F /* CalendarCollectionViewController.h */,
 				A6D9D11C175F8A0E0086830F /* CalendarCollectionViewController.m */,
 				A612043817631A120082D519 /* CalendarViewCell.h */,
@@ -847,7 +847,6 @@
 				A6C735F0175FB1D000E5EFA2 /* mission_bar@2x.png in Resources */,
 				A6C735F1175FB1D000E5EFA2 /* mission_bg.png in Resources */,
 				A6C735F2175FB1D000E5EFA2 /* mission_lock.png in Resources */,
-				A65256861764C8DB007B05E9 /* CalHeaderView.xib in Resources */,
 				8B7E41141766A4E2002E8930 /* setting_bar@2x.png in Resources */,
 				8B7E41151766A4E2002E8930 /* setting_02.png in Resources */,
 				A638A8AD17676FFC004B3844 /* progress0.png in Resources */,
@@ -926,6 +925,7 @@
 				A65238D9173A4DEA0030BDC7 /* ViewController.m in Sources */,
 				A679B2951753AA3D00A01CB0 /* PCLineChartView.m in Sources */,
 				A679B2961753AA3F00A01CB0 /* RecordScrollView.m in Sources */,
+				8BF9454C176A5EB1001DBBFC /* CalHeaderView.xib in Sources */,
 				A679B2971753AA4100A01CB0 /* RecordViewController.m in Sources */,
 				A679B29F175486FA00A01CB0 /* MIssionConditionViewController.m in Sources */,
 				A679B2A2175497C800A01CB0 /* MissionCollectionCell.m in Sources */,

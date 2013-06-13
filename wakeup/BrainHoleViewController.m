@@ -46,7 +46,7 @@
     audioArray = [[NSArray alloc] initWithObjects:@"laughing2",@"get up7", nil];
     
     NSLog(@"time up. Please play this game.");
-    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"back4" ofType:@"mp3"]];
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"back4new" ofType:@"mp3"]];
     //與音樂檔案做連結
     NSError* error = nil;
     _bgPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];

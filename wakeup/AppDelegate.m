@@ -23,11 +23,13 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     self.set_min=0;
     self.set_hr=6;
     self.degree = -90*(M_PI/180);
+    [self countUp];
     self.timer=[NSTimer scheduledTimerWithTimeInterval:0.03
                                                 target:self
                                               selector:@selector(countUp)
                                               userInfo:nil
                                                repeats:YES];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     return YES;
 }
 
@@ -57,9 +59,9 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     if (self.hr==self.set_hr && self.min>=self.set_min && self.isAlarm)
     {
-        [self Alarm];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
-        [[UIApplication sharedApplication] cancelLocalNotification:_scheduledAlert];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         _isAlarm = NO;
     }
 }
@@ -67,6 +69,8 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [FBSession.activeSession handleDidBecomeActive];
 }
 
@@ -86,26 +90,10 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     [formatter setDateFormat:@"HH:mm:ss"];
     //正規化取得的系統時間並顯示
     NSArray * timeArray = [[formatter stringFromDate:date] componentsSeparatedByString:@":"];
-    self.hr = [timeArray[0] intValue]%12;
+    self.hr = [timeArray[0] intValue];
     self.min = [timeArray[1] intValue];
     self.sec = [timeArray[2] intValue];
-//    NSLog(@"%02d:%02d:%02d",self.hr,self.min,self.sec);
-    // 按下設定
-}
-
-- (void)Alarm
-{
-    if (self.isAlarm)
-    {
-        NSLog(@"time up. Please play this game.");        
-        NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"back4" ofType:@"mp3"]];
-        //與音樂檔案做連結
-        NSError* error = nil;
-        _bgPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        [self.bgPlayer setNumberOfLoops:-1];
-        [self.bgPlayer play];
-        [url release];
-    }
+    [formatter release];
 }
 
 #pragma mark - for Facebook

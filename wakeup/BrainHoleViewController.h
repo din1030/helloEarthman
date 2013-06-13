@@ -10,7 +10,6 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <AVFoundation/AVAudioPlayer.h>
 #define kHOLES 12
-static int qq=0;
 
 @interface BrainHoleViewController : UIViewController
 {
@@ -26,6 +25,7 @@ static int qq=0;
 
 @property (retain, nonatomic) IBOutlet UIImageView *eye;
 @property (retain, nonatomic) NSArray *hole_img;
+@property (strong, nonatomic) AVAudioPlayer *bgPlayer;
 
 -(IBAction)holeClick:(UIButton*)sender;
 

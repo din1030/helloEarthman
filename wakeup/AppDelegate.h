@@ -13,16 +13,11 @@
 extern NSString *const FBSessionStateChangedNotification;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-{
-    UIBackgroundTaskIdentifier bgTask;
-}
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
 - (void) closeSession;
-- (void) Alarm;
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, assign) BOOL isAlarm;
-@property (strong, nonatomic) AVAudioPlayer *bgPlayer;
 @property (strong,nonatomic) NSTimer *timer;
 @property (nonatomic)int set_hr,set_min;
 @property (nonatomic)int hr,min,sec;

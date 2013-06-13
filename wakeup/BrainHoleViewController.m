@@ -44,8 +44,16 @@
                                                 userInfo:nil
                                                  repeats:YES];
     audioArray = [[NSArray alloc] initWithObjects:@"laughing2",@"get up7", nil];
-            qq++;
-    NSLog(@"%d次",qq);
+    
+    NSLog(@"time up. Please play this game.");
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"back4" ofType:@"mp3"]];
+    //與音樂檔案做連結
+    NSError* error = nil;
+    _bgPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    [self.bgPlayer setNumberOfLoops:-1];
+    [self.bgPlayer play];
+    [url release];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -148,7 +156,7 @@
 
 - (IBAction)holeClick:(UIButton*)sender
 {
-    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"touch" ofType:@"mp3"]];
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"touch2" ofType:@"mp3"]];
     //與音樂檔案做連結
     NSError* error = nil;
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
@@ -165,8 +173,7 @@
             [levelup_timer invalidate];
             [game_timer invalidate];
             [audioPlayer release];
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [appDelegate.bgPlayer stop];
+            [_bgPlayer stop];
             [self showAlert];
         }
     }

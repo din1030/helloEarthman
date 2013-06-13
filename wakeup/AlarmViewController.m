@@ -146,8 +146,6 @@ CGFloat DegreesToRadians(CGFloat degrees)
         self.alarm_alarm.transform = CGAffineTransformMakeRotation(DegreesToRadians(360-rotateDegree-90));
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         appDelegate.set_hr = (int)abs(rotateDegree-90)/30;
-        if (appDelegate.set_hr==0)
-            appDelegate.set_hr=12;
         if (abs(appDelegate.set_min -(int)abs((rotateDegree-90)*2)%60)>1)
         {
             [audioPlayer setNumberOfLoops:0];
@@ -170,12 +168,23 @@ CGFloat DegreesToRadians(CGFloat degrees)
     NSLog(@"%02d:%02d",appDelegate.set_hr,appDelegate.set_min);
     
     NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
+    NSDate *date = [NSDate date];
+    NSArray * timeArray = [[dateFormatter stringFromDate:date] componentsSeparatedByString:@":"];
+    if ([timeArray[0] intValue]==12)
+        appDelegate.set_hr=12;
+    else if ([timeArray[0] intValue]>12)
+        appDelegate.set_hr+=12;
     
-    NSDate* firstDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",appDelegate.hr,appDelegate.min,appDelegate.sec]];
-    NSDate* secondDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",appDelegate.set_hr,appDelegate.set_min]];
+    NSDate* firstDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",appDelegate.hr,appDelegate.min,appDelegate.sec]]];
+    NSDate* secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",appDelegate.set_hr,appDelegate.set_min]]];
     NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
+    //如果時間差是小於0表示為隔天
+    if (timeDifference<0)
+        timeDifference += 86400;
+
+    NSLog(@"%@",firstDate);
+    NSLog(@"%@",secondDate);
     NSLog(@"%f",timeDifference);
     if (appDelegate.set_hr==appDelegate.hr && appDelegate.set_min<=appDelegate.min)
     {
@@ -192,9 +201,24 @@ CGFloat DegreesToRadians(CGFloat degrees)
         appDelegate.scheduledAlert.timeZone = [NSTimeZone defaultTimeZone];
         appDelegate.scheduledAlert.repeatInterval =  kCFCalendarUnitMinute;
         appDelegate.scheduledAlert.soundName = @"get up7.mp3";
-        appDelegate.scheduledAlert.alertBody = @"Dumb way to wake.";
+        appDelegate.scheduledAlert.alertBody = @"早安～地球人！";
         [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledAlert];
     }
+}
+
+//矯正時差
+- (NSDate*) convertToUTC:(NSDate*)sourceDate
+{
+    NSTimeZone* currentTimeZone = [NSTimeZone localTimeZone];
+    NSTimeZone* utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    
+    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:sourceDate];
+    NSInteger gmtOffset = [utcTimeZone secondsFromGMTForDate:sourceDate];
+    NSTimeInterval gmtInterval =  currentGMTOffset - gmtOffset;
+    
+    NSDate* destinationDate = [[[NSDate alloc] initWithTimeInterval:gmtInterval sinceDate:sourceDate] autorelease];
+    
+    return destinationDate;
 }
 
 - (IBAction)next_alarmClick:(UIButton *)sender {

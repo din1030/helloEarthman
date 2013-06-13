@@ -87,7 +87,6 @@
 		A639E51D17566D29005044EA /* mouth.png in Resources */ = {isa = PBXBuildFile; fileRef = A639E51017566D29005044EA /* mouth.png */; };
 		A639E51E17566D29005044EA /* nose.png in Resources */ = {isa = PBXBuildFile; fileRef = A639E51117566D29005044EA /* nose.png */; };
 		A639E52117566EEA005044EA /* BrainHoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A639E52017566EEA005044EA /* BrainHoleViewController.m */; };
-		A63E0A7B1768838A003A3A04 /* BadgeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63E0A7A1768838A003A3A04 /* BadgeHeaderView.xib */; };
 		A65238BD173A4DEA0030BDC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65238BC173A4DEA0030BDC7 /* UIKit.framework */; };
 		A65238BF173A4DEA0030BDC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65238BE173A4DEA0030BDC7 /* Foundation.framework */; };
 		A65238C1173A4DEA0030BDC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65238C0173A4DEA0030BDC7 /* CoreGraphics.framework */; };
@@ -255,7 +254,6 @@
 		A639E51117566D29005044EA /* nose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nose.png; sourceTree = "<group>"; };
 		A639E51F17566EEA005044EA /* BrainHoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrainHoleViewController.h; sourceTree = "<group>"; };
 		A639E52017566EEA005044EA /* BrainHoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrainHoleViewController.m; sourceTree = "<group>"; };
-		A63E0A7A1768838A003A3A04 /* BadgeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgeHeaderView.xib; sourceTree = "<group>"; };
 		A65238B9173A4DEA0030BDC7 /* 醒醒吧阿宅.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "醒醒吧阿宅.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65238BC173A4DEA0030BDC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A65238BE173A4DEA0030BDC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -683,7 +681,6 @@
 				8B43DC61176041A8007DB620 /* BadgeCollectionCell.m */,
 				8B730209176067E100026E1F /* BadgeConditionViewController.h */,
 				8B73020A176067E100026E1F /* BadgeConditionViewController.m */,
-				A63E0A7A1768838A003A3A04 /* BadgeHeaderView.xib */,
 			);
 			name = Badge;
 			sourceTree = "<group>";
@@ -860,7 +857,6 @@
 				8B7E412117679392002E8930 /* change_alarm_R.png in Resources */,
 				8B7E4123176793A4002E8930 /* set_alarm_set.png in Resources */,
 				8B7E4125176793E9002E8930 /* alarm_spirit.png in Resources */,
-				A63E0A7B1768838A003A3A04 /* BadgeHeaderView.xib in Resources */,
 				8B22098717689FBB0091C082 /* MainStoryboard.storyboard in Resources */,
 				A6C998CA1768FEC600E7CFC4 /* wakeup.db in Resources */,
 				A6C998CD17690BD200E7CFC4 /* animal_b.png in Resources */,

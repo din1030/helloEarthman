@@ -42,6 +42,7 @@
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     [self.navigationItem setLeftBarButtonItem:barButtonItem];
+    [barButtonItem release];
     
     CGPoint center = self.alarm.center;
     self.set.center = CGPointMake(center.x,center.y+120);
@@ -69,6 +70,7 @@
     //與音樂檔案做連結
     NSError* error = nil;
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    [url release];
     
     // notification後進入遊戲
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -188,7 +190,6 @@ CGFloat DegreesToRadians(CGFloat degrees)
     NSLog(@"%f",timeDifference);
     if (appDelegate.set_hr==appDelegate.hr && appDelegate.set_min<=appDelegate.min)
     {
-        [appDelegate Alarm];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
         [[UIApplication sharedApplication] cancelLocalNotification:appDelegate.scheduledAlert];
         appDelegate.isAlarm = NO;

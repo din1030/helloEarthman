@@ -65,8 +65,10 @@
     [rs1 close];
     [rs2 close];
     
-    self.obj_ar = [[NSMutableArray alloc]initWithObjects:_person_id,_animal_id, nil];
-    [self.obj_ar release];
+    _obj_ar = [[NSMutableArray alloc]initWithObjects:_person_id,_animal_id, nil];
+    [_animal_id release];
+    [_person_id release];
+    [_obj_ar release];
     
     // notification後進入遊戲
     [[NSNotificationCenter defaultCenter] addObserver:self

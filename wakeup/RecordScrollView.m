@@ -51,7 +51,7 @@
         int data_amount = [data_ar count];
         
         // 設定折線圖 view 大小位置 及 y 軸最大最小值
-		self.lineChartView = [[PCLineChartView alloc] initWithFrame:CGRectMake(10,50,data_amount*30+100,[self bounds].size.height-80)];
+		_lineChartView = [[PCLineChartView alloc] initWithFrame:CGRectMake(10,50,data_amount*30+100,[self bounds].size.height-80)];
         if ([self.restorationIdentifier isEqualToString:@"stat1"]) {
             NSLog(@"%d",_tab_index);
             [_lineChartView setMinValue:0];
@@ -64,6 +64,7 @@
             [_lineChartView setInterval:1];
         }
         [self addSubview:_lineChartView];
+        [_lineChartView release];
         
         // 設定 scroll veiw 大小
         [self setContentSize:CGSizeMake(self.lineChartView.frame.size.width, self.lineChartView.frame.size.height)];
@@ -112,10 +113,14 @@
 			}
 			
 			[components addObject:component];
+            [component release];
 		}
 		[_lineChartView setComponents:components];
 		[_lineChartView setXLabels:[Info objectForKey:@"x_labels"]];
-	}
+        [dailyInfo release];
+        [userInfo_ar release];
+        [Info release];
+    }
     return self;
 }
 

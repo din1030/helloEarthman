@@ -305,13 +305,13 @@
     _setRemindTimePicker.hidden = NO;
     [self.view addSubview:content];
     [self.view addSubview:_setRemindTimePicker];
+    [content release];
+    
 //    UIImage *mask_bar = [UIImage imageNamed:@"setting_bar.png"];
 //    [[self.navigationController navigationBar] setBackgroundImage:mask_bar  forBarMetrics:UIBarMetricsDefault];
     UINavigationBar *tabBar = [self.navigationController navigationBar];
     tabBar.alpha = 0.6;
     [tabBar setUserInteractionEnabled:NO];
-    content.layer.zPosition = 9;
-    _setRemindTimePicker.layer.zPosition = 10;
 }
 
 - (void) prepareData {

@@ -51,7 +51,7 @@
     
     //_record.tab_index = _cur_tab;
     NSLog(@"cur_tab: %d",_cur_tab);
-    [self.record init];
+    [_record init];
 
     // notification後進入遊戲
     [[NSNotificationCenter defaultCenter] addObserver:self

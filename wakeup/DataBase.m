@@ -13,23 +13,9 @@
 // Connect to Database
 + (FMDatabase *)connectToDataBase
 {
-//    NSString *dbPath = @"/Users/mahmood1/Desktop/Project/NCCUActivity/NCCUActivityDB.db";
-//    FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
-//    if (![db open])
-//    {
-//        NSLog(@"Could not open db.");
-//        return nil;
-//    }
-//    return db;
-    
     NSString* docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString* dbPath = [docPath stringByAppendingPathComponent:@"wakeup.db"];
     NSFileManager *fm = [NSFileManager defaultManager];
-    
-//    if([fm fileExistsAtPath:dbPath])
-//    {
-//        [fm removeItemAtPath:dbPath error:nil];
-//    }
     
     // Check if the database is existed.
     if(![fm fileExistsAtPath:dbPath])

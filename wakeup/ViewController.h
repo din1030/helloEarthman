@@ -20,8 +20,8 @@
 @property (retain, nonatomic) NSTimer *random_timer;
 @property (retain, nonatomic) NSArray *itemlist;
 
-#pragma Theme
-@property (retain, nonatomic) IBOutlet NSMutableArray *themelist;
+#pragma mark - Theme
+@property (retain, nonatomic) NSMutableArray *themelist;
 @property (nonatomic) int theme_index;
 - (IBAction)theme_OnClick:(UIButton *)sender;
 

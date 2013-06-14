@@ -69,6 +69,11 @@
 		8BF94565176B5478001DBBFC /* animal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94563176B5476001DBBFC /* animal.png */; };
 		8BF94566176B5478001DBBFC /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94564176B5477001DBBFC /* person.png */; };
 		8BF94568176B5DE7001DBBFC /* alarm.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94567176B5DE7001DBBFC /* alarm.plist */; };
+		8BF94571176BA9B6001DBBFC /* CalendarCollectionViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9456F176BA9B5001DBBFC /* CalendarCollectionViewController.h */; };
+		8BF94572176BA9B6001DBBFC /* CalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF94570176BA9B6001DBBFC /* CalendarCollectionViewController.m */; };
+		8BF94575176BA9E2001DBBFC /* InviteMissionViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8BF94573176BA9E2001DBBFC /* InviteMissionViewController.h */; };
+		8BF94576176BA9E2001DBBFC /* InviteMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF94574176BA9E2001DBBFC /* InviteMissionViewController.m */; };
+		8BF94578176BAA32001DBBFC /* mission_day.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94577176BAA32001DBBFC /* mission_day.png */; };
 		A612043A17631A120082D519 /* CalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A612043917631A120082D519 /* CalendarViewCell.m */; };
 		A612043D176337650082D519 /* BadgeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A612043C176337650082D519 /* BadgeHeaderView.m */; };
 		A638A8AD17676FFC004B3844 /* progress0.png in Resources */ = {isa = PBXBuildFile; fileRef = A638A8AB17676FFC004B3844 /* progress0.png */; };
@@ -156,7 +161,6 @@
 		A6CFD07A1769E38C0040ED49 /* statistics_tab_sleep1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6CFD06D1769E38C0040ED49 /* statistics_tab_sleep1@2x.png */; };
 		A6CFD07B1769E38C0040ED49 /* statistics_tab_wake0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6CFD06E1769E38C0040ED49 /* statistics_tab_wake0@2x.png */; };
 		A6CFD07C1769E38C0040ED49 /* statistics_tab_wake1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6CFD06F1769E38C0040ED49 /* statistics_tab_wake1@2x.png */; };
-		A6D9D11D175F8A0F0086830F /* CalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D9D11C175F8A0E0086830F /* CalendarCollectionViewController.m */; };
 		A6DBC912175A166000393671 /* eye-r.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBC910175A166000393671 /* eye-r.png */; };
 		A6DBC913175A166000393671 /* eyewh-r.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBC911175A166000393671 /* eyewh-r.png */; };
 		A6E708971760AA3200B89091 /* CalViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708961760AA3200B89091 /* CalViewLayout.m */; };
@@ -234,6 +238,11 @@
 		8BF94563176B5476001DBBFC /* animal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal.png; sourceTree = "<group>"; };
 		8BF94564176B5477001DBBFC /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		8BF94567176B5DE7001DBBFC /* alarm.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = alarm.plist; sourceTree = "<group>"; };
+		8BF9456F176BA9B5001DBBFC /* CalendarCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarCollectionViewController.h; sourceTree = "<group>"; };
+		8BF94570176BA9B6001DBBFC /* CalendarCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarCollectionViewController.m; sourceTree = "<group>"; };
+		8BF94573176BA9E2001DBBFC /* InviteMissionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteMissionViewController.h; sourceTree = "<group>"; };
+		8BF94574176BA9E2001DBBFC /* InviteMissionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteMissionViewController.m; sourceTree = "<group>"; };
+		8BF94577176BAA32001DBBFC /* mission_day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mission_day.png; sourceTree = "<group>"; };
 		A612043817631A120082D519 /* CalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewCell.h; sourceTree = "<group>"; };
 		A612043917631A120082D519 /* CalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewCell.m; sourceTree = "<group>"; };
 		A612043B176337650082D519 /* BadgeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeHeaderView.h; sourceTree = "<group>"; };
@@ -340,8 +349,6 @@
 		A6CFD06D1769E38C0040ED49 /* statistics_tab_sleep1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statistics_tab_sleep1@2x.png"; sourceTree = "<group>"; };
 		A6CFD06E1769E38C0040ED49 /* statistics_tab_wake0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statistics_tab_wake0@2x.png"; sourceTree = "<group>"; };
 		A6CFD06F1769E38C0040ED49 /* statistics_tab_wake1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statistics_tab_wake1@2x.png"; sourceTree = "<group>"; };
-		A6D9D11B175F8A0E0086830F /* CalendarCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCollectionViewController.h; sourceTree = "<group>"; };
-		A6D9D11C175F8A0E0086830F /* CalendarCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCollectionViewController.m; sourceTree = "<group>"; };
 		A6DBC910175A166000393671 /* eye-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye-r.png"; sourceTree = "<group>"; };
 		A6DBC911175A166000393671 /* eyewh-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyewh-r.png"; sourceTree = "<group>"; };
 		A6E708951760AA3200B89091 /* CalViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalViewLayout.h; sourceTree = "<group>"; };
@@ -431,6 +438,8 @@
 				A6C55D5B175537E2008F3314 /* MissionViewController.h */,
 				A6C55D5C175537E2008F3314 /* MissionViewController.m */,
 				A679B2A0175497C800A01CB0 /* MissionCollectionCell.h */,
+				8BF94573176BA9E2001DBBFC /* InviteMissionViewController.h */,
+				8BF94574176BA9E2001DBBFC /* InviteMissionViewController.m */,
 				A679B2A1175497C800A01CB0 /* MissionCollectionCell.m */,
 				A679B29D175486FA00A01CB0 /* MIssionConditionViewController.h */,
 				A679B29E175486FA00A01CB0 /* MIssionConditionViewController.m */,
@@ -645,6 +654,7 @@
 		A6C735D0175FB1D000E5EFA2 /* story_mission_badges */ = {
 			isa = PBXGroup;
 			children = (
+				8BF94577176BAA32001DBBFC /* mission_day.png */,
 				8BF94563176B5476001DBBFC /* animal.png */,
 				8BF94564176B5477001DBBFC /* person.png */,
 				A6C735D7175FB1D000E5EFA2 /* badge_person */,
@@ -736,9 +746,9 @@
 		A6E708941760A9E500B89091 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				8BF9456F176BA9B5001DBBFC /* CalendarCollectionViewController.h */,
+				8BF94570176BA9B6001DBBFC /* CalendarCollectionViewController.m */,
 				8BF9454B176A5EB1001DBBFC /* CalHeaderView.xib */,
-				A6D9D11B175F8A0E0086830F /* CalendarCollectionViewController.h */,
-				A6D9D11C175F8A0E0086830F /* CalendarCollectionViewController.m */,
 				A612043817631A120082D519 /* CalendarViewCell.h */,
 				A612043917631A120082D519 /* CalendarViewCell.m */,
 				A6E708951760AA3200B89091 /* CalViewLayout.h */,
@@ -920,6 +930,7 @@
 				8BF94559176B17BA001DBBFC /* badge_bar@2x.png in Resources */,
 				8BF9455A176B17BA001DBBFC /* mission_bar@2x.png in Resources */,
 				8BF9455C176B1810001DBBFC /* calendar_bar@2x.png in Resources */,
+				8BF94578176BAA32001DBBFC /* mission_day.png in Resources */,
 				8BF9455E176B182E001DBBFC /* statistics_bar@2x.png in Resources */,
 				8BF94560176B1856001DBBFC /* set_alarm_bar@2x.png in Resources */,
 				8BF94562176B18A7001DBBFC /* set_alarm_bg.png in Resources */,
@@ -940,18 +951,21 @@
 				A65238CD173A4DEA0030BDC7 /* AppDelegate.m in Sources */,
 				A65238D9173A4DEA0030BDC7 /* ViewController.m in Sources */,
 				A679B2951753AA3D00A01CB0 /* PCLineChartView.m in Sources */,
+				8BF94575176BA9E2001DBBFC /* InviteMissionViewController.h in Sources */,
+				8BF94576176BA9E2001DBBFC /* InviteMissionViewController.m in Sources */,
 				A679B2961753AA3F00A01CB0 /* RecordScrollView.m in Sources */,
 				8BF9454C176A5EB1001DBBFC /* CalHeaderView.xib in Sources */,
 				A679B2971753AA4100A01CB0 /* RecordViewController.m in Sources */,
 				A679B29F175486FA00A01CB0 /* MIssionConditionViewController.m in Sources */,
 				A679B2A2175497C800A01CB0 /* MissionCollectionCell.m in Sources */,
 				A6C55D5F175537E2008F3314 /* MissionViewController.m in Sources */,
+				8BF94571176BA9B6001DBBFC /* CalendarCollectionViewController.h in Sources */,
+				8BF94572176BA9B6001DBBFC /* CalendarCollectionViewController.m in Sources */,
 				A639E50117563FCB005044EA /* SettingViewController.m in Sources */,
 				A639E52117566EEA005044EA /* BrainHoleViewController.m in Sources */,
 				A6CBB9C3175A7D5E007CD419 /* CustomViewLayout.m in Sources */,
 				A680C8A5175C695B001EDDBD /* BadgeViewController.m in Sources */,
 				8BB4B7B5175E62E60037CBB8 /* AlarmViewController.m in Sources */,
-				A6D9D11D175F8A0F0086830F /* CalendarCollectionViewController.m in Sources */,
 				8B43DC62176041A8007DB620 /* BadgeCollectionCell.m in Sources */,
 				8B73020B176067E100026E1F /* BadgeConditionViewController.m in Sources */,
 				A6E708971760AA3200B89091 /* CalViewLayout.m in Sources */,

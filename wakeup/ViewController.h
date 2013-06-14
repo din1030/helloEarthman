@@ -17,6 +17,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *calendar;
 @property (retain, nonatomic) IBOutlet UIButton *setting;
 @property (retain, nonatomic) IBOutlet UIImageView *background;
+@property (retain, nonatomic) IBOutlet UIImageView *ufo;
 @property (retain, nonatomic) NSTimer *random_timer;
 @property (retain, nonatomic) NSArray *itemlist;
 

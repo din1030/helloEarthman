@@ -56,7 +56,6 @@
     [self.alarm_sec.layer setAnchorPoint:CGPointMake(0.5,0.1)];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //    appDelegate.isAlarm = NO;
     timer=[NSTimer scheduledTimerWithTimeInterval:0.03
                                            target:self
                                          selector:@selector(countUp)
@@ -65,7 +64,6 @@
     self.label_alarm_time.text = [NSString stringWithFormat:@"%02d:%02d",appDelegate.set_hr,appDelegate.set_min];
     
     
-    flag = NO;
     NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"turn" ofType:@"mp3"]];
     //與音樂檔案做連結
     NSError* error = nil;
@@ -138,7 +136,8 @@ CGFloat DegreesToRadians(CGFloat degrees)
     [super dealloc];
 }
 - (IBAction)alarm_pan:(UIPanGestureRecognizer *)sender {
-    if (!flag){
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (!appDelegate.isAlarm){
         CGPoint center = self.set.center;
         CGPoint touch = [sender locationInView:self.view];
         CGPoint mask_center = self.mask.center;
@@ -164,38 +163,47 @@ CGFloat DegreesToRadians(CGFloat degrees)
 }
 
 - (IBAction)alarmClick:(UIButton *)sender {
-    flag = YES;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.isAlarm = YES;
-    NSLog(@"%02d:%02d",appDelegate.set_hr,appDelegate.set_min);
+    if (!appDelegate.isAlarm)
+        [_setalarm setBackgroundImage:[UIImage imageNamed:@"stop.png"] forState:UIControlStateNormal];
+    else
+    {
+        [_setalarm setBackgroundImage:[UIImage imageNamed:@"start.png"] forState:UIControlStateNormal];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
     
     NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
-    NSDate *date = [NSDate date];
-    NSArray * timeArray = [[dateFormatter stringFromDate:date] componentsSeparatedByString:@":"];
-    if ([timeArray[0] intValue]==12)
+
+    if (appDelegate.hr==12)
         appDelegate.set_hr=12;
-    else if ([timeArray[0] intValue]>12)
-        appDelegate.set_hr+=12;
+    else if (appDelegate.hr>12)
+    {
+        if (appDelegate.set_hr!=0)
+            appDelegate.set_hr = (appDelegate.set_hr+12);
+        else
+            appDelegate.set_hr = 24;
+    }
+    NSLog(@"time=%d,set=%d",appDelegate.hr,appDelegate.set_hr);
     
     NSDate* firstDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",appDelegate.hr,appDelegate.min,appDelegate.sec]]];
     NSDate* secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",appDelegate.set_hr,appDelegate.set_min]]];
+    if (appDelegate.set_hr==24)
+        secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]]];
     NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
     //如果時間差是小於0表示為隔天
+        NSLog(@"%f",timeDifference);
     if (timeDifference<0)
-        timeDifference += 86400;
-
+        timeDifference += 43200;
+    else if (appDelegate.set_hr==24)
+        timeDifference+= appDelegate.set_min*60+1;
+    
     NSLog(@"%@",firstDate);
     NSLog(@"%@",secondDate);
     NSLog(@"%f",timeDifference);
-    if (appDelegate.set_hr==appDelegate.hr && appDelegate.set_min<=appDelegate.min)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
-        [[UIApplication sharedApplication] cancelLocalNotification:appDelegate.scheduledAlert];
-        appDelegate.isAlarm = NO;
-    }
-    else
-    {
+    
+    appDelegate.isAlarm = !appDelegate.isAlarm;
+
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         appDelegate.scheduledAlert = [[[UILocalNotification alloc] init] autorelease];
         appDelegate.scheduledAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeDifference];
@@ -204,7 +212,6 @@ CGFloat DegreesToRadians(CGFloat degrees)
         appDelegate.scheduledAlert.soundName = @"get up7.mp3";
         appDelegate.scheduledAlert.alertBody = @"早安～地球人！";
         [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledAlert];
-    }
 }
 
 //矯正時差

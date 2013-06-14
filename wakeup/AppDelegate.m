@@ -20,9 +20,29 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 //                  clientKey:@"Eca3LRilxEUhylc89f6CJIZQoYmbsX7vl808xk2k"];
 //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
-    self.set_min=0;
-    self.set_hr=6;
-    self.degree = -90*(M_PI/180);
+    //讀取plist記錄的時間
+    NSString *errorDesc = nil;
+    NSPropertyListFormat format;
+    NSString *plistPath;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                              NSUserDomainMask, YES) objectAtIndex:0];
+    plistPath = [rootPath stringByAppendingPathComponent:@"alarm.plist"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+        plistPath = [[NSBundle mainBundle] pathForResource:@"alarm" ofType:@"plist"];
+    }
+    NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+    NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
+                                          propertyListFromData:plistXML
+                                          mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                          format:&format
+                                          errorDescription:&errorDesc];
+    if (!temp) {
+        NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+    }
+    
+    self.set_min=[[temp objectForKey:@"min"] intValue];
+    self.set_hr=[[temp objectForKey:@"hr"] intValue];
+    self.degree = [self DegreesToRadians:(self.set_hr%12*60.0+self.set_min)*0.5+180];
     [self countUp];
     self.timer=[NSTimer scheduledTimerWithTimeInterval:0.03
                                                 target:self
@@ -57,6 +77,7 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self countUp];
     if (self.hr==self.set_hr && self.min>=self.set_min && self.isAlarm)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
@@ -94,6 +115,12 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     self.min = [timeArray[1] intValue];
     self.sec = [timeArray[2] intValue];
     [formatter release];
+}
+
+- (CGFloat) DegreesToRadians:(CGFloat)degrees
+{
+    degrees = (int)degrees%360;
+    return degrees * M_PI / 180;
 }
 
 #pragma mark - for Facebook

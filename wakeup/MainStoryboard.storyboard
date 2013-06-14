@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAt-Xq-UFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-440" y="102"/>
+            <point key="canvasLocation" x="-496" y="102"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5">
@@ -874,35 +874,36 @@
             <objects>
                 <viewController id="Ivh-VB-WTA" customClass="BadgeConditionViewController" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="2Uk-A0-MLI">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="badge_bg.png" id="OLs-zf-xvS">
-                                <rect key="frame" x="0.0" y="-40" width="320" height="459"/>
+                                <rect key="frame" x="0.0" y="-40" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Squirrel.png" id="0he-OG-8ix">
-                                <rect key="frame" x="60" y="20" width="200" height="200"/>
+                                <rect key="frame" x="70" y="20" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RGX-bq-Wj4">
-                                <rect key="frame" x="38" y="240" width="244" height="98"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Description" lineBreakMode="clip" numberOfLines="7" adjustsFontSizeToFit="NO" id="RGX-bq-Wj4">
+                                <rect key="frame" x="38" y="208" width="244" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Condtion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kwm-5O-elE">
-                                <rect key="frame" x="38" y="375" width="244" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Condtion" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kwm-5O-elE">
+                                <rect key="frame" x="40" y="343" width="240" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ntc-Fm-NwE"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="badge_condition" destination="Kwm-5O-elE" id="fob-9C-XX4"/>
@@ -928,7 +929,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_bg.png" id="YwS-6b-bMA">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="412"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <cells>
@@ -988,11 +989,11 @@
             <objects>
                 <viewController id="QFA-Ej-aq6" customClass="MIssionConditionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l96-Z1-gAd">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_bg.png" id="291-EV-kze">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="AfQ-17-a7Y">
@@ -1059,6 +1060,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="eDz-Pp-8gA"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mission_badges" destination="tDR-xh-WvC" id="F7v-Wp-aFi"/>
@@ -1071,12 +1073,12 @@
             </objects>
             <point key="canvasLocation" x="2031" y="697"/>
         </scene>
-        <!--View Controller-->
+        <!--Invite Mission View Controller-->
         <scene sceneID="FlC-jC-iGf">
             <objects>
-                <viewController id="RTP-Ue-m2y" sceneMemberID="viewController">
+                <viewController id="RTP-Ue-m2y" customClass="InviteMissionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hvS-vf-kLG">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_bg.png" id="tsu-Ya-2iQ">
@@ -1109,14 +1111,22 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" progress="0.30000000000000004" id="aEb-iB-doT">
-                                <rect key="frame" x="40" y="338" width="234" height="9"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Va3-aI-mPk">
+                                <rect key="frame" x="108" y="309" width="17" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="progressTintColor" red="1" green="0.99338011380000002" blue="0.65123078550000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="trackTintColor" red="0.68235296010971069" green="0.92549026012420654" blue="0.039215687662363052" alpha="1" colorSpace="deviceRGB"/>
-                            </progressView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3 / 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Va3-aI-mPk">
-                                <rect key="frame" x="115" y="309" width="48" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34F-au-Xui">
+                                <rect key="frame" x="126" y="309" width="9" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5pc-nj-NtW">
+                                <rect key="frame" x="136" y="309" width="27" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1134,11 +1144,23 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="Itt-TQ-1Jc">
+                                <rect key="frame" x="40" y="347" width="240" height="9"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="1" green="0.99338011380000002" blue="0.65123078550000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" red="0.68235296010000002" green="0.92549026010000002" blue="0.039215687659999998" alpha="1" colorSpace="deviceRGB"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="oux-BV-JE2"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="invite_progress" destination="Itt-TQ-1Jc" id="tfu-yn-hYS"/>
+                        <outlet property="now_label" destination="Va3-aI-mPk" id="1pt-2O-XKl"/>
+                        <outlet property="req_label" destination="5pc-nj-NtW" id="vdR-b4-OdW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQO-QL-2Wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1149,7 +1171,7 @@
             <objects>
                 <viewController id="hFi-eZ-3L0" customClass="CustomMissionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jgh-4s-BzK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_bg.png" id="Qlu-d3-Bpu">
@@ -1157,10 +1179,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <collectionView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="vLw-Ed-Olk">
-                                <rect key="frame" x="0.0" y="201" width="320" height="94"/>
+                                <rect key="frame" x="0.0" y="201" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.33333333329999998" blue="0.015686274510000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s4e-fX-ko7">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s4e-fX-ko7">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1201,39 +1223,74 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" id="9wh-Py-d61">
-                                <rect key="frame" x="40" y="313" width="240" height="52"/>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" id="9wh-Py-d61">
+                                <rect key="frame" x="37" y="313" width="246" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="progress1.png" id="iQc-w1-tRZ">
-                                        <rect key="frame" x="0.0" y="8" width="35" height="35"/>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_day.png" id="iQc-w1-tRZ">
+                                        <rect key="frame" x="-1" y="6" width="38" height="38"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="progress1.png" id="LoJ-LO-jp5">
-                                        <rect key="frame" x="50" y="8" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_day.png" id="LoJ-LO-jp5">
+                                        <rect key="frame" x="52" y="6" width="38" height="38"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="progress0.png" id="vCP-A6-apf">
-                                        <rect key="frame" x="103" y="8" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_day.png" id="vCP-A6-apf">
+                                        <rect key="frame" x="105" y="6" width="38" height="38"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="progress0.png" id="oOZ-tf-lI5">
-                                        <rect key="frame" x="156" y="8" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_day.png" id="oOZ-tf-lI5">
+                                        <rect key="frame" x="156" y="6" width="38" height="38"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="progress0.png" id="9iz-r4-HZl">
-                                        <rect key="frame" x="205" y="8" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_day.png" id="9iz-r4-HZl">
+                                        <rect key="frame" x="209" y="6" width="38" height="38"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U6E-iq-Wyx">
+                                        <rect key="frame" x="0.0" y="20" width="37" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8g5-Ey-Myc">
+                                        <rect key="frame" x="53" y="20" width="37" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="muV-GF-7kB">
+                                        <rect key="frame" x="105" y="20" width="38" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rMh-6e-jUC">
+                                        <rect key="frame" x="156" y="20" width="38" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ATh-eV-kV1">
+                                        <rect key="frame" x="209" y="20" width="37" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Squirrel.png" id="POD-Cw-a7l">
-                                <rect key="frame" x="78" y="9" width="166" height="210"/>
+                                <rect key="frame" x="78" y="9" width="166" height="166"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUd-Wf-o5y">
-                                <rect key="frame" x="167" y="368" width="85" height="29"/>
+                                <rect key="frame" x="167" y="374" width="85" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="下定決心">
@@ -1245,7 +1302,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6NJ-2R-Mdv">
-                                <rect key="frame" x="65" y="368" width="85" height="29"/>
+                                <rect key="frame" x="63" y="374" width="85" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="砍掉重練">
@@ -1263,6 +1320,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0z3-X4-lTM"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="preview_badge" destination="vLw-Ed-Olk" id="Qgq-aA-e6P"/>
@@ -1314,11 +1372,10 @@
         <image name="f_logo.png" width="140" height="140"/>
         <image name="left_r.png" width="47" height="52"/>
         <image name="mission_bg.png" width="640" height="860"/>
+        <image name="mission_day.png" width="76" height="76"/>
         <image name="mission_lock.png" width="114" height="114"/>
         <image name="mouth.png" width="110" height="30"/>
         <image name="nose.png" width="34" height="35"/>
-        <image name="progress0.png" width="863" height="863"/>
-        <image name="progress1.png" width="760" height="760"/>
         <image name="right_r.png" width="47" height="52"/>
         <image name="room_a.png" width="130" height="136"/>
         <image name="room_bg.png" width="640" height="960"/>
@@ -1409,6 +1466,15 @@
         <class className="CustomViewLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomViewLayout.h"/>
         </class>
+        <class className="InviteMissionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InviteMissionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="invite_progress" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="lv_num" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="now_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="req_label" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="MIssionConditionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MIssionConditionViewController.h"/>
             <relationships>
@@ -1462,6 +1528,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>

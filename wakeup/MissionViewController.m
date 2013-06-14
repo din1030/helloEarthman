@@ -155,16 +155,16 @@
         if ([segue.identifier isEqualToString:@"ShowCollect"]) {            
             MissionCollectionCell *cell1 = (MissionCollectionCell *)sender;
             MIssionConditionViewController *conditionPage = segue.destinationViewController;
-            [conditionPage setValue:cell1.cell_id forKey:@"m_id"]; }
-//        } else if ([segue.identifier isEqualToString:@"ShowInvite"]) {
-//            MissionCollectionCell *cell1 = (MissionCollectionCell *)sender;
-//            MIssionConditionViewController *conditionPage = segue.destinationViewController;
-//            [conditionPage setValue:cell1.cell_id forKey:@"m_id"];
-//        } else if ([segue.identifier isEqualToString:@"ShowCustom"]) {
-//            MissionCollectionCell *cell1 = (MissionCollectionCell *)sender;
-//            MIssionConditionViewController *conditionPage = segue.destinationViewController;
-//            [conditionPage setValue:cell1.cell_id forKey:@"m_id"];
-//        }
+            [conditionPage setValue:cell1.cell_id forKey:@"m_id"];
+        } else if ([segue.identifier isEqualToString:@"ShowInvite"]) {
+            //MissionCollectionCell *cell1 = (MissionCollectionCell *)sender;
+            //MIssionConditionViewController *conditionPage = segue.destinationViewController;
+            //[conditionPage setValue:cell1.cell_id forKey:@"m_id"];
+        } else if ([segue.identifier isEqualToString:@"ShowCustom"]) {
+            //MissionCollectionCell *cell1 = (MissionCollectionCell *)sender;
+            //MIssionConditionViewController *conditionPage = segue.destinationViewController;
+            //[conditionPage setValue:cell1.cell_id forKey:@"m_id"];
+        }
     }
 }
 

@@ -162,6 +162,8 @@
 		A6E708A81761194F00B89091 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708A11761194F00B89091 /* FMDatabasePool.m */; };
 		A6E708A91761194F00B89091 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708A31761194F00B89091 /* FMDatabaseQueue.m */; };
 		A6E708AA1761194F00B89091 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708A51761194F00B89091 /* FMResultSet.m */; };
+		A6FB7D19176B6E2700E28948 /* mission_day.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FB7D18176B6E2700E28948 /* mission_day.png */; };
+		A6FB7D1C176B714200E28948 /* InviteMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FB7D1B176B714200E28948 /* InviteMissionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -350,6 +352,9 @@
 		A6E708A31761194F00B89091 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		A6E708A41761194F00B89091 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		A6E708A51761194F00B89091 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		A6FB7D18176B6E2700E28948 /* mission_day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mission_day.png; sourceTree = "<group>"; };
+		A6FB7D1A176B714200E28948 /* InviteMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteMissionViewController.h; sourceTree = "<group>"; };
+		A6FB7D1B176B714200E28948 /* InviteMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteMissionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +431,8 @@
 				A679B2A1175497C800A01CB0 /* MissionCollectionCell.m */,
 				A679B29D175486FA00A01CB0 /* MIssionConditionViewController.h */,
 				A679B29E175486FA00A01CB0 /* MIssionConditionViewController.m */,
+				A6FB7D1A176B714200E28948 /* InviteMissionViewController.h */,
+				A6FB7D1B176B714200E28948 /* InviteMissionViewController.m */,
 				A638A8AF176771C6004B3844 /* CustomMissionViewController.h */,
 				A638A8B0176771C6004B3844 /* CustomMissionViewController.m */,
 				A638A8B217677940004B3844 /* CustomMissionPreviewCell.h */,
@@ -635,6 +642,7 @@
 		A6C735D0175FB1D000E5EFA2 /* story_mission_badges */ = {
 			isa = PBXGroup;
 			children = (
+				A6FB7D18176B6E2700E28948 /* mission_day.png */,
 				A6C735D7175FB1D000E5EFA2 /* badge_person */,
 				A6C735D2175FB1D000E5EFA2 /* badge_animal */,
 				A6C998CB17690BD200E7CFC4 /* animal_b.png */,
@@ -910,6 +918,7 @@
 				8BF94544176A3918001DBBFC /* i got a hole1.mp3 in Resources */,
 				8BF94545176A3918001DBBFC /* get up7.mp3 in Resources */,
 				8BF94546176A3918001DBBFC /* turn.mp3 in Resources */,
+				A6FB7D19176B6E2700E28948 /* mission_day.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,6 +958,7 @@
 				A612043D176337650082D519 /* BadgeHeaderView.m in Sources */,
 				A638A8B1176771C6004B3844 /* CustomMissionViewController.m in Sources */,
 				A638A8B417677941004B3844 /* CustomMissionPreviewCell.m in Sources */,
+				A6FB7D1C176B714200E28948 /* InviteMissionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -68,7 +68,7 @@
     _obj_ar = [[NSMutableArray alloc]initWithObjects:_person_id,_animal_id, nil];
     [_animal_id release];
     [_person_id release];
-    [_obj_ar release];
+    //[_obj_ar release];
     
     // notification後進入遊戲
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -122,14 +122,12 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    NSLog(@"didSelect");
     [self performSegueWithIdentifier:@"ShowDetail" sender:cell]; // 走叫做 ShowDetail 的 segue
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"ShowDetail"]) {
-        NSLog(@"prepare");
         if ([sender isKindOfClass:[BadgeCollectionCell class]]) { // 確定 sendor 是 cell
             BadgeCollectionCell *cell1 = (BadgeCollectionCell *)sender;
             //将page2设定成Storyboard Segue的目标UIViewController
@@ -173,6 +171,7 @@
 
 - (void)dealloc {
     [super dealloc];
+    [_obj_ar dealloc];
 }
 
 - (void)Game:(NSString *)clock_id

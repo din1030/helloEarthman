@@ -31,16 +31,13 @@
     
     [[self preview_badge] setDataSource:self];
     [[self preview_badge] setDelegate:self];
-    
-//    self.collectionView = _preview_badge;
-//    self.collectionView.dataSource = self;
-//    self.collectionView.delegate = self;
+
 }
 
 #pragma mark - Data source
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return 10;
 }
 
 

@@ -76,12 +76,12 @@
                                                  name:@"appDidBecomeActive"
                                                object:nil];
     
-    self.alarm_alarm.transform = CGAffineTransformMakeRotation(DegreesToRadians((appDelegate.set_hr%12*60.0+appDelegate.set_min)*0.5+180));
-    self.set.transform= CGAffineTransformMakeRotation(DegreesToRadians((appDelegate.set_hr%12*60.0+appDelegate.set_min)*0.5+180));
+    self.alarm_alarm.transform = CGAffineTransformMakeRotation(appDelegate.degree);
+    self.set.transform= CGAffineTransformMakeRotation(appDelegate.degree);
     
     center = self.set.center;
-    center.x = self.mask.center.x + self.mask.frame.size.width/2 * cos(appDelegate.degree);
-    center.y = self.mask.center.y - self.mask.frame.size.height/2 * sin(appDelegate.degree);
+    center.x = self.mask.center.x + self.mask.frame.size.width/2 * cos(DegreesToRadians(-(appDelegate.degree* 180.0 / M_PI+90)));
+    center.y = self.mask.center.y - self.mask.frame.size.height/2 * sin(DegreesToRadians(-(appDelegate.degree* 180.0 / M_PI+90)));
     self.set.center = center;
     
     alarm_img = [[NSArray alloc] initWithObjects:@"alarm_hole-02.png",@"alarm_spirit.png",nil];
@@ -145,7 +145,6 @@ CGFloat DegreesToRadians(CGFloat degrees)
         double rotateDegree = atan2((touch.x-mask_center.x),(touch.y-mask_center.y)) * 180.0 / M_PI -90;
         self.set.transform = CGAffineTransformMakeRotation(DegreesToRadians(360-rotateDegree-90));
         self.alarm_alarm.transform = CGAffineTransformMakeRotation(DegreesToRadians(360-rotateDegree-90));
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         appDelegate.set_hr = (int)abs(rotateDegree-90)/30;
         if (abs(appDelegate.set_min -(int)abs((rotateDegree-90)*2)%60)>1)
         {
@@ -153,13 +152,17 @@ CGFloat DegreesToRadians(CGFloat degrees)
             [audioPlayer play];
         }
         appDelegate.set_min = (int)abs((rotateDegree-90)*2)%60;
-        self.label_alarm_time.text = [NSString stringWithFormat:@"%02d:%02d",appDelegate.set_hr,appDelegate.set_min];
+        int temp_hr=0;
+        if (appDelegate.set_hr==0)
+            temp_hr = 12;
+        else
+            temp_hr = appDelegate.set_hr;
+        self.label_alarm_time.text = [NSString stringWithFormat:@"%02d:%02d",temp_hr,appDelegate.set_min];
         center.x = self.mask.center.x + self.mask.frame.size.width/2 * cos(rotateDegree*(M_PI/180));
         center.y = self.mask.center.y - self.mask.frame.size.height/2 * sin(rotateDegree*(M_PI/180));
         appDelegate.degree = rotateDegree*(M_PI/180);
         self.set.center = center;
     }
-    
 }
 
 - (IBAction)alarmClick:(UIButton *)sender {
@@ -203,15 +206,33 @@ CGFloat DegreesToRadians(CGFloat degrees)
     NSLog(@"%f",timeDifference);
     
     appDelegate.isAlarm = !appDelegate.isAlarm;
-
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        appDelegate.scheduledAlert = [[[UILocalNotification alloc] init] autorelease];
-        appDelegate.scheduledAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeDifference];
-        appDelegate.scheduledAlert.timeZone = [NSTimeZone defaultTimeZone];
-        appDelegate.scheduledAlert.repeatInterval =  kCFCalendarUnitMinute;
-        appDelegate.scheduledAlert.soundName = @"get up7.mp3";
-        appDelegate.scheduledAlert.alertBody = @"早安～地球人！";
-        [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledAlert];
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    appDelegate.scheduledAlert = [[[UILocalNotification alloc] init] autorelease];
+    appDelegate.scheduledAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeDifference];
+    appDelegate.scheduledAlert.timeZone = [NSTimeZone defaultTimeZone];
+    appDelegate.scheduledAlert.repeatInterval =  kCFCalendarUnitMinute;
+    appDelegate.scheduledAlert.soundName = @"get up7.mp3";
+    appDelegate.scheduledAlert.alertBody = @"早安～地球人！";
+    [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledAlert];
+    
+    NSString *error;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *plistPath = [rootPath stringByAppendingPathComponent:@"alarm.plist"];
+    
+    NSDictionary *plistDict = [NSDictionary dictionaryWithObjects:
+                               [NSArray arrayWithObjects: [NSString stringWithFormat:@"%d",appDelegate.set_hr], [NSString stringWithFormat:@"%d",appDelegate.set_min], nil]
+                                                          forKeys:[NSArray arrayWithObjects: @"hr", @"min", nil]];
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict
+                                                                   format:NSPropertyListXMLFormat_v1_0
+                                                         errorDescription:&error];
+    if(plistData) {
+        [plistData writeToFile:plistPath atomically:YES];
+    }
+    else {
+        NSLog(@"%@",error);
+        [error release];
+    }
 }
 
 //矯正時差

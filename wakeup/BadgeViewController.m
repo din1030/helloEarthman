@@ -146,10 +146,10 @@
     if([kind isEqualToString:UICollectionElementKindSectionHeader]){
         if(indexPath.section == 0) { // 對不同 section 的 header 設定
             headerView.title.text = @"世界公民";
-            [headerView.badge_type setImage:[UIImage imageNamed:@"person_b.png"]];
+            [headerView.badge_type setImage:[UIImage imageNamed:@"person.png"]];
         } else if (indexPath.section == 1) {
             headerView.title.text = @"可愛動物";
-            [headerView.badge_type setImage:[UIImage imageNamed:@"animal_b.png"]];
+            [headerView.badge_type setImage:[UIImage imageNamed:@"animal.png"]];
             //NSLog(@"at sec %d",indexPath.section);
         } else
             headerView.title.text = @"?????";

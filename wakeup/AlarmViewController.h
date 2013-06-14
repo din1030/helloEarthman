@@ -11,7 +11,6 @@
 
 @interface AlarmViewController : UIViewController
 {
-    bool flag;
     AVAudioPlayer *audioPlayer;
     UIBackgroundTaskIdentifier TimerTask;
     NSTimer *timer;

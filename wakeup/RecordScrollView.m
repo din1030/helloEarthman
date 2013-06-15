@@ -22,8 +22,6 @@
 #warning  how to cahnge month
         if ([self.restorationIdentifier isEqualToString:@"stat1"]) {
             NSLog(@"%d",_tab_index);
-            [_lineChartView setMinValue:0];
-            [_lineChartView setMaxValue:12];
             rs = [DataBase executeQuery:@"SELECT duration_time FROM DAILY_RECORD"];
             while ([rs next])
             {
@@ -34,8 +32,6 @@
             }
         } else if ([self.restorationIdentifier isEqualToString:@"stat2"]) {
             NSLog(@"%d",_tab_index);
-            [_lineChartView setMinValue:18];
-            [_lineChartView setMaxValue:28];
             rs = [DataBase executeQuery:@"SELECT wake_time FROM DAILY_RECORD"];
             while ([rs next])
             {
@@ -60,7 +56,7 @@
         } else if ([self.restorationIdentifier isEqualToString:@"stat2"]) {
             NSLog(@"%d",_tab_index);
             [_lineChartView setMinValue:6];
-            [_lineChartView setMaxValue:12];
+            [_lineChartView setMaxValue:14];
             [_lineChartView setInterval:1];
         }
         [self addSubview:_lineChartView];

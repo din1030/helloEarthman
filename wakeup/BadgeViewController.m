@@ -106,7 +106,7 @@
     NSUInteger index = [indexPath row];
     //cell.cell_id = [[self.obj_ar[0] objectAtIndex:index] objectId];
     
-    // 不同 badge 給不同 type（要改成從 db 抓？）
+    // 不同 badge 給不同 type
     if (section==0) {
         cell.cell_id = [_person_id objectAtIndex:index];
         cell.cell_type = @"person";
@@ -146,11 +146,11 @@
     
     if([kind isEqualToString:UICollectionElementKindSectionHeader]){
         if(indexPath.section == 0) { // 對不同 section 的 header 設定
-            headerView.title.text = @"世界公民";
-            [headerView.badge_type setImage:[UIImage imageNamed:@"person_b.png"]];
+            //headerView.title.text = @"世界公民";
+            [headerView.badge_type setImage:[UIImage imageNamed:@"person.png"]];
         } else if (indexPath.section == 1) {
-            headerView.title.text = @"可愛動物";
-            [headerView.badge_type setImage:[UIImage imageNamed:@"animal_b.png"]];
+            //headerView.title.text = @"可愛動物";
+            [headerView.badge_type setImage:[UIImage imageNamed:@"animal.png"]];
             //NSLog(@"at sec %d",indexPath.section);
         } else
             headerView.title.text = @"?????";

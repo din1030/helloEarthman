@@ -69,9 +69,7 @@
 		8BF94565176B5478001DBBFC /* animal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94563176B5476001DBBFC /* animal.png */; };
 		8BF94566176B5478001DBBFC /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94564176B5477001DBBFC /* person.png */; };
 		8BF94568176B5DE7001DBBFC /* alarm.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94567176B5DE7001DBBFC /* alarm.plist */; };
-		8BF94571176BA9B6001DBBFC /* CalendarCollectionViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9456F176BA9B5001DBBFC /* CalendarCollectionViewController.h */; };
 		8BF94572176BA9B6001DBBFC /* CalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF94570176BA9B6001DBBFC /* CalendarCollectionViewController.m */; };
-		8BF94575176BA9E2001DBBFC /* InviteMissionViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8BF94573176BA9E2001DBBFC /* InviteMissionViewController.h */; };
 		8BF94576176BA9E2001DBBFC /* InviteMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF94574176BA9E2001DBBFC /* InviteMissionViewController.m */; };
 		8BF94578176BAA32001DBBFC /* mission_day.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF94577176BAA32001DBBFC /* mission_day.png */; };
 		A612043A17631A120082D519 /* CalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A612043917631A120082D519 /* CalendarViewCell.m */; };
@@ -170,6 +168,7 @@
 		A6E708A81761194F00B89091 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708A11761194F00B89091 /* FMDatabasePool.m */; };
 		A6E708A91761194F00B89091 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708A31761194F00B89091 /* FMDatabaseQueue.m */; };
 		A6E708AA1761194F00B89091 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708A51761194F00B89091 /* FMResultSet.m */; };
+		A6EC9ABD176C3EE500286B89 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A6EC9ABC176C3EE500286B89 /* app_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -279,7 +278,7 @@
 		A639E51117566D29005044EA /* nose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nose.png; sourceTree = "<group>"; };
 		A639E51F17566EEA005044EA /* BrainHoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrainHoleViewController.h; sourceTree = "<group>"; };
 		A639E52017566EEA005044EA /* BrainHoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrainHoleViewController.m; sourceTree = "<group>"; };
-		A65238B9173A4DEA0030BDC7 /* 醒醒吧阿宅.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "醒醒吧阿宅.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65238B9173A4DEA0030BDC7 /* 早安地球人！.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "早安地球人！.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65238BC173A4DEA0030BDC7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A65238BE173A4DEA0030BDC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A65238C0173A4DEA0030BDC7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -365,6 +364,7 @@
 		A6E708A31761194F00B89091 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		A6E708A41761194F00B89091 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		A6E708A51761194F00B89091 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		A6EC9ABC176C3EE500286B89 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,7 +486,7 @@
 		A65238BA173A4DEA0030BDC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A65238B9173A4DEA0030BDC7 /* 醒醒吧阿宅.app */,
+				A65238B9173A4DEA0030BDC7 /* 早安地球人！.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -587,6 +587,7 @@
 		A6B2796117524ABA00895ACC /* pic */ = {
 			isa = PBXGroup;
 			children = (
+				A6EC9ABC176C3EE500286B89 /* app_icon.png */,
 				A638A8B517677BDD004B3844 /* down_w.png */,
 				A638A8AB17676FFC004B3844 /* progress0.png */,
 				A638A8AC17676FFC004B3844 /* progress1.png */,
@@ -792,7 +793,7 @@
 			);
 			name = wakeup;
 			productName = wakeup;
-			productReference = A65238B9173A4DEA0030BDC7 /* 醒醒吧阿宅.app */;
+			productReference = A65238B9173A4DEA0030BDC7 /* 早安地球人！.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -826,6 +827,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6EC9ABD176C3EE500286B89 /* app_icon.png in Resources */,
 				A65238C7173A4DEA0030BDC7 /* InfoPlist.strings in Resources */,
 				A65238CF173A4DEA0030BDC7 /* Default.png in Resources */,
 				A65238D1173A4DEA0030BDC7 /* Default@2x.png in Resources */,
@@ -951,7 +953,6 @@
 				A65238CD173A4DEA0030BDC7 /* AppDelegate.m in Sources */,
 				A65238D9173A4DEA0030BDC7 /* ViewController.m in Sources */,
 				A679B2951753AA3D00A01CB0 /* PCLineChartView.m in Sources */,
-				8BF94575176BA9E2001DBBFC /* InviteMissionViewController.h in Sources */,
 				8BF94576176BA9E2001DBBFC /* InviteMissionViewController.m in Sources */,
 				A679B2961753AA3F00A01CB0 /* RecordScrollView.m in Sources */,
 				8BF9454C176A5EB1001DBBFC /* CalHeaderView.xib in Sources */,
@@ -959,7 +960,6 @@
 				A679B29F175486FA00A01CB0 /* MIssionConditionViewController.m in Sources */,
 				A679B2A2175497C800A01CB0 /* MissionCollectionCell.m in Sources */,
 				A6C55D5F175537E2008F3314 /* MissionViewController.m in Sources */,
-				8BF94571176BA9B6001DBBFC /* CalendarCollectionViewController.h in Sources */,
 				8BF94572176BA9B6001DBBFC /* CalendarCollectionViewController.m in Sources */,
 				A639E50117563FCB005044EA /* SettingViewController.m in Sources */,
 				A639E52117566EEA005044EA /* BrainHoleViewController.m in Sources */,
@@ -1066,7 +1066,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wakeup/wakeup-Prefix.pch";
 				INFOPLIST_FILE = "wakeup/wakeup-Info.plist";
-				PRODUCT_NAME = "醒醒吧阿宅";
+				PRODUCT_NAME = "早安地球人！";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1085,7 +1085,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wakeup/wakeup-Prefix.pch";
 				INFOPLIST_FILE = "wakeup/wakeup-Info.plist";
-				PRODUCT_NAME = "醒醒吧阿宅";
+				PRODUCT_NAME = "早安地球人！";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

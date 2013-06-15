@@ -40,18 +40,25 @@
         while ([rs1 next]) // 根據時間顯示不同條件字串
         {
             req = [rs1 intForColumn:@"requirement"];
-            if (req > 18 && req <= 23) {
+            if (req > 17 && req < 24) {
                 req_string = @"晚上 %d 點睡覺代表你過的是%@時區唷！";
-            } else if (req == 24){
+            } else if (req == 0){
                 req_string = @"午夜 %d 點睡覺代表你過的是%@時區唷！";
-            } else if (req >= 1 && req <= 5){
+            } else if (req > 0 && req <= 5){
                 req_string = @"凌晨 %d 點睡覺代表你過的是%@時區唷！";
-            } else if (req > 5 && req <=9 ){
+            } else if (req > 5 && req < 12 ){
                 req_string = @"早上 %d 點睡覺代表你過的是%@時區唷！";
+            } else if (req == 12 ){
+                req_string = @"中午 %d 點睡覺代表你過的是%@時區唷！";
+            } else if (req > 12 && req <= 17 ){
+                req_string = @"下午 %d 點睡覺代表你過的是%@時區唷！";
             }
+            //NSString *bid = [rs1 stringForColumn:@"id"];
             NSString *name = [rs1 stringForColumn:@"Nationality"];
+#warning 徽章圖檔
+            //self.badge_image.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",bid]];
             self.badge_description.text = [rs1 stringForColumn:@"description"];
-            self.badge_condition.text = [NSString stringWithFormat:req_string, req %12,name];
+            self.badge_condition.text = [NSString stringWithFormat:req_string,req%12==0?12:(req%12),name];
         }
     } else if ([self.b_type isEqualToString:@"animal"]) {
         rs1 = [DataBase executeQuery:[NSString stringWithFormat:@"SELECT * FROM ANIMAL_BADGE WHERE id = '%@'",self.b_id]];
@@ -59,7 +66,7 @@
         {
             //NSString *name = [rs1 stringForColumn:@"name"];
             req = [rs1 intForColumn:@"requirement"];
-            req_string = @"當睡眠時數排行朋友中的前 %@%% 可以獲！";
+            req_string = @"睡眠時數高於 %d%% 的朋友可以獲得！";
             self.badge_description.text = [rs1 stringForColumn:@"description"];
             self.badge_condition.text = [NSString stringWithFormat:req_string, req];
         }

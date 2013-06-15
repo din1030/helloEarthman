@@ -57,9 +57,9 @@
     }
     else if(cur_section==1) {
         if(row%2==1)
-            attributes.center = CGPointMake( (screen_width-ITEM_SIZE*3)/2 + ITEM_SIZE/2 + ITEM_SIZE*column + (column-1)*20, TOP+ITEM_SIZE/2 + ITEM_SIZE*row + (row+1)*20+850);
+            attributes.center = CGPointMake( (screen_width-ITEM_SIZE*3)/2 + ITEM_SIZE/2 + ITEM_SIZE*column + (column-1)*20, TOP+ITEM_SIZE/2 + ITEM_SIZE*row + (row+1)*20+1050);
         else
-            attributes.center = CGPointMake( (screen_width-ITEM_SIZE*2)/2 + ITEM_SIZE/2 + ITEM_SIZE*column + (column-1)*20,TOP+ITEM_SIZE/2 + ITEM_SIZE*row + (row+1)*20+850);
+            attributes.center = CGPointMake( (screen_width-ITEM_SIZE*2)/2 + ITEM_SIZE/2 + ITEM_SIZE*column + (column-1)*20,TOP+ITEM_SIZE/2 + ITEM_SIZE*row + (row+1)*20+1050);
     }
     
     return attributes;
@@ -94,8 +94,8 @@
             attributes.center = CGPointMake(self.collectionView.frame.size.width/2,TOP/2);
         }
         else if (indexPath.section==1) {
-            attributes.size = CGSizeMake(self.collectionView.frame.size.width,1700+TOP);
-            attributes.center = CGPointMake(self.collectionView.frame.size.width/2,1700+TOP/2);
+            attributes.size = CGSizeMake(self.collectionView.frame.size.width,2100+TOP);
+            attributes.center = CGPointMake(self.collectionView.frame.size.width/2,2100+TOP/2);
             
         }
         else

@@ -30,26 +30,38 @@
 	// Do any additional setup after loading the view.
     FMResultSet *rs = nil;
     FMResultSet *rs1 = nil;
-//    FMResultSet *rs2 = nil;
-//    FMResultSet *rs3 = nil;
     
-    rs = [DataBase executeQuery:@"SELECT req_times FROM INVITE_MISSION WHERE level = 1"];
+    rs = [DataBase executeQuery:@"SELECT * FROM INVITE_MISSION"];
     rs1 = [DataBase executeQuery:@"SELECT invite_amount FROM USER"];
-//    _now_inv_amount = 0;
-//    _req_amount = 1;
-    while ([rs next])
-    {
-        _req_amount = [rs intForColumn:@"req_times"];
-        //NSLog(@"%d",_req_amount);
-    }
+    _now_inv_amount = 0;
+    _req_amount = 1;  // prevent from dividinf by 0
     while ([rs1 next])
     {
         _now_inv_amount = [rs1 intForColumn:@"invite_amount"];
-       // NSLog(@"now: %d",_now_inv_amount);
     }
+    while ([rs next])
+    {
+        NSLog(@"rs");
+        _req_amount = [rs intForColumn:@"req_times"];
+        BOOL state = [rs boolForColumn:@"state"];
+        if (!state) {
+            NSLog(@"state");
+            NSUInteger lv = [rs intForColumn:@"level"];
+            [self.lv_num setText:[NSString stringWithFormat:@"LV: %d",lv]];
+            break;
+        }
+    }
+    [rs close];
+    [rs1 close];
+    
+    
+    if (_now_inv_amount > _req_amount) {
+        [_check_button setUserInteractionEnabled:YES];
+        [_check_button setAlpha:1.0];
+    }
+    
     [_invite_progress setProgress:(float)_now_inv_amount/_req_amount];
-    [_now_label setText:[NSString stringWithFormat:@"%d",_now_inv_amount]];
-    [_req_label setText:[NSString stringWithFormat:@"%d",_req_amount]];
+    [_req_label setText:[NSString stringWithFormat:@"%d / %d",_now_inv_amount,_req_amount]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,8 +82,8 @@
 
 
 - (void)dealloc {
-    [_now_label release];
     [_req_label release];
+    [_check_button release];
     [super dealloc];
 }
 @end

@@ -13,6 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIProgressView *invite_progress;
 @property (nonatomic) NSUInteger now_inv_amount;
 @property (nonatomic) NSUInteger req_amount;
-@property (retain, nonatomic) IBOutlet UILabel *now_label;
+@property (retain, nonatomic) IBOutlet UIButton *check_button;
 @property (retain, nonatomic) IBOutlet UILabel *req_label;
 @end

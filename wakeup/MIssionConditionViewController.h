@@ -15,4 +15,5 @@
 @property (retain, nonatomic) IBOutlet UILabel *mission_description;
 @property (retain, nonatomic) IBOutlet UILabel *mission_condition;
 @property (retain, nonatomic) IBOutlet UIView *mission_badges;
+@property (retain, nonatomic) IBOutlet UIView *badge_req;
 @end

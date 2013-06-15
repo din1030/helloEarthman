@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 #import "BrainHoleViewController.h"
 
+#import "DataBase.h"
+
 @interface CalendarCollectionViewController ()
 
 @end
@@ -40,6 +42,11 @@
     //[self.collectionView registerClass:[BadgeHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"BadgeHeaderView"];
  #warning Rewrite using sqlite to get data  
     // 抓 daily_record
+    FMResultSet *daily =nil;
+    daily = [DataBase executeQuery:@"SELECT * FROM DAILY_RECORD"];
+    while ([daily next]) {
+        // QQQQQQQQQ
+    }
     _dailyInfo = [[NSMutableArray alloc] initWithObjects:@"A",@"B",@"C",@"D",@"E",@"A",@"B",@"C",@"D",@"E",@"A",@"B",@"C",@"D",@"E",@"A",@"B",@"C",@"D",@"E",@"A",@"B",@"C",@"D",@"E", nil];
     
     // notification後進入遊戲

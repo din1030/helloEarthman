@@ -1146,53 +1146,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <collectionView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="vLw-Ed-Olk">
-                                <rect key="frame" x="0.0" y="201" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.91764705879999997" green="0.33333333329999998" blue="0.015686274510000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s4e-fX-ko7">
-                                    <size key="itemSize" width="55" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="preview_cell" id="91s-kb-y3h" customClass="CustomMissionPreviewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="55" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="badge_jp.png" id="Yem-KR-ZJn">
-                                                    <rect key="frame" x="2.5" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="preview_thumb" destination="Yem-KR-ZJn" id="1qW-Y6-zeo"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="設定目標，保持固定作息" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1J-UP-nc3">
-                                <rect key="frame" x="40" y="259" width="240" height="32"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="保持固定作息就可以換取想要的徽章唷！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1J-UP-nc3">
+                                <rect key="frame" x="24" y="259" width="271" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="維持天數：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z0Q-5k-eS6">
-                                <rect key="frame" x="40" y="292" width="64" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="目前維持天數：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z0Q-5k-eS6">
+                                <rect key="frame" x="121" y="292" width="91" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" id="9wh-Py-d61">
-                                <rect key="frame" x="37" y="313" width="246" height="56"/>
+                                <rect key="frame" x="35" y="313" width="250" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_day.png" id="iQc-w1-tRZ">
@@ -1215,21 +1184,21 @@
                                         <rect key="frame" x="209" y="6" width="38" height="38"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U6E-iq-Wyx">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U6E-iq-Wyx">
                                         <rect key="frame" x="0.0" y="20" width="37" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8g5-Ey-Myc">
-                                        <rect key="frame" x="53" y="20" width="37" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8g5-Ey-Myc">
+                                        <rect key="frame" x="52" y="20" width="38" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="muV-GF-7kB">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="muV-GF-7kB">
                                         <rect key="frame" x="105" y="20" width="38" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1244,7 +1213,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ATh-eV-kV1">
-                                        <rect key="frame" x="209" y="20" width="37" height="21"/>
+                                        <rect key="frame" x="209" y="20" width="38" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1280,9 +1249,12 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="down_w.png" id="r2r-uP-b2s">
-                                <rect key="frame" x="148" y="176" width="24" height="44"/>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="down_w.png" id="r2r-uP-b2s">
+                                <rect key="frame" x="148" y="171" width="24" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1291,7 +1263,18 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="preview_badge" destination="vLw-Ed-Olk" id="Qgq-aA-e6P"/>
+                        <outlet property="badge_image" destination="POD-Cw-a7l" id="KtQ-ov-ANG"/>
+                        <outlet property="day_1" destination="U6E-iq-Wyx" id="kkP-2j-62h"/>
+                        <outlet property="day_2" destination="8g5-Ey-Myc" id="7RR-HR-0CV"/>
+                        <outlet property="day_3" destination="muV-GF-7kB" id="yIZ-tM-sh9"/>
+                        <outlet property="day_4" destination="rMh-6e-jUC" id="nAm-hM-fod"/>
+                        <outlet property="day_5" destination="ATh-eV-kV1" id="vvg-qe-n5S"/>
+                        <outlet property="indicator" destination="r2r-uP-b2s" id="aAH-SW-BtT"/>
+                        <outletCollection property="day" destination="U6E-iq-Wyx" id="oM9-PH-FTZ"/>
+                        <outletCollection property="day" destination="8g5-Ey-Myc" id="Qce-U1-5Ch"/>
+                        <outletCollection property="day" destination="muV-GF-7kB" id="iSl-Os-FWG"/>
+                        <outletCollection property="day" destination="rMh-6e-jUC" id="PqS-tV-0hd"/>
+                        <outletCollection property="day" destination="ATh-eV-kV1" id="A0u-rB-B1N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZg-Ur-aJu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1323,7 +1306,6 @@
         <image name="Squirrel.png" width="500" height="500"/>
         <image name="alarm_hole-02.png" width="504" height="563"/>
         <image name="badge_bg.png" width="640" height="860"/>
-        <image name="badge_jp.png" width="500" height="500"/>
         <image name="bg.png" width="320" height="460"/>
         <image name="brainhole-06.png" width="55" height="13"/>
         <image name="brainhole1.png" width="30" height="28"/>
@@ -1419,16 +1401,17 @@
                 <relationship kind="outlet" name="date_num" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="CustomMissionPreviewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomMissionPreviewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="preview_thumb" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
         <class className="CustomMissionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomMissionViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="preview_badge" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="badge_image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="day_1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="day_2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="day_3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="day_4" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="day_5" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="indicator" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="target_picker" candidateClass="UIPickerView"/>
             </relationships>
         </class>
         <class className="CustomViewLayout" superclassName="UICollectionViewFlowLayout">

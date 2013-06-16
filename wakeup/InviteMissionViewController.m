@@ -28,6 +28,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    // 設定 back button
+    UIImage *backButtonIMG = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 21, 0, 0)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonIMG forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    UINavigationBar *bar = self.navigationController.navigationBar ;
+    bar.topItem.title = @" ";
+    
     FMResultSet *rs = nil;
     FMResultSet *rs1 = nil;
     

@@ -77,7 +77,6 @@
 		A638A8AD17676FFC004B3844 /* progress0.png in Resources */ = {isa = PBXBuildFile; fileRef = A638A8AB17676FFC004B3844 /* progress0.png */; };
 		A638A8AE17676FFC004B3844 /* progress1.png in Resources */ = {isa = PBXBuildFile; fileRef = A638A8AC17676FFC004B3844 /* progress1.png */; };
 		A638A8B1176771C6004B3844 /* CustomMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A638A8B0176771C6004B3844 /* CustomMissionViewController.m */; };
-		A638A8B417677941004B3844 /* CustomMissionPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A638A8B317677940004B3844 /* CustomMissionPreviewCell.m */; };
 		A638A8B617677BDD004B3844 /* down_w.png in Resources */ = {isa = PBXBuildFile; fileRef = A638A8B517677BDD004B3844 /* down_w.png */; };
 		A639E4E817560C2D005044EA /* sample_linechart_data.json in Resources */ = {isa = PBXBuildFile; fileRef = A639E4E717560C2D005044EA /* sample_linechart_data.json */; };
 		A639E4EE175636D7005044EA /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A639E4ED175636D7005044EA /* FacebookSDKResources.bundle */; };
@@ -159,6 +158,8 @@
 		A6CFD07A1769E38C0040ED49 /* statistics_tab_sleep1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6CFD06D1769E38C0040ED49 /* statistics_tab_sleep1@2x.png */; };
 		A6CFD07B1769E38C0040ED49 /* statistics_tab_wake0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6CFD06E1769E38C0040ED49 /* statistics_tab_wake0@2x.png */; };
 		A6CFD07C1769E38C0040ED49 /* statistics_tab_wake1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6CFD06F1769E38C0040ED49 /* statistics_tab_wake1@2x.png */; };
+		A6D8D875176DFECA00B1E472 /* FqxZ8m5ErB_n.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D8D873176DFECA00B1E472 /* FqxZ8m5ErB_n.png */; };
+		A6D8D876176DFECA00B1E472 /* FqxZ8m5ErB.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D8D874176DFECA00B1E472 /* FqxZ8m5ErB.png */; };
 		A6DBC912175A166000393671 /* eye-r.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBC910175A166000393671 /* eye-r.png */; };
 		A6DBC913175A166000393671 /* eyewh-r.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBC911175A166000393671 /* eyewh-r.png */; };
 		A6E708971760AA3200B89091 /* CalViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E708961760AA3200B89091 /* CalViewLayout.m */; };
@@ -250,8 +251,6 @@
 		A638A8AC17676FFC004B3844 /* progress1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress1.png; sourceTree = "<group>"; };
 		A638A8AF176771C6004B3844 /* CustomMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMissionViewController.h; sourceTree = "<group>"; };
 		A638A8B0176771C6004B3844 /* CustomMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMissionViewController.m; sourceTree = "<group>"; };
-		A638A8B217677940004B3844 /* CustomMissionPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMissionPreviewCell.h; sourceTree = "<group>"; };
-		A638A8B317677940004B3844 /* CustomMissionPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMissionPreviewCell.m; sourceTree = "<group>"; };
 		A638A8B517677BDD004B3844 /* down_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_w.png; sourceTree = "<group>"; };
 		A639E4E717560C2D005044EA /* sample_linechart_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sample_linechart_data.json; path = ../sample_linechart_data.json; sourceTree = "<group>"; };
 		A639E4ED175636D7005044EA /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
@@ -348,6 +347,8 @@
 		A6CFD06D1769E38C0040ED49 /* statistics_tab_sleep1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statistics_tab_sleep1@2x.png"; sourceTree = "<group>"; };
 		A6CFD06E1769E38C0040ED49 /* statistics_tab_wake0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statistics_tab_wake0@2x.png"; sourceTree = "<group>"; };
 		A6CFD06F1769E38C0040ED49 /* statistics_tab_wake1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statistics_tab_wake1@2x.png"; sourceTree = "<group>"; };
+		A6D8D873176DFECA00B1E472 /* FqxZ8m5ErB_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FqxZ8m5ErB_n.png; sourceTree = "<group>"; };
+		A6D8D874176DFECA00B1E472 /* FqxZ8m5ErB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FqxZ8m5ErB.png; sourceTree = "<group>"; };
 		A6DBC910175A166000393671 /* eye-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye-r.png"; sourceTree = "<group>"; };
 		A6DBC911175A166000393671 /* eyewh-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyewh-r.png"; sourceTree = "<group>"; };
 		A6E708951760AA3200B89091 /* CalViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalViewLayout.h; sourceTree = "<group>"; };
@@ -438,15 +439,13 @@
 				A6C55D5B175537E2008F3314 /* MissionViewController.h */,
 				A6C55D5C175537E2008F3314 /* MissionViewController.m */,
 				A679B2A0175497C800A01CB0 /* MissionCollectionCell.h */,
+				A679B2A1175497C800A01CB0 /* MissionCollectionCell.m */,
 				8BF94573176BA9E2001DBBFC /* InviteMissionViewController.h */,
 				8BF94574176BA9E2001DBBFC /* InviteMissionViewController.m */,
-				A679B2A1175497C800A01CB0 /* MissionCollectionCell.m */,
 				A679B29D175486FA00A01CB0 /* MIssionConditionViewController.h */,
 				A679B29E175486FA00A01CB0 /* MIssionConditionViewController.m */,
 				A638A8AF176771C6004B3844 /* CustomMissionViewController.h */,
 				A638A8B0176771C6004B3844 /* CustomMissionViewController.m */,
-				A638A8B217677940004B3844 /* CustomMissionPreviewCell.h */,
-				A638A8B317677940004B3844 /* CustomMissionPreviewCell.m */,
 			);
 			name = Mission;
 			sourceTree = "<group>";
@@ -674,6 +673,8 @@
 		A6C735D2175FB1D000E5EFA2 /* badge_animal */ = {
 			isa = PBXGroup;
 			children = (
+				A6D8D873176DFECA00B1E472 /* FqxZ8m5ErB_n.png */,
+				A6D8D874176DFECA00B1E472 /* FqxZ8m5ErB.png */,
 				A6C735D3175FB1D000E5EFA2 /* Squirrel.png */,
 				A6C735D4175FB1D000E5EFA2 /* Squirrel_n.png */,
 			);
@@ -939,6 +940,8 @@
 				8BF94565176B5478001DBBFC /* animal.png in Resources */,
 				8BF94566176B5478001DBBFC /* person.png in Resources */,
 				8BF94568176B5DE7001DBBFC /* alarm.plist in Resources */,
+				A6D8D875176DFECA00B1E472 /* FqxZ8m5ErB_n.png in Resources */,
+				A6D8D876176DFECA00B1E472 /* FqxZ8m5ErB.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,7 +981,6 @@
 				A612043A17631A120082D519 /* CalendarViewCell.m in Sources */,
 				A612043D176337650082D519 /* BadgeHeaderView.m in Sources */,
 				A638A8B1176771C6004B3844 /* CustomMissionViewController.m in Sources */,
-				A638A8B417677941004B3844 /* CustomMissionPreviewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

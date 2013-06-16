@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomMissionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property (strong, nonatomic) IBOutlet UICollectionView *preview_badge;
+@interface CustomMissionViewController : UIViewController <UIPickerViewDelegate,UIPickerViewDataSource> // <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+@property (retain, nonatomic) NSMutableArray *badge_list;
+@property (retain, nonatomic) NSString *bid;
+@property (retain, nonatomic) IBOutlet UIImageView *badge_image;
+@property (retain, nonatomic) IBOutlet UIPickerView *target_picker;
+@property (retain, nonatomic) IBOutlet UIImageView *indicator;
+
+@property (retain, nonatomic) NSMutableArray *day;
+@property (retain, nonatomic) IBOutlet UILabel *day_1;
+@property (retain, nonatomic) IBOutlet UILabel *day_2;
+@property (retain, nonatomic) IBOutlet UILabel *day_3;
+@property (retain, nonatomic) IBOutlet UILabel *day_4;
+@property (retain, nonatomic) IBOutlet UILabel *day_5;
 @end

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A65238B8173A4DEA0030BDC7"
-               BuildableName = "&#37266;&#37266;&#21543;&#38463;&#23429;.app"
+               BuildableName = "&#26089;&#23433;&#22320;&#29699;&#20154;&#65281;.app"
                BlueprintName = "wakeup"
                ReferencedContainer = "container:wakeup.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A65238B8173A4DEA0030BDC7"
-            BuildableName = "&#37266;&#37266;&#21543;&#38463;&#23429;.app"
+            BuildableName = "&#26089;&#23433;&#22320;&#29699;&#20154;&#65281;.app"
             BlueprintName = "wakeup"
             ReferencedContainer = "container:wakeup.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A65238B8173A4DEA0030BDC7"
-            BuildableName = "&#37266;&#37266;&#21543;&#38463;&#23429;.app"
+            BuildableName = "&#26089;&#23433;&#22320;&#29699;&#20154;&#65281;.app"
             BlueprintName = "wakeup"
             ReferencedContainer = "container:wakeup.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A65238B8173A4DEA0030BDC7"
-            BuildableName = "&#37266;&#37266;&#21543;&#38463;&#23429;.app"
+            BuildableName = "&#26089;&#23433;&#22320;&#29699;&#20154;&#65281;.app"
             BlueprintName = "wakeup"
             ReferencedContainer = "container:wakeup.xcodeproj">
          </BuildableReference>

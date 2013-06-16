@@ -7,7 +7,6 @@
 //
 
 #import "MIssionConditionViewController.h"
-#import "FMDatabase.h"
 #import "DataBase.h"
 
 #import "AppDelegate.h"
@@ -72,7 +71,7 @@
 
 - (void)get_mission_req {
     NSMutableArray *m_condition = [NSMutableArray array];
-    FMResultSet *rs2 = [DataBase executeQuery:[NSString stringWithFormat:@"SELECT * FROM MISSION_CONDITION WHERE mid = '%@'",self.m_id]]; //@"jZi5KgGDWv"
+    FMResultSet *rs2 = [DataBase executeQuery:[NSString stringWithFormat:@"SELECT * FROM MISSION_CONDITION WHERE mid = '%@'",self.m_id]]; //@"jZi5KgGDWv" self.m_id
     NSLog(@"GET!!");
     while ([rs2 next])
     {
@@ -85,8 +84,9 @@
         
         NSDictionary *condition = [[NSDictionary alloc] initWithObjectsAndKeys:condition_type,@"b_type",condition_id,@"b_id",condition_amount,@"b_amount", nil];
         [m_condition addObject:condition];
+        [condition release];
     }
-    
+    [rs2 close];
     
     // 取得個數用來算 layout 位置
     NSUInteger b_num = [m_condition count];
@@ -101,9 +101,9 @@
         UIImage *b_thumb = [UIImage imageNamed:@"badge_tw.png"];
         UIImageView *new_b = [[UIImageView alloc] initWithImage:b_thumb];
         [new_b setFrame:CGRectMake(0, 0, 50, 50)];
-        new_b.center = CGPointMake((self.mission_badges.frame.size.width/b_num)*(i+0.5),self.mission_badges.frame.size.height/2);
+        new_b.center = CGPointMake((self.mission_badges.frame.size.width/b_num)*(i+0.5f),self.mission_badges.frame.size.height/2);
         [self.mission_badges addSubview:new_b];
-        
+        [new_b release];
         // query according to badge type
         FMResultSet *user_amount =nil;
         if ([temp_type isEqualToString:@"person"]) {
@@ -118,16 +118,41 @@
             NSUInteger cur_amount = [user_amount intForColumn:@"amount"];
             UILabel *progress = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
             progress.text = [NSString stringWithFormat:@"%d / %d",(cur_amount==-1?0:cur_amount),temp_amount];
-            progress.center = CGPointMake((self.badge_req.frame.size.width/b_num)*(i+0.5),self.badge_req.frame.size.height/2);
+            progress.center = CGPointMake((self.badge_req.frame.size.width/b_num)*(i+0.5f),self.badge_req.frame.size.height/2);
             [progress setTextAlignment:NSTextAlignmentCenter];
             [progress setFont:[UIFont systemFontOfSize:14.0]];
             [progress setTextColor:[UIColor whiteColor]];
             
             progress.backgroundColor = [UIColor clearColor];
             [self.badge_req addSubview:progress];
-        
+            [progress release];
+            
+            float percentage = (float)cur_amount/temp_amount;
+            if (cur_amount == -1) {
+                percentage = 0;
+            }
+            if (percentage > 1.0f) {
+                percentage = 1.0f ;
+            }
+            NSLog(@"%f",percentage);
+            
+            UIView *mask_view = [[UIImageView alloc] initWithFrame:CGRectMake(new_b.frame.origin.x, new_b.frame.origin.y, new_b.frame.size.width, new_b.frame.size.height*(1.0f-percentage))];
+            [mask_view setAutoresizesSubviews:NO];
+            [mask_view setClipsToBounds:YES];
+            //[mask_view setBackgroundColor:[UIColor redColor]];
+            //[mask_view setAlpha:0.7f];
+            
+            UIImageView * mask = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, mask_view.frame.size.width,mask_view.frame.size.width)];
+            [mask setImage:[UIImage imageNamed:@"progress0.png"]];
+            [mask setBackgroundColor:[UIColor clearColor]];
+            [mask setAlpha:0.9f];
+            
+            [self.mission_badges addSubview:mask_view];
+            [mask_view addSubview:mask];
+            [mask release];
+            [mask_view release];
         }
-        
+        [user_amount close];
     }
     
 }

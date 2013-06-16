@@ -12,6 +12,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "DataBase.h"
 
 @interface AlarmViewController ()
 
@@ -61,7 +62,7 @@
                                          selector:@selector(countUp)
                                          userInfo:nil
                                           repeats:YES];
-    self.label_alarm_time.text = [NSString stringWithFormat:@"%02d:%02d",appDelegate.set_hr,appDelegate.set_min];
+    self.label_alarm_time.text = [NSString stringWithFormat:@"%02d:%02d",appDelegate.set_hr%12,appDelegate.set_min];
     
     
     NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"turn" ofType:@"mp3"]];
@@ -89,6 +90,18 @@
     alarm_index=0;
     [self.alarm setImage:[UIImage imageNamed:[alarm_img objectAtIndex:alarm_index]]];
     
+    if (appDelegate.isAlarm)
+    {
+        [_setalarm setBackgroundImage:[UIImage imageNamed:@"stop.png"] forState:UIControlStateNormal];
+        self.next_alarm.enabled = NO;
+        self.prev_alarm.enabled = NO;
+    }
+    else
+    {
+        [_setalarm setBackgroundImage:[UIImage imageNamed:@"start.png"] forState:UIControlStateNormal];
+        self.next_alarm.enabled = YES;
+        self.prev_alarm.enabled = YES;
+    }
 }
 
 - (void)countUp {
@@ -156,11 +169,12 @@ CGFloat DegreesToRadians(CGFloat degrees)
         if (appDelegate.set_hr==0)
             temp_hr = 12;
         else
-            temp_hr = appDelegate.set_hr;
+            temp_hr = appDelegate.set_hr % 12;
         self.label_alarm_time.text = [NSString stringWithFormat:@"%02d:%02d",temp_hr,appDelegate.set_min];
         center.x = self.mask.center.x + self.mask.frame.size.width/2 * cos(rotateDegree*(M_PI/180));
         center.y = self.mask.center.y - self.mask.frame.size.height/2 * sin(rotateDegree*(M_PI/180));
-        appDelegate.degree = rotateDegree*(M_PI/180);
+//        appDelegate.degree = rotateDegree*(M_PI/180);
+        appDelegate.degree = DegreesToRadians((appDelegate.set_hr%12*60.0+appDelegate.set_min)*0.5+180);
         self.set.center = center;
     }
 }
@@ -189,7 +203,7 @@ CGFloat DegreesToRadians(CGFloat degrees)
     else if (appDelegate.hr>12)
     {
         if (appDelegate.set_hr!=0)
-            appDelegate.set_hr = (appDelegate.set_hr+12);
+            appDelegate.set_hr = (appDelegate.set_hr+12)%24;
         else
             appDelegate.set_hr = 24;
     }
@@ -201,7 +215,6 @@ CGFloat DegreesToRadians(CGFloat degrees)
         secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]]];
     NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
     //如果時間差是小於0表示為隔天
-        NSLog(@"%f",timeDifference);
     if (timeDifference<0)
         timeDifference += 43200;
     else if (appDelegate.set_hr==24)
@@ -229,8 +242,8 @@ CGFloat DegreesToRadians(CGFloat degrees)
     NSString *plistPath = [rootPath stringByAppendingPathComponent:@"alarm.plist"];
     
     NSDictionary *plistDict = [NSDictionary dictionaryWithObjects:
-                               [NSArray arrayWithObjects: [NSString stringWithFormat:@"%d",appDelegate.set_hr], [NSString stringWithFormat:@"%d",appDelegate.set_min], nil]
-                                                          forKeys:[NSArray arrayWithObjects: @"hr", @"min", nil]];
+                               [NSArray arrayWithObjects: [NSString stringWithFormat:@"%d",appDelegate.set_hr], [NSString stringWithFormat:@"%d",appDelegate.set_min],[NSString stringWithFormat:@"%d",appDelegate.hr],[NSString stringWithFormat:@"%d",appDelegate.min], nil]
+                                                          forKeys:[NSArray arrayWithObjects: @"hr", @"min",@"sleep_hr",@"sleep_min", nil]];
     NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict
                                                                    format:NSPropertyListXMLFormat_v1_0
                                                          errorDescription:&error];
@@ -241,8 +254,6 @@ CGFloat DegreesToRadians(CGFloat degrees)
         NSLog(@"%@",error);
         [error release];
     }
-    
-    NSLog(@"notification=%d",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
 }
 
 //矯正時差

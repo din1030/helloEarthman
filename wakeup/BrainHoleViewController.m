@@ -10,6 +10,7 @@
 #import "BrainHoleViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "DataBase.h"
 
 @interface BrainHoleViewController ()
 @end
@@ -224,12 +225,74 @@
     //                                                                          image:nil
     //                                                                            url:[NSURL URLWithString:@""]
     //                                                                        handler:nil];
-    if (FBSession.activeSession.isOpen) { //name!=nil , FBSession.activeSession.isOpen        
+    if (FBSession.activeSession.isOpen) { //name!=nil , FBSession.activeSession.isOpen
+        
+        // 抓取person_badge資訊
+        
+        //讀取plist記錄的入睡時間
+        NSString *errorDesc = nil;
+        NSPropertyListFormat format;
+        NSString *plistPath;
+        NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                  NSUserDomainMask, YES) objectAtIndex:0];
+        plistPath = [rootPath stringByAppendingPathComponent:@"alarm.plist"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+            plistPath = [[NSBundle mainBundle] pathForResource:@"alarm" ofType:@"plist"];
+        }
+        NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+        NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
+                                              propertyListFromData:plistXML
+                                              mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                              format:&format
+                                              errorDescription:&errorDesc];
+        if (!temp) {
+            NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+        }
+        
+        FMResultSet *rs = nil;
+        rs = [DataBase executeQuery:[NSString stringWithFormat:@"SELECT * FROM PERSON_BADGE WHERE requirement=%d",[[temp objectForKey:@"sleep_hr"] intValue]]];
+        NSString *p_id = [[NSString alloc] init];
+        NSString *name = [[NSString alloc] init];
+        NSString *description = [[NSString alloc] init];
+        NSString *nationality = [[NSString alloc] init];
+        while ([rs next])
+        {
+            p_id = [rs stringForColumn:@"id"];
+            name = [rs stringForColumn:@"name"];
+            description = [rs stringForColumn:@"description"];
+            nationality = [rs stringForColumn:@"Nationality"];
+        }
+        NSLog(@"hr=%d",[[temp objectForKey:@"sleep_hr"] intValue]);
+        NSLog(@"p_id=%@",p_id);
+        NSLog(@"name=%@",name);
+        
+        //讀取plist記錄的問候語
+        errorDesc = nil;
+        rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask, YES) objectAtIndex:0];
+        plistPath = [rootPath stringByAppendingPathComponent:@"greeting.plist"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+            plistPath = [[NSBundle mainBundle] pathForResource:@"greeting" ofType:@"plist"];
+        }
+        plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+        temp = (NSDictionary *)[NSPropertyListSerialization
+                                propertyListFromData:plistXML
+                                mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                format:&format
+                                errorDescription:&errorDesc];
+        if (!temp) {
+            NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+        }
+        NSString *msg = [temp objectForKey:p_id];
+        NSLog(@"%@",[temp objectForKey:p_id]);
+        
+        
+        
         NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                       [NSString stringWithFormat:@"道地的%@!!!!",@"台灣人"],@"message",
-                                       @"台灣人",@"name",
+                                       msg,@"message",
+                                       [NSString stringWithFormat:@"%@人",nationality],@"name",
                                        @" ",@"caption",
-                                       @"Hi～～～",@"description",
+                                       description,@"description",
                                        @"https://apps.facebook.com/dinguagua/?share_id=Z900SrENR0", @"link",
                                        @"http://140.119.19.34/din/wakeupup/badge_tw.png", @"picture",
                                        nil];

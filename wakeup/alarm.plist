@@ -6,5 +6,9 @@
 	<string>8</string>
 	<key>min</key>
 	<string>44</string>
+	<key>sleep_hr</key>
+	<string>23</string>
+	<key>sleep_min</key>
+	<string>1</string>
 </dict>
 </plist>

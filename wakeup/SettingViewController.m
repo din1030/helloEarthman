@@ -113,6 +113,8 @@
     //    appDelegate.scheduledSleep.soundName = @"alarm2.mp3";
     appDelegate.scheduledSleep.alertBody = @"距離您預計睡覺的時間還有半小時唷！";
     [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledSleep];
+    
+    appDelegate.scheduledSleep.alertBody = @"已經超過您預計睡覺的時間囉！快去睡吧！";
     NSTimeInterval interval = 1800;
     for( int i = 0; i < 5; ++i ) {
         appDelegate.scheduledSleep.fireDate = [NSDate dateWithTimeInterval: interval*i sinceDate:[self convertToUTC:[calendar dateFromComponents:components]]];

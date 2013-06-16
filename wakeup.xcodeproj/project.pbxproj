@@ -31,6 +31,7 @@
 		8B9BB385176CE6F3002B37C8 /* 6YaLTunYln_w2c.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9BB380176CE6F3002B37C8 /* 6YaLTunYln_w2c.png */; };
 		8B9BB386176CE6F3002B37C8 /* 6YaLTunYln_w2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9BB381176CE6F3002B37C8 /* 6YaLTunYln_w2d.png */; };
 		8B9BB387176CE6F3002B37C8 /* 6YaLTunYln_w2e.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9BB382176CE6F3002B37C8 /* 6YaLTunYln_w2e.png */; };
+		8B9BB389176DE337002B37C8 /* greeting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B9BB388176DE337002B37C8 /* greeting.plist */; };
 		8BB4B7B5175E62E60037CBB8 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4B7B4175E62E60037CBB8 /* AlarmViewController.m */; };
 		8BF94519176A3907001DBBFC /* 6YaLTunYln_w2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF944FD176A3907001DBBFC /* 6YaLTunYln_w2.png */; };
 		8BF9451A176A3907001DBBFC /* room_w2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF944FE176A3907001DBBFC /* room_w2.png */; };
@@ -215,6 +216,7 @@
 		8B9BB380176CE6F3002B37C8 /* 6YaLTunYln_w2c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6YaLTunYln_w2c.png; sourceTree = "<group>"; };
 		8B9BB381176CE6F3002B37C8 /* 6YaLTunYln_w2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6YaLTunYln_w2d.png; sourceTree = "<group>"; };
 		8B9BB382176CE6F3002B37C8 /* 6YaLTunYln_w2e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6YaLTunYln_w2e.png; sourceTree = "<group>"; };
+		8B9BB388176DE337002B37C8 /* greeting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = greeting.plist; sourceTree = "<group>"; };
 		8BB4B7B3175E62E60037CBB8 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		8BB4B7B4175E62E60037CBB8 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		8BF944FD176A3907001DBBFC /* 6YaLTunYln_w2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6YaLTunYln_w2.png; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 				A65238D2173A4DEA0030BDC7 /* Default-568h@2x.png */,
 				8BF94567176B5DE7001DBBFC /* alarm.plist */,
 				8BF94593176CBD63001DBBFC /* ufomsg.plist */,
+				8B9BB388176DE337002B37C8 /* greeting.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

@@ -53,16 +53,16 @@
         NSString *state = [rs stringForColumn:@"state"];
         
         [_mission addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                            m_id, @"id",
-                            name, @"name",
-                            description, @"description",
-                            award_type,@"award_type",
-                            award_var,@"award_var",
-                            state,@"state",
-                            nil]];
+                             m_id, @"id",
+                             name, @"name",
+                             description, @"description",
+                             award_type,@"award_type",
+                             award_var,@"award_var",
+                             state,@"state",
+                             nil]];
     }
     [rs close];
-
+    
     // notification後進入遊戲
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(Game:)
@@ -86,45 +86,72 @@
 #pragma mark - Data source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return 2;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [_mission count];
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    int num = 5;
+    if (section == 0) {
+        num = 2;
+    } else {
+        num = [_mission count];
+    }
+    return num;
 }
 
 // header!!
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-//           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-//
-//
-//    UICollectionReusableView *supplementaryView = nil;
-//
-//    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-//        supplementaryView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-//                                                               withReuseIdentifier:@"mission_cell"
-//                                                                      forIndexPath:indexPath];
-//        UILabel *label = (UILabel *)[supplementaryView viewWithTag:TagOfLabelInSupplementatyHeader];
-//        label.text = [[ALPhoto sharedSource] arrayOfLocations][indexPath.section];
-//    }
-//    return supplementaryView;
-//}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionReusableView *supplementaryView = nil;
+
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        supplementaryView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                               withReuseIdentifier:@"footer"
+                                                                      forIndexPath:indexPath];
+    }
+    return supplementaryView;
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *cellIdentifier = @"mission_cell";
-    // Get cell
-    MissionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
-                                                                            forIndexPath:indexPath];
-    NSUInteger index = [indexPath row];
-    NSString *name = [[_mission objectAtIndex:index ] objectForKey:@"name"];
-    //NSString *description = [obj_ar[row] objectForKey:@"description"];
-    cell.mission_name.text = name;
-    NSLog(@"%@",name);
-
-    cell.cell_id = [[_mission objectAtIndex:0 ] objectForKey:@"id"];
-    NSLog(@"%@",cell.cell_id);
+    MissionCollectionCell *cell = nil;
+    if (indexPath.section == 0 ) {
+        if (indexPath.item == 0) {
+            NSString *cellIdentifier = @"custom_cell";
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
+                                                             forIndexPath:indexPath];
+            cell.thumbnail.image = [UIImage imageNamed:@"custom.png"];
+        } else {
+            NSString *cellIdentifier = @"invite_cell";
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
+                                                             forIndexPath:indexPath];
+            cell.thumbnail.image = [UIImage imageNamed:@"3Ra7fF3syR_s.png"];
+        }
+    } else {
+        NSString *cellIdentifier = @"mission_cell";
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
+                                                         forIndexPath:indexPath];
+        NSUInteger index = [indexPath item];
+        NSString *name = [[_mission objectAtIndex:index ] objectForKey:@"name"];
+        cell.mission_name.text = name;
+        cell.cell_id = [[_mission objectAtIndex:index ] objectForKey:@"id"];
+        NSLog(@"%@ %@", name, cell.cell_id);
+        
+        // 沒有圖的話先用 custom 的圖代替
+        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%@_s.png", cell.cell_id]];
+        if (img != nil) {
+            cell.thumbnail.image = img;
+        } else {
+            cell.thumbnail.image = [UIImage imageNamed:@"custom.png"];
+        }
+        // 完成的任務把 lock 隱藏起來
+        if ([[[_mission objectAtIndex:index ] objectForKey:@"state"] boolValue]) {
+            cell.lock.hidden = YES;
+        }
+    }
     return cell;
 }
 
@@ -133,26 +160,27 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    return CGSizeMake(263.0f, 150.0f);
+    
+    return CGSizeMake(130.0f, 130.0f);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    if (indexPath.item == 0) {
+    if (indexPath.section == 0) {
+        if (indexPath.item == 0) {
+            [self performSegueWithIdentifier:@"ShowCustom" sender:cell];
+        } else if (indexPath.item == 1) {
+            [self performSegueWithIdentifier:@"ShowInvite" sender:cell];
+        }
+    } else if (indexPath.section == 1) {
         [self performSegueWithIdentifier:@"ShowCollect" sender:cell];
-    } else if (indexPath.item == 1) {
-        [self performSegueWithIdentifier:@"ShowInvite" sender:cell];
-    } else if (indexPath.item == 2) {
-        [self performSegueWithIdentifier:@"ShowCustom" sender:cell];
     }
-
 }
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:[MissionCollectionCell class]]) {
-        if ([segue.identifier isEqualToString:@"ShowCollect"]) {            
+        if ([segue.identifier isEqualToString:@"ShowCollect"]) {
             MissionCollectionCell *cell1 = (MissionCollectionCell *)sender;
             MIssionConditionViewController *conditionPage = segue.destinationViewController;
             [conditionPage setValue:cell1.cell_id forKey:@"m_id"];

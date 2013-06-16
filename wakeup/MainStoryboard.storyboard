@@ -114,6 +114,13 @@
                                     <segue destination="W2a-7g-k3S" kind="push" id="qez-3F-M6N"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ChO-fB-NLN">
+                                <rect key="frame" x="49" y="115" width="80" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.10196079313755035" green="0.10196079313755035" blue="0.10196079313755035" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -127,6 +134,7 @@
                         <outlet property="setting" destination="eRY-ZU-KQ2" id="lql-q6-Qav"/>
                         <outlet property="theme" destination="xN5-3p-LfO" id="Ibt-ba-Ku8"/>
                         <outlet property="ufo" destination="r5n-7d-xHS" id="btl-zy-lfj"/>
+                        <outlet property="ufomsg" destination="ChO-fB-NLN" id="nHx-ch-8N3"/>
                         <outlet property="window" destination="HNB-Fw-wKm" id="Yak-RG-3cH"/>
                     </connections>
                 </viewController>
@@ -264,6 +272,7 @@
                         <outlet property="fbButton" destination="rrv-OI-AMu" id="SdN-E8-zpZ"/>
                         <outlet property="sendButton" destination="t5c-xi-TAk" id="tfU-Z6-c9h"/>
                         <outlet property="timeZone" destination="fkZ-3F-ipd" id="mTb-WM-gV5"/>
+                        <outlet property="time_set" destination="hjk-W4-Cko" id="Jxa-mL-uNn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhT-Fd-nx6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1467,6 +1476,7 @@
                 <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="setRemindTimePicker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="timeZone" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="time_set" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
@@ -1481,9 +1491,6 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
@@ -1495,6 +1502,7 @@
                 <relationship kind="outlet" name="setting" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="theme" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="ufo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ufomsg" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="window" candidateClass="UIImageView"/>
             </relationships>
         </class>

@@ -14,6 +14,6 @@
 //@property (strong, nonatomic) FMDatabase *db;
 //- (FMDatabase *)connectToDataBase;
 + (FMResultSet *)executeQuery:(NSString *)strSQL;
-//+ (void)executeSQL:(NSString *)strSQL;
++ (void)executeSQL:(NSString *)strSQL;
 
 @end

@@ -15,11 +15,19 @@
     NSArray *keys;
 }
 
+@property (strong, nonatomic) NSArray *hourColumnList;
+@property (strong, nonatomic) NSArray *minuteColumnList;
+@property (nonatomic) int sleeping_hr;
+@property (nonatomic) int sleeping_min;
+@property (strong,nonatomic) UIView *content;
+@property (strong,nonatomic) UIButton *set_bt;
+
 @property (retain, nonatomic) IBOutlet UILabel *timeZone;
 @property (strong, nonatomic) IBOutlet UIButton *fbButton;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *setRemindTimePicker;
 @property (retain, nonatomic) IBOutlet UIImageView *mask;
+@property (retain, nonatomic) IBOutlet UILabel *time_set;
 - (IBAction)show_picker:(UIButton *)sender;
 
 @end

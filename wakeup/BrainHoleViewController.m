@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BrainHoleViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface BrainHoleViewController ()
 @end
@@ -43,16 +44,22 @@
                                                 selector:@selector(counting)
                                                 userInfo:nil
                                                  repeats:YES];
-    audioArray = [[NSArray alloc] initWithObjects:@"laughing2",@"get up7", nil];
     
     NSLog(@"time up. Please play this game.");
-    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"back4new" ofType:@"mp3"]];
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"holeback" ofType:@"mp3"]];
     //與音樂檔案做連結
     NSError* error = nil;
     _bgPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
     [self.bgPlayer setNumberOfLoops:-1];
     [self.bgPlayer play];
     [url release];
+    
+    // 無視使用者音量控制
+    AudioSessionInitialize (NULL, NULL, NULL, NULL);
+    AudioSessionSetActive(true);
+    UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
+    AudioSessionSetProperty (kAudioSessionProperty_AudioCategory,
+                             sizeof(sessionCategory),&sessionCategory);
 
 }
 
@@ -65,6 +72,12 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    // 恢復預設值
+    AudioSessionInitialize (NULL, NULL, NULL, NULL);
+    AudioSessionSetActive(true);
+    UInt32 sessionCategory = kAudioSessionCategory_AmbientSound;
+    AudioSessionSetProperty (kAudioSessionProperty_AudioCategory,
+                             sizeof(sessionCategory),&sessionCategory);
     [super viewWillDisappear:animated];
 }
 
@@ -87,29 +100,8 @@
 - (void) counting
 {
     sec++;
-    //與音樂檔案做連結
-    NSError* error = nil;
-
     if (sec==15)
-    {
-        NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"you are too slow2" ofType:@"mp3"]];
-        audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        [audioPlayer setNumberOfLoops:0];
-        [audioPlayer play];
-        [url release];
-    }
-    else
-    {
-        if (sec%5==0)
-        {
-            int r = arc4random_uniform(2);
-            NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:[audioArray objectAtIndex:r] ofType:@"mp3"]];
-            audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-            [audioPlayer setNumberOfLoops:0];
-            [audioPlayer play];
-            [url release];
-        }
-    }
+        [self audioplay:@"you are too slow2"];
 }
 
 - (void) generateHole
@@ -144,24 +136,12 @@
         }
     }
     
-    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"i got a hole1" ofType:@"mp3"]];
-    //與音樂檔案做連結
-    NSError* error = nil;
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    [audioPlayer setNumberOfLoops:0];
-    [audioPlayer play];
-    [url release];
-    
+    [self audioplay:@"i got a hole1"];
 }
 
 - (IBAction)holeClick:(UIButton*)sender
 {
-    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"touch2" ofType:@"mp3"]];
-    //與音樂檔案做連結
-    NSError* error = nil;
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    [audioPlayer play];
-    [url release];
+    [self audioplay:@"touch2"];
     
     UIButton *thisHole = (UIButton*) sender;
     if (thisHole.tag == 1) {
@@ -183,6 +163,18 @@
         [thisHole setBackgroundImage:[UIImage imageNamed:[self.hole_img objectAtIndex:(thisHole.tag-1)]] forState:UIControlStateNormal];
     }
     //[levelup_timer invalidate];
+}
+
+- (void) audioplay:(NSString *) filename
+{
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:filename ofType:@"mp3"]];
+    //與音樂檔案做連結
+    NSError* error = nil;
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    [audioPlayer setNumberOfLoops:0];
+    [audioPlayer play];
+    [url release];
+    
 }
 
 -(void) showAlert
@@ -251,17 +243,6 @@
                                       //[self showAlert:message result:result error:error]; //跳出alert
                                   }];
         }];
-    }
-    else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"哇嗚～"
-                                                        message:@"要先登入才能分享唷！"  //警告訊息內文的設定
-                                                       delegate:self // 叫出AlertView之後，要給該ViewController去處理
-                                              cancelButtonTitle:@"OK"  //cancel按鈕文字的設定
-                                              otherButtonTitles:nil]; // 其他按鈕的設定
-        // 如果要多個其他按鈕 >> otherButtonTitles: @"check1", @"check2", nil];
-        
-        [alert show];  // 把alert這個物件秀出來
-        [alert release]; //釋放alert這個物件
     }
 }
 

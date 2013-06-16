@@ -12,7 +12,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DataBase.h"
 
-
 @interface ViewController ()
 
 @end
@@ -31,28 +30,14 @@
     bar.topItem.title = @" ";
     
     // notification後進入遊戲
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    if (appDelegate.isAlarm)
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(Game:)
                                                  name:@"appDidBecomeActive"
                                                object:nil];
-
-    if (appDelegate.hr>=19 || appDelegate.hr<=6)
-        [self.window setImage:[UIImage imageNamed:@"room_w2.png"]];
-    else
-        [self.window setImage:[UIImage imageNamed:@"room_w1.png"]];
     
     //更改錨點
     [_badgetable .layer setAnchorPoint:CGPointMake(0.5,0)];
     _badgetable.center = CGPointMake(_badgetable.center.x, _badgetable.center.y-_badgetable.frame.size.height/2);
-    
-    _itemlist = [[NSArray alloc] initWithObjects:_alarm, _calendar, _badgetable, _theme, _window, nil];
-    _random_timer = [NSTimer scheduledTimerWithTimeInterval:3  // 遊戲秒數
-                                                     target:self
-                                                   selector:@selector(item_animation)
-                                                   userInfo:nil
-                                                    repeats:YES];
     
     _theme_index=0;
     _themelist = [[NSMutableArray alloc] initWithObjects: nil];
@@ -67,13 +52,22 @@
     //        [_itemlist addObject:t_id];
     //    }
     [rs close];
+    [self window_reset];
+}
 
+- (void) window_reset
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.hr>=19 || appDelegate.hr<=6)
+        [self.window setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_w2.png",[_themelist objectAtIndex:_theme_index]]]];
+    else
+        [self.window setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_w1.png",[_themelist objectAtIndex:_theme_index]]]];
 }
 
 - (void) item_animation
 {
-//    int r = arc4random_uniform(5);
-    int r=4;
+    int r = arc4random_uniform(5);
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     CAKeyframeAnimation *keyFrame = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     keyFrame.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     UIButton *btn = [_itemlist objectAtIndex:r];
@@ -82,6 +76,7 @@
     switch (r)
     {
         case 0:
+            [self audioplay:@"alarmclock2"];
             keyFrame.values = @[[NSValue valueWithCGPoint:CGPointMake(ori_point.x,ori_point.y-offset)],
                                 [NSValue valueWithCGPoint:CGPointMake(ori_point.x-offset,ori_point.y-offset)],
                                 [NSValue valueWithCGPoint:CGPointMake(ori_point.x,ori_point.y-offset)],
@@ -132,9 +127,12 @@
                              }];
             break;
         case 4:
+            [self window_reset];
+            [self audioplay:@"ufo"];
             offset = 5;
             ori_point = self.ufo.center;
             self.ufo.hidden = NO;
+            _ufomsg.hidden = YES;
             // 移動路徑
             keyFrame.values = @[[NSValue valueWithCGPoint:CGPointMake(ori_point.x-offset*2,ori_point.y+offset)],
                                 [NSValue valueWithCGPoint:CGPointMake(ori_point.x-offset*3,ori_point.y-offset*2)],
@@ -144,7 +142,7 @@
                                 [NSValue valueWithCGPoint:CGPointMake(ori_point.x-offset*8,ori_point.y+offset*10)],
                                 [NSValue valueWithCGPoint:CGPointMake(ori_point.x-offset*3,ori_point.y+offset*14)],
                                 [NSValue valueWithCGPoint:CGPointMake(ori_point.x+offset*8,ori_point.y+offset*5)]];
-            keyFrame.duration=2.4;
+            keyFrame.duration=2.9;
             [self.ufo.layer addAnimation:keyFrame forKey:@"keyFrame"];
             
             // 縮放大小
@@ -158,33 +156,76 @@
                                 [NSValue valueWithCATransform3D:CATransform3DScale (self.ufo.layer.transform, 1.4, 1.4, 1.4)],
                                 [NSValue valueWithCATransform3D:CATransform3DScale (self.ufo.layer.transform, 1.6, 1.6, 1.6)],
                                 [NSValue valueWithCATransform3D:CATransform3DScale (self.ufo.layer.transform, 1.8, 1.8, 1.8)]];
-            ScalekeyFrame.duration=2.4;
+            ScalekeyFrame.duration=2.9;
             [self.ufo.layer addAnimation:ScalekeyFrame forKey:@"ScalekeyFrame"];
             
             // 透明度控制＆換圖
             self.ufo.alpha = 1.0f;
-            [UIView animateWithDuration:0.3
-                                  delay:1.7
+            [UIView animateWithDuration:0.5
+                                  delay:1.9
                                 options:UIViewAnimationOptionCurveEaseInOut 
                              animations:^{
                                  self.ufo.alpha = 0.0f;
                              }
                              completion:^(BOOL finished){
                                  _ufo.hidden = YES;
-                                 _window.animationImages = [NSArray arrayWithObjects:
-                                                            [UIImage imageNamed:@"room_w1.png"],
-                                                            [UIImage imageNamed:@"room_w1a.png"],
-                                                            [UIImage imageNamed:@"room_w1b.png"],
-                                                            [UIImage imageNamed:@"room_w1c.png"], nil];
+                                 if (appDelegate.hr>=19 || appDelegate.hr<=6)
+                                 {
+                                     _window.animationImages = [NSArray arrayWithObjects:
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w2.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w2a.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w2b.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w2c.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w2d.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w2e.png",[_themelist objectAtIndex:_theme_index]]],nil];
+                                                                          [_window setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_w2e.png",[_themelist objectAtIndex:_theme_index]]]];
+                                 }
+                                 else
+                                 {
+                                     _window.animationImages = [NSArray arrayWithObjects:
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w1.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w1a.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w1b.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w1c.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w1d.png",[_themelist objectAtIndex:_theme_index]]],
+                                                                [UIImage imageNamed:[NSString stringWithFormat:@"%@_w1e.png",[_themelist objectAtIndex:_theme_index]]],nil];
+                                     [_window setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_w1e.png",[_themelist objectAtIndex:_theme_index]]]];
+                                 }
                                  [_window setAnimationRepeatCount:1];
-                                 _window.animationDuration=1;
+                                 [_window setAnimationDuration:1.5];
+                                 [self performSelector:@selector(showufomsg) withObject:nil afterDelay:[_window animationDuration]];
                                  [_window startAnimating];
                              }];
             
-            
-            break;
-            
     }
+}
+
+-(void)showufomsg {
+    [_window.layer removeAllAnimations];
+    _ufomsg.hidden = NO;
+    // 讀取plist
+    NSString *errorDesc = nil;
+    NSPropertyListFormat format;
+    NSString *plistPath;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                              NSUserDomainMask, YES) objectAtIndex:0];
+    plistPath = [rootPath stringByAppendingPathComponent:@"ufomsg"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+        plistPath = [[NSBundle mainBundle] pathForResource:@"ufomsg" ofType:@"plist"];
+    }
+    NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+    NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
+                                          propertyListFromData:plistXML
+                                          mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                          format:&format
+                                          errorDescription:&errorDesc];
+    NSArray *msg = [temp objectForKey:@"msg"];
+    int r = arc4random_uniform(9);
+    _ufomsg.text = [msg objectAtIndex:r];
+    if (!temp) {
+        NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+    }
+
 }
 
 CGFloat DegreeToRadian(CGFloat degrees)
@@ -203,12 +244,20 @@ CGFloat DegreeToRadian(CGFloat degrees)
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    _itemlist = [[NSArray alloc] initWithObjects:_alarm, _calendar, _badgetable, _theme, _window, nil];
+    _random_timer = [NSTimer scheduledTimerWithTimeInterval:10  // 遊戲秒數
+                                                     target:self
+                                                   selector:@selector(item_animation)
+                                                   userInfo:nil
+                                                    repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
+    [_random_timer invalidate];
+    [_themePlayer stop];
 }
 
 - (void)Game:(NSString *)clock_id
@@ -221,6 +270,7 @@ CGFloat DegreeToRadian(CGFloat degrees)
 }
 
 - (IBAction)theme_OnClick:(UIButton *)sender {
+    [self audioplay:@"item_change"];
     if (_theme_index==[_themelist count]-1)
         _theme_index=0;
     else
@@ -231,20 +281,21 @@ CGFloat DegreeToRadian(CGFloat degrees)
     [_badgetable setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_mb.png",[_themelist objectAtIndex:_theme_index]]] forState:UIControlStateNormal];
     [_theme setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_t.png",[_themelist objectAtIndex:_theme_index]]] forState:UIControlStateNormal];
     [_setting setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_s.png",[_themelist objectAtIndex:_theme_index]]] forState:UIControlStateNormal];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSDate *date = [NSDate date];
-    //正規化的格式設定
-    [formatter setDateFormat:@"HH:mm:ss"];
-    //正規化取得的系統時間並顯示
-    NSArray * timeArray = [[formatter stringFromDate:date] componentsSeparatedByString:@":"];
-    if ([timeArray[0] intValue]>=19 || [timeArray[0] intValue]<=6)
-        [self.window setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_w2.png",[_themelist objectAtIndex:_theme_index]]]];
-    else
-        [self.window setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_w1.png",[_themelist objectAtIndex:_theme_index]]]];
-    [formatter release];
+    _ufomsg.hidden = YES;
+    [self window_reset];
 }
 
+- (void) audioplay:(NSString *) filename
+{
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:filename ofType:@"mp3"]];
+    //與音樂檔案做連結
+    NSError* error = nil;
+    _themePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    [_themePlayer setNumberOfLoops:0];
+    [_themePlayer play];
+    [url release];
+
+}
 
 - (void)dealloc {
     [_window release];
@@ -258,6 +309,8 @@ CGFloat DegreeToRadian(CGFloat degrees)
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_background release];
     [_ufo release];
+    [_themePlayer release];
+    [_ufomsg release];
     [super dealloc];
 }
 

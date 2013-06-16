@@ -168,11 +168,17 @@ CGFloat DegreesToRadians(CGFloat degrees)
 - (IBAction)alarmClick:(UIButton *)sender {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (!appDelegate.isAlarm)
+    {
         [_setalarm setBackgroundImage:[UIImage imageNamed:@"stop.png"] forState:UIControlStateNormal];
+        self.next_alarm.enabled = NO;
+        self.prev_alarm.enabled = NO;
+    }
     else
     {
         [_setalarm setBackgroundImage:[UIImage imageNamed:@"start.png"] forState:UIControlStateNormal];
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [[UIApplication sharedApplication] cancelLocalNotification:appDelegate.scheduledAlert];
+        self.next_alarm.enabled = YES;
+        self.prev_alarm.enabled = YES;
     }
     
     NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -207,14 +213,16 @@ CGFloat DegreesToRadians(CGFloat degrees)
     
     appDelegate.isAlarm = !appDelegate.isAlarm;
     
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    appDelegate.scheduledAlert = [[[UILocalNotification alloc] init] autorelease];
-    appDelegate.scheduledAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeDifference];
-    appDelegate.scheduledAlert.timeZone = [NSTimeZone defaultTimeZone];
-    appDelegate.scheduledAlert.repeatInterval =  kCFCalendarUnitMinute;
-    appDelegate.scheduledAlert.soundName = @"get up7.mp3";
-    appDelegate.scheduledAlert.alertBody = @"早安～地球人！";
-    [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledAlert];
+    if (appDelegate.isAlarm)
+    {
+        appDelegate.scheduledAlert = [[[UILocalNotification alloc] init] autorelease];
+        appDelegate.scheduledAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeDifference];
+        appDelegate.scheduledAlert.timeZone = [NSTimeZone defaultTimeZone];
+        appDelegate.scheduledAlert.repeatInterval =  kCFCalendarUnitMinute;
+        appDelegate.scheduledAlert.soundName = @"alarm2.mp3";
+        appDelegate.scheduledAlert.alertBody = @"早安～地球人！";
+        [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledAlert];
+    }
     
     NSString *error;
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -233,6 +241,8 @@ CGFloat DegreesToRadians(CGFloat degrees)
         NSLog(@"%@",error);
         [error release];
     }
+    
+    NSLog(@"notification=%d",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
 }
 
 //矯正時差

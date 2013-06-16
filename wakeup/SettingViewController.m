@@ -9,6 +9,7 @@
 #import "QuartzCore/QuartzCore.h"
 #import "AppDelegate.h"
 #import "SettingViewController.h"
+#import "DataBase.h"
 
 @interface SettingViewController ()
 
@@ -56,6 +57,23 @@
     //[NSDate dateWithTimeIntervalSince1970:1301322715];
     
 #warning Set reminding sleeping time
+    // 等待ＤＢ更新
+    //    FMResultSet *rs = nil;
+    //    rs = [DataBase executeQuery:@"SELECT sleeptime FROM USER"];
+    //    NSString *sleeptime = [NSString alloc];
+    //    while ([rs next])
+    //    {
+    //        NSString *sleeptime = [rs stringForColumn:@"sleeptime"];
+    //    }
+    //    NSArray * time = [sleeptime componentsSeparatedByString:@":"];
+    //    _sleeping_hr = [time[0] intValue];
+    //    _sleeping_min = [time[1] intValue];
+    //    [rs close];
+    //    [time release];
+    // 預設值
+    _sleeping_hr = 0;
+    _sleeping_min = 0;
+    
     [self prepareData];
     _setRemindTimePicker = [[UIPickerView alloc] init];
     _setRemindTimePicker.frame = CGRectMake(0, self.view.frame.size.height/4, 320.0, 162.0);
@@ -68,10 +86,59 @@
     [self.view addSubview:_setRemindTimePicker];
     _setRemindTimePicker.hidden = YES;
     //_mask.hidden = YES;
-    
     #warning Copyright page
 
 }
+
+- (void)sleeping_Clcik
+{
+    self.time_set.text = [NSString stringWithFormat:@"%02d:%02d",_sleeping_hr,_sleeping_min];
+    UINavigationBar *tabBar = [self.navigationController navigationBar];
+    tabBar.alpha = 1;
+    [tabBar setUserInteractionEnabled:YES];
+    _setRemindTimePicker.hidden=YES;
+    _content.hidden = YES;
+    _set_bt.hidden = YES;
+    //寫入DB
+    //[DataBase executeSQL:[NSString stringWithFormat:@"UPDATE USER SET waketime=%@",self.time_set.text]];
+    //註冊推播
+    NSCalendar *calendar = [NSCalendar currentCalendar]; // gets default calendar
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]]; // gets the year, month, day,hour and minutesfor today's date
+    [components setHour:_sleeping_hr];
+    [components setMinute:_sleeping_min];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.scheduledSleep = [[[UILocalNotification alloc] init] autorelease];
+    appDelegate.scheduledSleep.fireDate = [self convertToUTC:[[calendar dateFromComponents:components] dateByAddingTimeInterval:-1800]];
+    appDelegate.scheduledSleep.timeZone = [NSTimeZone defaultTimeZone];
+    //    appDelegate.scheduledSleep.soundName = @"alarm2.mp3";
+    appDelegate.scheduledSleep.alertBody = @"距離您預計睡覺的時間還有半小時唷！";
+    [[UIApplication sharedApplication] scheduleLocalNotification:appDelegate.scheduledSleep];
+    NSTimeInterval interval = 1800;
+    for( int i = 0; i < 5; ++i ) {
+        appDelegate.scheduledSleep.fireDate = [NSDate dateWithTimeInterval: interval*i sinceDate:[self convertToUTC:[calendar dateFromComponents:components]]];
+        [[UIApplication sharedApplication] scheduleLocalNotification: appDelegate.scheduledSleep];
+        NSLog(@"%d times:%@",i,[[NSDate dateWithTimeInterval: interval*i sinceDate:[self convertToUTC:[calendar dateFromComponents:components]]] description]);
+
+    }
+    NSLog(@"notification count=%d",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
+    appDelegate.isSleep = YES;
+}
+
+//矯正時差
+- (NSDate*) convertToUTC:(NSDate*)sourceDate
+{
+    NSTimeZone* currentTimeZone = [NSTimeZone localTimeZone];
+    NSTimeZone* utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    
+    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:sourceDate];
+    NSInteger gmtOffset = [utcTimeZone secondsFromGMTForDate:sourceDate];
+    NSTimeInterval gmtInterval =  currentGMTOffset - gmtOffset;
+    
+    NSDate* destinationDate = [[[NSDate alloc] initWithTimeInterval:gmtInterval sinceDate:sourceDate] autorelease];
+    
+    return destinationDate;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -160,6 +227,7 @@
     [_fbButton release];
     [_timeZone release];
     [_mask release];
+    [_time_set release];
     [super dealloc];
 }
 
@@ -284,13 +352,17 @@
 
 //設定滾輪總共有幾個項目
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component==0) {
-        return [keys count];
-    }else{
-        NSString *key = [keys objectAtIndex:[thePickerView selectedRowInComponent:0]]; // 飲料或甜點
-        NSArray *array = [data objectForKey:key];
-        return [array count];
-    }
+//    if (component==0) {
+//        return [keys count];
+//    }else{
+//        NSString *key = [keys objectAtIndex:[thePickerView selectedRowInComponent:0]]; // 飲料或甜點
+//        NSArray *array = [data objectForKey:key];
+//        return [array count];
+//    }
+    if (component==0)
+        return [_hourColumnList count];
+    else
+        return [_minuteColumnList count];
 }
 
 - (IBAction)show_picker:(UIButton *)sender {
@@ -299,13 +371,20 @@
 //    roundedRect.clipsToBounds = YES;
 //    [self.view addSubview:roundedRect];
     
-    UIView *content = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 640.0)];
-    content.backgroundColor = [UIColor blackColor];
-    content.alpha = 0.6;
+    _content = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 640.0)];
+    _content.backgroundColor = [UIColor blackColor];
+    _content.alpha = 0.6;
     _setRemindTimePicker.hidden = NO;
-    [self.view addSubview:content];
+    [self.view addSubview:_content];
     [self.view addSubview:_setRemindTimePicker];
-    [content release];
+    
+    _set_bt = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _set_bt.frame = CGRectMake(self.view.frame.size.width/2-40, self.view.frame.size.height/2+80, 80, 40);
+    [_set_bt setTitle:@"設定" forState:UIControlStateNormal];
+    [_set_bt addTarget:self action:@selector(sleeping_Clcik) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_set_bt];
+    
+    [_content release];
     
 //    UIImage *mask_bar = [UIImage imageNamed:@"setting_bar.png"];
 //    [[self.navigationController navigationBar] setBackgroundImage:mask_bar  forBarMetrics:UIBarMetricsDefault];
@@ -315,24 +394,42 @@
 }
 
 - (void) prepareData {
-    data = [[NSMutableDictionary alloc] init];
-    [data setValue:[NSArray arrayWithObjects:@"牡羊",@"金牛",@"雙子",@"巨蟹",@"獅子",@"處女",@"天秤",@"天蠍",@"射手",@"摩羯",@"水瓶",@"雙魚",nil] forKey:@"女"];
-    [data setValue:[NSArray arrayWithObjects:@"牡羊",@"金牛",@"雙子",@"巨蟹",@"獅子",@"處女",@"天秤",@"天蠍",@"射手",@"摩羯",@"水瓶",@"雙魚",nil] forKey:@"男"];
-    keys =[[data allKeys]
-           sortedArrayUsingComparator:(NSComparator)^(id obj1,id obj2){
-               return [obj1 caseInsensitiveCompare:obj2];
-           }];
+//    data = [[NSMutableDictionary alloc] init];
+//    for (int i=0;i<24;i++)
+//        [data setValue:[NSArray arrayWithObjects:@"00分",@"15分",@"30分",@"45分", nil] forKey:[NSString stringWithFormat:@"%d點",i]];
+//    keys =[[data allKeys]
+//           sortedArrayUsingComparator:(NSComparator)^(id obj1,id obj2){
+//               return [obj1 caseInsensitiveCompare:obj2];
+//           }];
+    
+    _hourColumnList = [[NSArray alloc] initWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23", nil];
+    _minuteColumnList = [[NSArray alloc] initWithObjects:@"00",@"15",@"30",@"45", nil];
 }
 
 
 //設定滾輪顯示的文字
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if (component==0) {
-        return[keys objectAtIndex:row];
-    }else{
-        NSString *key = [keys objectAtIndex:[thePickerView selectedRowInComponent:0]]; // 飲料或甜點
-        NSArray *array = [data objectForKey:key];
-        return [array objectAtIndex:row];
-    }
+//    NSLog(@"component=%d",component);
+//    NSLog(@"row=%d",row);
+//    if (component==0) {
+//        return[keys objectAtIndex:row];
+//    }else{
+//        NSString *key = [keys objectAtIndex:[thePickerView selectedRowInComponent:0]]; // 飲料或甜點
+//        NSArray *array = [data objectForKey:key];
+//        return [array objectAtIndex:row];
+//    }
+    
+    if (component==0)
+        return [_hourColumnList objectAtIndex:row];
+    else
+        return [_minuteColumnList objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (component==0)
+        _sleeping_hr = [[_hourColumnList objectAtIndex:row] intValue];
+    else
+        _sleeping_min = [[_minuteColumnList objectAtIndex:row] intValue];
 }
 @end

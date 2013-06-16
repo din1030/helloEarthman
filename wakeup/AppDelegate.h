@@ -18,10 +18,12 @@ extern NSString *const FBSessionStateChangedNotification;
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, assign) BOOL isAlarm;
+@property (nonatomic, assign) BOOL isSleep;
 @property (strong,nonatomic) NSTimer *timer;
 @property (nonatomic)int set_hr,set_min;
 @property (nonatomic)int hr,min,sec;
 @property (nonatomic)float degree;
 @property (strong,nonatomic)UILocalNotification *scheduledAlert;
-
+@property (strong,nonatomic)UILocalNotification *scheduledSleep;
+@property (strong, nonatomic) AVAudioPlayer *notificationPlayer;
 @end

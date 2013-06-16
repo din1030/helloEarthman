@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "BrainHoleViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import "DataBase.h"
 
 @implementation AppDelegate
 
@@ -15,11 +17,11 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    // Override point for customization after application launch.
-//    [Parse setApplicationId:@"Lt4GQIlip844mLxgisvyxSUf0TBDISc9VErFtAF1"
-//                  clientKey:@"Eca3LRilxEUhylc89f6CJIZQoYmbsX7vl808xk2k"];
-//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-
+    //    // Override point for customization after application launch.
+    //    [Parse setApplicationId:@"Lt4GQIlip844mLxgisvyxSUf0TBDISc9VErFtAF1"
+    //                  clientKey:@"Eca3LRilxEUhylc89f6CJIZQoYmbsX7vl808xk2k"];
+    //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     //讀取plist記錄的時間
     NSString *errorDesc = nil;
     NSPropertyListFormat format;
@@ -78,19 +80,126 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [self countUp];
-    if (self.hr==self.set_hr && self.min>=self.set_min && self.isAlarm)
+    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    
+    NSDate* firstDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",self.hr,self.min,self.sec]]];
+    NSDate* secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",self.set_hr,self.set_min]]];
+    if (self.set_hr==24)
+        secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]]];
+    NSTimeInterval timeDifference = [firstDate timeIntervalSinceDate:secondDate];
+    //如果時間差是小於0表示為隔天
+    if (timeDifference<0)
+        timeDifference += 43200;
+    else if (self.set_hr==24)
+        timeDifference+= self.set_min*60+1;
+    
+    // 進入遊戲條間為30min起床，失敗則出現警告視窗
+    if (timeDifference <= 1800 && _isAlarm)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        
+        @try {
+            [[UIApplication sharedApplication] cancelLocalNotification:_scheduledAlert];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"notification doesn't exist.");
+        }
+        @finally {
+            ;
+        }
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         _isAlarm = NO;
+    }
+    else if (timeDifference > 1800 && _isAlarm)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"起床失敗"
+                                  message:@"喔哦～你失去了得到徽章的機會了！Q口Q"
+                                  delegate:nil
+                                  cancelButtonTitle:@"下次要早起"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
+        
+        @try {
+            [[UIApplication sharedApplication] cancelLocalNotification:_scheduledAlert];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"notification doesn't exist.");
+        }
+        @finally {
+            ;
+        }
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        _isAlarm = NO;
+    }
+    // 每日提醒設定(等待db建立）
+//    FMResultSet *rs = nil;
+//    rs = [DataBase executeQuery:@"SELECT sleeptime FROM USER"];
+//    NSString *sleeptime = [NSString alloc];
+//    while ([rs next])
+//    {
+//        NSString *sleeptime = [rs stringForColumn:@"sleeptime"];
+//    }
+    NSString *sleeptime = @"18:15";
+    NSArray * time = [sleeptime componentsSeparatedByString:@":"];
+    NSCalendar *calendar = [NSCalendar currentCalendar]; // gets default calendar
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]]; // gets the year, month, day,hour and minutesfor today's date
+    [components setHour:[time[0] intValue]];
+    [components setMinute:[time[1] intValue]];
+    if (!_isSleep)  //如果隔天有進入app會自動設定當天的推播
+    {
+        @try {
+            [[UIApplication sharedApplication] cancelLocalNotification:_scheduledSleep];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"notification doesn't exist.");
+        }
+        @finally {
+            ;
+        }
+        _scheduledSleep = [[[UILocalNotification alloc] init] autorelease];
+        _scheduledSleep.fireDate = [self convertToUTC:[[calendar dateFromComponents:components] dateByAddingTimeInterval:-1800]];   //設定時間的半小時前
+        _scheduledSleep.timeZone = [NSTimeZone defaultTimeZone];
+        //    appDelegate.scheduledSleep.soundName = @"alarm2.mp3";
+        _scheduledSleep.alertBody = @"距離您預計睡覺的時間還有半小時唷！";
+        [[UIApplication sharedApplication] scheduleLocalNotification:_scheduledSleep];
+        NSTimeInterval interval = 1800;
+        for( int i = 0; i < 5; i++ ) {
+            _scheduledSleep.fireDate = [NSDate dateWithTimeInterval: interval*i sinceDate:[self convertToUTC:[calendar dateFromComponents:components]]];
+            [[UIApplication sharedApplication] scheduleLocalNotification: _scheduledSleep];
+        }
+        NSLog(@"已自動建立提醒睡眠時間推播排程");
+        _isSleep=YES;
+    }
+    else
+    {
+        firstDate = [self convertToUTC:[NSDate date]];
+        secondDate =  [self convertToUTC:[calendar dateFromComponents:components]];
+        timeDifference = [firstDate timeIntervalSinceDate:secondDate];
+        NSLog(@"firstdate=%@",firstDate);
+        NSLog(@"seconddate=%@",secondDate);
+        NSLog(@"timeDifference=%f",timeDifference);
+        if (timeDifference>7200)    //兩小時候停止推播
+        {
+            @try {
+                [[UIApplication sharedApplication] cancelLocalNotification:_scheduledSleep];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"notification doesn't exist.");
+            }
+            @finally {
+                ;
+            }
+            _isSleep=NO;
+        }
     }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [FBSession.activeSession handleDidBecomeActive];
 }
@@ -121,6 +230,34 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 {
     degrees = (int)degrees%360;
     return degrees * M_PI / 180;
+}
+
+
+//矯正時差
+- (NSDate*) convertToUTC:(NSDate*)sourceDate
+{
+    NSTimeZone* currentTimeZone = [NSTimeZone localTimeZone];
+    NSTimeZone* utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    
+    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:sourceDate];
+    NSInteger gmtOffset = [utcTimeZone secondsFromGMTForDate:sourceDate];
+    NSTimeInterval gmtInterval =  currentGMTOffset - gmtOffset;
+    
+    NSDate* destinationDate = [[[NSDate alloc] initWithTimeInterval:gmtInterval sinceDate:sourceDate] autorelease];
+    
+    return destinationDate;
+}
+
+- (void) audioplay:(NSString *) filename
+{
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:filename ofType:@"mp3"]];
+    //與音樂檔案做連結
+    NSError* error = nil;
+    _notificationPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    [_notificationPlayer setNumberOfLoops:0];
+    [_notificationPlayer play];
+    [url release];
+    
 }
 
 #pragma mark - for Facebook

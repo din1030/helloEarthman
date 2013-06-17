@@ -84,7 +84,7 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     NSDate *secondDate =  _scheduledAlert.fireDate;
     NSLog(@"firstdate=%@ , seconddate=%@",firstDate,secondDate);
     NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
-    if ([firstDate compare:secondDate]==NSOrderedDescending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference >= -1800)
+    if ([firstDate compare:secondDate]==NSOrderedDescending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference >= -1800 && _isAlarm)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
         
@@ -101,7 +101,7 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
         _isAlarm = NO;
 
     }
-    else  if ([firstDate compare:secondDate]==NSOrderedDescending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference < -1800)
+    else  if ([firstDate compare:secondDate]==NSOrderedDescending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference < -1800 && _isAlarm)
     {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"起床失敗"
@@ -129,14 +129,16 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     // 每日提醒設定(等待db建立）
     FMResultSet *rs = nil;
     rs = [DataBase executeQuery:@"SELECT sleeptime FROM USER"];
-    NSString *sleeptime = [NSString alloc];
+    NSString *sleeptime = @"";
     while ([rs next])
     {
         sleeptime = [rs stringForColumn:@"sleeptime"];
+        NSLog(@"sleep time: %@",sleeptime);
     }
     NSArray * time = [sleeptime componentsSeparatedByString:@":"];
     NSCalendar *calendar = [NSCalendar currentCalendar]; // gets default calendar
     NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]]; // gets the year, month, day,hour and minutesfor today's date
+    NSLog(@"time[0]: %@",time[0]);
     [components setHour:[time[0] intValue]];
     [components setMinute:[time[1] intValue]];
     if (!_isSleep)  //如果隔天有進入app會自動設定當天的推播

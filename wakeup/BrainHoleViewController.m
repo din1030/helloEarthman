@@ -196,7 +196,7 @@
     if([title isEqualToString:@"OK"]) {
         NSLog(@"after click OK button");
         [self performSegueWithIdentifier:@"backHome" sender:self];
-        [self sendFBMessage];     
+        [self sendFBMessage];
     }
 }
 
@@ -251,10 +251,10 @@
         
         FMResultSet *rs = nil;
         rs = [DataBase executeQuery:[NSString stringWithFormat:@"SELECT * FROM PERSON_BADGE WHERE requirement=%d",[[temp objectForKey:@"sleep_hr"] intValue]]];
-        NSString *p_id = [[NSString alloc] init];
-        NSString *name = [[NSString alloc] init];
-        NSString *description = [[NSString alloc] init];
-        NSString *nationality = [[NSString alloc] init];
+        NSString *p_id = @"";
+        NSString *name = @"";
+        NSString *description = @"";
+        NSString *nationality = @"";
         while ([rs next])
         {
             p_id = [rs stringForColumn:@"id"];

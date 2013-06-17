@@ -44,7 +44,7 @@
     UINavigationBar *navBar = [self.navigationController navigationBar];
     [navBar setBackgroundImage:[UIImage imageNamed:@"setting_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
-    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"setting_02.png"]];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"setting_bg.png"]];
     [tempImageView setFrame:self.tableView.frame];
     self.tableView.backgroundView = tempImageView;
     [tempImageView release];

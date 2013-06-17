@@ -33,6 +33,7 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonIMG forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     UINavigationBar *bar = self.navigationController.navigationBar ;
     bar.topItem.title = @" ";
+    _invite_img.image = [UIImage imageNamed:@"3Ra7fF3syR.png"];
     
     FMResultSet *rs = nil;
     FMResultSet *rs1 = nil;
@@ -90,6 +91,7 @@
 - (void)dealloc {
     [_req_label release];
     [_check_button release];
+    [_invite_img release];
     [super dealloc];
 }
 @end

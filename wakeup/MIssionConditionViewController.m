@@ -44,6 +44,13 @@
         //NSString *name = [rs1 stringForColumn:@"name"];
         self.mission_description.text = [rs1 stringForColumn:@"description"];
     }
+    // 沒有圖的話先用 custom 的圖代替
+    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _m_id]];
+    if (img != nil) {
+        _mission_image.image = img;
+    } else {
+        _mission_image.image = [UIImage imageNamed:@"vEaCmP0Tou.png"];
+    }
     
     [self get_mission_req];
     

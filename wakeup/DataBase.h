@@ -12,8 +12,8 @@
 @interface DataBase : NSObject
 
 //@property (strong, nonatomic) FMDatabase *db;
-//- (FMDatabase *)connectToDataBase;
++ (FMDatabase *)connectToDataBase;
+//+ (FMResultSet *)executeQuery:(NSString *)strSQL;
 + (FMResultSet *)executeQuery:(NSString *)strSQL;
 + (void)executeSQL:(NSString *)strSQL;
-
 @end

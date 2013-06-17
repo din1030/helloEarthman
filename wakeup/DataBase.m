@@ -46,7 +46,7 @@
 }
 
 // Modify Table
-+ (void)executeModifySQL:(NSString *)strSQL
++ (void)executeSQL:(NSString *)strSQL
 {
     FMDatabase *db = [self connectToDataBase];
     [db executeUpdate:strSQL];

@@ -79,23 +79,12 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [self countUp];
-    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setDateFormat:@"HH:mm:ss"];
     
-    NSDate* firstDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",self.hr,self.min,self.sec]]];
-    NSDate* secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",self.set_hr,self.set_min]]];
-    if (self.set_hr==24)
-        secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]]];
-    NSTimeInterval timeDifference = [firstDate timeIntervalSinceDate:secondDate];
-    //如果時間差是小於0表示為隔天
-    if (timeDifference<0)
-        timeDifference += 43200;
-    else if (self.set_hr==24)
-        timeDifference+= self.set_min*60+1;
-    
-    // 進入遊戲條間為30min起床，失敗則出現警告視窗
-    if (timeDifference <= 1800 && _isAlarm)
+    NSDate *firstDate = [NSDate date];
+    NSDate *secondDate =  _scheduledAlert.fireDate;
+    NSLog(@"firstdate=%@ , seconddate=%@",firstDate,secondDate);
+    NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
+    if ([firstDate compare:secondDate]==NSOrderedDescending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference >= -1800)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
         
@@ -110,8 +99,9 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
         }
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         _isAlarm = NO;
+
     }
-    else if (timeDifference > 1800 && _isAlarm)
+    else  if ([firstDate compare:secondDate]==NSOrderedDescending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference < -1800)
     {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"起床失敗"
@@ -120,7 +110,7 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
                                   cancelButtonTitle:@"下次要早起"
                                   otherButtonTitles:nil];
         [alertView show];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
         
         @try {
             [[UIApplication sharedApplication] cancelLocalNotification:_scheduledAlert];
@@ -134,15 +124,16 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         _isAlarm = NO;
     }
+    NSLog(@"%f",timeDifference);
+  
     // 每日提醒設定(等待db建立）
-//    FMResultSet *rs = nil;
-//    rs = [DataBase executeQuery:@"SELECT sleeptime FROM USER"];
-//    NSString *sleeptime = [NSString alloc];
-//    while ([rs next])
-//    {
-//        NSString *sleeptime = [rs stringForColumn:@"sleeptime"];
-//    }
-    NSString *sleeptime = @"18:15";
+    FMResultSet *rs = nil;
+    rs = [DataBase executeQuery:@"SELECT sleeptime FROM USER"];
+    NSString *sleeptime = [NSString alloc];
+    while ([rs next])
+    {
+        sleeptime = [rs stringForColumn:@"sleeptime"];
+    }
     NSArray * time = [sleeptime componentsSeparatedByString:@":"];
     NSCalendar *calendar = [NSCalendar currentCalendar]; // gets default calendar
     NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]]; // gets the year, month, day,hour and minutesfor today's date
@@ -150,18 +141,10 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     [components setMinute:[time[1] intValue]];
     if (!_isSleep)  //如果隔天有進入app會自動設定當天的推播
     {
-        @try {
-            [[UIApplication sharedApplication] cancelLocalNotification:_scheduledSleep];
-        }
-        @catch (NSException *exception) {
-            NSLog(@"notification doesn't exist.");
-        }
-        @finally {
-            ;
-        }
         _scheduledSleep = [[[UILocalNotification alloc] init] autorelease];
-        _scheduledSleep.fireDate = [self convertToUTC:[[calendar dateFromComponents:components] dateByAddingTimeInterval:-1800]];   //設定時間的半小時前
+        _scheduledSleep.fireDate = [[calendar dateFromComponents:components] dateByAddingTimeInterval:-1800];   //設定時間的半小時前
         _scheduledSleep.timeZone = [NSTimeZone defaultTimeZone];
+        _scheduledSleep.repeatInterval=0;
         //    appDelegate.scheduledSleep.soundName = @"alarm2.mp3";
         _scheduledSleep.alertBody = @"距離您預計睡覺的時間還有半小時唷！";
         [[UIApplication sharedApplication] scheduleLocalNotification:_scheduledSleep];
@@ -169,33 +152,75 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
         _scheduledSleep.alertBody = @"已經超過您預計睡覺的時間囉！快去睡吧！";
         NSTimeInterval interval = 1800;
         for( int i = 0; i < 5; i++ ) {
-            _scheduledSleep.fireDate = [NSDate dateWithTimeInterval: interval*i sinceDate:[self convertToUTC:[calendar dateFromComponents:components]]];
+            _scheduledSleep.fireDate = [NSDate dateWithTimeInterval: interval*i sinceDate:[calendar dateFromComponents:components]];
             [[UIApplication sharedApplication] scheduleLocalNotification: _scheduledSleep];
         }
-        NSLog(@"已自動建立提醒睡眠時間推播排程");
+        NSLog(@"已自動建立提醒睡眠時間推播排程(%d)",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
         _isSleep=YES;
     }
     else
     {
-        firstDate = [self convertToUTC:[NSDate date]];
-        secondDate =  [self convertToUTC:[calendar dateFromComponents:components]];
-        timeDifference = [firstDate timeIntervalSinceDate:secondDate];
-        NSLog(@"firstdate=%@",firstDate);
-        NSLog(@"seconddate=%@",secondDate);
-        NSLog(@"timeDifference=%f",timeDifference);
-        if (timeDifference>7200)    //兩小時候停止推播
+        // 判別睡眠推播時間是否已通過第一次提醒的時間，若成立則取消後續的睡眠推播時間
+        int len = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
+        NSLog(@"len=%d",len);
+        for (int i=0;i<len;i++)
         {
-            @try {
-                [[UIApplication sharedApplication] cancelLocalNotification:_scheduledSleep];
+            UILocalNotification *notif;
+            notif = [[[UIApplication sharedApplication] scheduledLocalNotifications]objectAtIndex:i];
+            firstDate = [NSDate date];
+            secondDate =  notif.fireDate;
+            if ([firstDate compare:secondDate]==NSOrderedDescending)
+            {
+                NSLog(@"firstdate=%@ > seconddate=%@",firstDate,secondDate);
+                if ([[[UIApplication sharedApplication] scheduledLocalNotifications]count]==6)
+                    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+                else if ([[[UIApplication sharedApplication] scheduledLocalNotifications]count]==7)
+                {
+                    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+                    //如果有鬧鐘，則重新加入鬧鐘推播
+                    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+                    [dateFormatter setDateFormat:@"HH:mm:ss"];
+                    
+//                    if (self.hr==12)
+//                        self.set_hr=12;
+//                    else if (self.hr>12)
+//                    {
+//                        if (self.set_hr!=0)
+//                            self.set_hr = (self.set_hr+12)%24;
+//                        else
+//                            self.set_hr = 24;
+//                    }
+                    NSLog(@"time=%d,set=%d",self.hr,self.set_hr);
+                    
+                    NSDate* firstDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",self.hr,self.min,self.sec]];
+                    NSDate* secondDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",self.set_hr,self.set_min]];
+                    if (self.set_hr==24)
+                        secondDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]];
+                    NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
+                    //如果時間差是小於0表示為隔天
+                    if (timeDifference<0)
+                        timeDifference += 43200;
+                    else if (self.set_hr==24)
+                        timeDifference+= self.set_min*60+1;
+                    
+                    if (self.isAlarm)
+                    {
+                        self.scheduledAlert = [[[UILocalNotification alloc] init] autorelease];
+                        _scheduledAlert.fireDate =[NSDate dateWithTimeIntervalSinceNow:timeDifference];
+                        NSLog(@"alert_firedate=%@",_scheduledAlert.fireDate);
+                        self.scheduledAlert.timeZone = [NSTimeZone defaultTimeZone];
+                        self.scheduledAlert.repeatInterval =  kCFCalendarUnitMinute;
+                        self.scheduledAlert.soundName = @"alarm2.mp3";
+                        self.scheduledAlert.alertBody = @"早安～地球人！";
+                        [[UIApplication sharedApplication] scheduleLocalNotification:self.scheduledAlert];
+                    }
+                }
+                break;
             }
-            @catch (NSException *exception) {
-                NSLog(@"notification doesn't exist.");
-            }
-            @finally {
-                ;
-            }
-            _isSleep=NO;
         }
+        self.isSleep = NO;
+        len = [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
+        NSLog(@"len=%d",len);
     }
 }
 

@@ -207,12 +207,16 @@ CGFloat DegreesToRadians(CGFloat degrees)
         else
             appDelegate.set_hr = 24;
     }
+    else if (appDelegate.hr <12)
+    {
+        ;
+    }
     NSLog(@"time=%d,set=%d",appDelegate.hr,appDelegate.set_hr);
     
-    NSDate* firstDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",appDelegate.hr,appDelegate.min,appDelegate.sec]]];
-    NSDate* secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",appDelegate.set_hr,appDelegate.set_min]]];
+    NSDate* firstDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",appDelegate.hr,appDelegate.min,appDelegate.sec]];
+    NSDate* secondDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",appDelegate.set_hr,appDelegate.set_min]];
     if (appDelegate.set_hr==24)
-        secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]]];
+        secondDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]];
     NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
     //如果時間差是小於0表示為隔天
     if (timeDifference<0)
@@ -230,6 +234,7 @@ CGFloat DegreesToRadians(CGFloat degrees)
     {
         appDelegate.scheduledAlert = [[[UILocalNotification alloc] init] autorelease];
         appDelegate.scheduledAlert.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeDifference];
+        NSLog(@"alert_firedate=%@",appDelegate.scheduledAlert.fireDate);
         appDelegate.scheduledAlert.timeZone = [NSTimeZone defaultTimeZone];
         appDelegate.scheduledAlert.repeatInterval =  kCFCalendarUnitMinute;
         appDelegate.scheduledAlert.soundName = @"alarm2.mp3";

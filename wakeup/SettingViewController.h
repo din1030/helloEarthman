@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *setRemindTimePicker;
 @property (retain, nonatomic) IBOutlet UIImageView *mask;
 @property (retain, nonatomic) IBOutlet UILabel *time_set;
+@property (retain, nonatomic) IBOutlet UIButton *edit_time;
 - (IBAction)show_picker:(UIButton *)sender;
 
 @end

@@ -40,7 +40,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // 設定 nav bar
-#warning navBar background change
     UINavigationBar *navBar = [self.navigationController navigationBar];
     [navBar setBackgroundImage:[UIImage imageNamed:@"setting_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
@@ -48,6 +47,8 @@
     [tempImageView setFrame:self.tableView.frame];
     self.tableView.backgroundView = tempImageView;
     [tempImageView release];
+    
+    //[[self.edit_time layer] setBorderWidth:1.0f];
     
     NSTimeZone *currentTimeZone = [NSTimeZone localTimeZone];
     NSLog(@"%@",currentTimeZone.description); // Local Time Zone (Asia/Taipei (GMT+08:00) offset 28800)
@@ -60,7 +61,7 @@
     // 等待ＤＢ更新
     FMResultSet *rs = nil;
     rs = [DataBase executeQuery:@"SELECT sleeptime FROM USER"];
-    NSString *sleeptime = [NSString alloc];
+    NSString *sleeptime = @"";
     while ([rs next])
     {
         NSLog(@"@@");
@@ -192,17 +193,26 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return 3;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    // Return the number of sections.
+//    return 3;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    // Return the number of rows in the section.
+//    int row;
+//    if (section == 0) {
+//        row = 2;
+//    } else if (section == 1) {
+//        row = 2;
+//    }
+//    else {
+//        row = 1;
+//    }
+//    return row;
+//}
 
 /* - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
  {
@@ -272,6 +282,7 @@
     [_timeZone release];
     [_mask release];
     [_time_set release];
+    [_edit_time release];
     [super dealloc];
 }
 

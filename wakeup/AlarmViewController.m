@@ -246,9 +246,10 @@ CGFloat DegreesToRadians(CGFloat degrees)
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *plistPath = [rootPath stringByAppendingPathComponent:@"alarm.plist"];
     
-    NSDictionary *plistDict = [NSDictionary dictionaryWithObjects:
-                               [NSArray arrayWithObjects: [NSString stringWithFormat:@"%d",appDelegate.set_hr], [NSString stringWithFormat:@"%d",appDelegate.set_min],[NSString stringWithFormat:@"%d",appDelegate.hr],[NSString stringWithFormat:@"%d",appDelegate.min], nil]
-                                                          forKeys:[NSArray arrayWithObjects: @"hr", @"min",@"sleep_hr",@"sleep_min", nil]];
+    NSArray *temp = [NSArray arrayWithObjects: [NSString stringWithFormat:@"%d",appDelegate.set_hr], [NSString stringWithFormat:@"%d",appDelegate.set_min],[NSString stringWithFormat:@"%d",appDelegate.hr],[NSString stringWithFormat:@"%d",appDelegate.min], nil];
+    NSArray *temp1 = [NSArray arrayWithObjects: @"hr", @"min",@"sleep_hr",@"sleep_min", nil];
+    
+    NSDictionary *plistDict = [NSDictionary dictionaryWithObjects:temp forKeys:temp1];
     NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict
                                                                    format:NSPropertyListXMLFormat_v1_0
                                                          errorDescription:&error];

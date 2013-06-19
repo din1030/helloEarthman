@@ -13,6 +13,7 @@
 
 #import "AppDelegate.h"
 #import "BrainHoleViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MissionViewController ()
 
@@ -123,7 +124,7 @@
             NSString *cellIdentifier = @"custom_cell";
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
                                                              forIndexPath:indexPath];
-            cell.thumbnail.image = [UIImage imageNamed:@"custom.png"];
+            cell.thumbnail.image = [UIImage imageNamed:@"custom2_s.png"];
         } else {
             NSString *cellIdentifier = @"invite_cell";
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
@@ -136,7 +137,6 @@
                                                          forIndexPath:indexPath];
         NSUInteger index = [indexPath item];
         NSString *name = [[_mission objectAtIndex:index ] objectForKey:@"name"];
-        cell.mission_name.text = name;
         cell.cell_id = [[_mission objectAtIndex:index ] objectForKey:@"id"];
         NSLog(@"%@ %@", name, cell.cell_id);
         
@@ -145,13 +145,20 @@
         if (img != nil) {
             cell.thumbnail.image = img;
         } else {
-            cell.thumbnail.image = [UIImage imageNamed:@"custom.png"];
+            cell.thumbnail.image = [UIImage imageNamed:@"custom2_s.png"];
         }
         // 完成的任務把 lock 隱藏起來
         if ([[[_mission objectAtIndex:index ] objectForKey:@"state"] boolValue]) {
             cell.lock.hidden = YES;
         }
     }
+    cell.layer.borderWidth =2.0f;
+    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+    CGFloat values[4] = {1, 1, 1, 1.0};
+    CGColorRef white = CGColorCreate(space, values);
+    cell.layer.borderColor = white;
+    CGColorRelease(white);
+    CGColorSpaceRelease(space);
     return cell;
 }
 

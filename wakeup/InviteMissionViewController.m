@@ -33,6 +33,8 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonIMG forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     UINavigationBar *bar = self.navigationController.navigationBar ;
     bar.topItem.title = @" ";
+    [bar setBackgroundImage:[UIImage imageNamed:@"mission_bar0.png"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.topViewController.title= @"社群任務";
     _invite_img.image = [UIImage imageNamed:@"3Ra7fF3syR.png"];
     
     FMResultSet *rs = nil;

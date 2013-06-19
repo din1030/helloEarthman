@@ -41,17 +41,17 @@
         {
             req = [rs1 intForColumn:@"requirement"];
             if (req > 17 && req < 24) {
-                req_string = @"晚上 %d 點睡覺代表你過的是%@時區唷！";
+                req_string = @"晚上 %d 點睡覺代表\n你過的是%@時區唷！";
             } else if (req == 0){
-                req_string = @"午夜 %d 點睡覺代表你過的是%@時區唷！";
+                req_string = @"午夜 %d 點睡覺代表\n你過的是%@時區唷！";
             } else if (req > 0 && req <= 5){
-                req_string = @"凌晨 %d 點睡覺代表你過的是%@時區唷！";
+                req_string = @"凌晨 %d 點睡覺代表\n你過的是%@時區唷！";
             } else if (req > 5 && req < 12 ){
-                req_string = @"早上 %d 點睡覺代表你過的是%@時區唷！";
+                req_string = @"早上 %d 點睡覺代表\n你過的是%@時區唷！";
             } else if (req == 12 ){
-                req_string = @"中午 %d 點睡覺代表你過的是%@時區唷！";
+                req_string = @"中午 %d 點睡覺代表\n你過的是%@時區唷！";
             } else if (req > 12 && req <= 17 ){
-                req_string = @"下午 %d 點睡覺代表你過的是%@時區唷！";
+                req_string = @"下午 %d 點睡覺代表\n你過的是%@時區唷！";
             }
             //NSString *bid = [rs1 stringForColumn:@"id"];
             NSString *name = [rs1 stringForColumn:@"Nationality"];
@@ -59,6 +59,7 @@
             //self.badge_image.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",bid]];
             self.badge_description.text = [rs1 stringForColumn:@"description"];
             self.badge_condition.text = [NSString stringWithFormat:req_string,req%12==0?12:(req%12),name];
+            self.navigationController.topViewController.title= [rs1 stringForColumn:@"name"];
         }
     } else if ([self.b_type isEqualToString:@"animal"]) {
         rs1 = [DataBase executeQuery:[NSString stringWithFormat:@"SELECT * FROM ANIMAL_BADGE WHERE id = '%@'",self.b_id]];
@@ -69,15 +70,21 @@
             req_string = @"睡眠時數高於 %d%% 的朋友可以獲得！";
             self.badge_description.text = [rs1 stringForColumn:@"description"];
             self.badge_condition.text = [NSString stringWithFormat:req_string, req];
+            self.navigationController.topViewController.title= [rs1 stringForColumn:@"name"];
         }
         
     }
+    
+    [self.badge_description setNumberOfLines:0];
+    [self.badge_description sizeToFit];
+    self.badge_description.adjustsFontSizeToFitWidth =YES;
     
     // 設定 back button
     UIImage *backButtonIMG = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 21, 0, 0)];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonIMG forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     UINavigationBar *bar = self.navigationController.navigationBar ;
     bar.topItem.title = @" ";
+    [bar setBackgroundImage:[UIImage imageNamed:@"badge_bar0.png"] forBarMetrics:UIBarMetricsDefault];
     // notification後進入遊戲
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(Game:)

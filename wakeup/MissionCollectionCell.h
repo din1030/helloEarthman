@@ -14,6 +14,6 @@
 @property (strong,nonatomic)  NSString *cell_id;
 @property (retain, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (retain, nonatomic) IBOutlet UIImageView *lock;
-@property (retain, nonatomic) IBOutlet UILabel *mission_name;
+
 
 @end

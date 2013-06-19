@@ -435,9 +435,10 @@
     [self.view addSubview:_setRemindTimePicker];
     
     _set_bt = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _set_bt.frame = CGRectMake(self.view.frame.size.width/2-40, self.view.frame.size.height/2+80, 80, 40);
+    _set_bt.frame = CGRectMake(self.view.frame.size.width/2-40, self.view.frame.size.height/2+80, 90, 35);
     [_set_bt setTitle:@"設定" forState:UIControlStateNormal];
     [_set_bt addTarget:self action:@selector(sleeping_Clcik) forControlEvents:UIControlEventTouchUpInside];
+    [_set_bt setBackgroundImage:[UIImage imageNamed:@"btm.png"] forState:UIControlStateNormal];
     [self.view addSubview:_set_bt];
     
     [_content release];

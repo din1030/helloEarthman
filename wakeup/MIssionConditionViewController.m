@@ -34,6 +34,7 @@
     UIImage *backButtonIMG = [[UIImage imageNamed:@"back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 21, 0, 0)];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonIMG forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     UINavigationBar *bar = self.navigationController.navigationBar ;
+    [bar setBackgroundImage:[UIImage imageNamed:@"mission_bar0.png"] forBarMetrics:UIBarMetricsDefault];
     bar.topItem.title = @" ";
     
     NSLog(@"%@",self.m_id);
@@ -43,6 +44,9 @@
     {
         //NSString *name = [rs1 stringForColumn:@"name"];
         self.mission_description.text = [rs1 stringForColumn:@"description"];
+        [self.mission_description setNumberOfLines:0];
+        [self.mission_description sizeToFit];
+        self.navigationController.topViewController.title= [rs1 stringForColumn:@"name"];
     }
     // 沒有圖的話先用 custom 的圖代替
     UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _m_id]];

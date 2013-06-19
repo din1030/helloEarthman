@@ -114,10 +114,10 @@
                                     <segue destination="W2a-7g-k3S" kind="push" id="qez-3F-M6N"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ChO-fB-NLN">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ChO-fB-NLN">
                                 <rect key="frame" x="49" y="115" width="80" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.10196079313755035" green="0.10196079313755035" blue="0.10196079313755035" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -231,6 +231,9 @@
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="show_picker:" destination="W2a-7g-k3S" eventType="touchUpInside" id="STO-Bk-szP"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -871,7 +874,7 @@
             </objects>
             <point key="canvasLocation" x="1061" y="-280"/>
         </scene>
-        <!--Badge View Controller - BADGE-->
+        <!--Badge View Controller-->
         <scene sceneID="QN4-o0-75S">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="HTb-k3-vNr" customClass="BadgeViewController" sceneMemberID="viewController">
@@ -909,7 +912,7 @@
                             <outlet property="delegate" destination="HTb-k3-vNr" id="KZN-dL-Ggm"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="BADGE" id="pn3-05-vhc"/>
+                    <tabBarItem key="tabBarItem" title="" id="pn3-05-vhc"/>
                     <connections>
                         <segue destination="Ivh-VB-WTA" kind="push" identifier="ShowDetail" id="SUG-Fd-mZw"/>
                     </connections>
@@ -931,21 +934,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Squirrel.png" id="0he-OG-8ix">
-                                <rect key="frame" x="70" y="20" width="180" height="180"/>
+                                <rect key="frame" x="85" y="20" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Description" lineBreakMode="clip" numberOfLines="7" adjustsFontSizeToFit="NO" id="RGX-bq-Wj4">
-                                <rect key="frame" x="38" y="208" width="244" height="127"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Description" textAlignment="center" lineBreakMode="clip" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RGX-bq-Wj4">
+                                <rect key="frame" x="38" y="190" width="244" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Condtion" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kwm-5O-elE">
-                                <rect key="frame" x="40" y="343" width="240" height="55"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Condtion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kwm-5O-elE">
+                                <rect key="frame" x="40" y="350" width="240" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <color key="textColor" red="0.98039215686274506" green="0.92941176470588238" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -964,7 +967,7 @@
             </objects>
             <point key="canvasLocation" x="1595" y="334"/>
         </scene>
-        <!--Mission View Controller - MISSION-->
+        <!--Mission View Controller-->
         <scene sceneID="qKd-Fn-baP">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="mIV-gT-OeG" customClass="MissionViewController" sceneMemberID="viewController">
@@ -989,7 +992,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="XWE-LH-QQC">
+                                        <imageView userInteractionEnabled="NO" alpha="0.99999999999999989" contentMode="scaleToFill" id="XWE-LH-QQC">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="0.99338011381819646" blue="0.65123078548369528" alpha="1" colorSpace="calibratedRGB"/>
@@ -1010,7 +1013,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="Ziu-Ek-GiD">
+                                        <imageView userInteractionEnabled="NO" alpha="0.99999999999999989" contentMode="scaleToFill" id="Ziu-Ek-GiD">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="0.99338011380000002" blue="0.65123078550000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1031,7 +1034,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="3RS-b0-Rqv">
+                                        <imageView userInteractionEnabled="NO" alpha="0.99999999999999989" contentMode="scaleToFill" id="3RS-b0-Rqv">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="0.99338011380000002" blue="0.65123078550000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1040,13 +1043,6 @@
                                             <rect key="frame" x="95" y="95" width="35" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="和室" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yBr-Ah-GI0">
-                                            <rect key="frame" x="6" y="98" width="109" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -1054,7 +1050,6 @@
                                 <size key="customSize" width="130" height="130"/>
                                 <connections>
                                     <outlet property="lock" destination="NXH-S1-2X4" id="21s-YU-Dt6"/>
-                                    <outlet property="mission_name" destination="yBr-Ah-GI0" id="iQW-dS-exA"/>
                                     <outlet property="thumbnail" destination="3RS-b0-Rqv" id="SDd-Zj-3nv"/>
                                 </connections>
                             </collectionViewCell>
@@ -1075,7 +1070,7 @@
                             <outlet property="delegate" destination="mIV-gT-OeG" id="Y2h-qz-0Ms"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" tag="1" title="MISSION" id="H6K-o0-j0l"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" id="H6K-o0-j0l"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="QFA-Ej-aq6" kind="push" identifier="ShowCollect" id="z5Y-zI-Rtu"/>
@@ -1100,30 +1095,30 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="AfQ-17-a7Y">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+                                <rect key="frame" x="0.5" y="0.0" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.99338011380000002" blue="0.65123078550000002" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXB-9f-hAx">
-                                <rect key="frame" x="20" y="184" width="280" height="72"/>
+                                <rect key="frame" x="20" y="208" width="280" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="《任務需求》" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mZf-Vx-fW0">
-                                <rect key="frame" x="94" y="264" width="130" height="21"/>
+                                <rect key="frame" x="94" y="273" width="130" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VaW-qU-wCq">
-                                <rect key="frame" x="109" y="385" width="101" height="24"/>
+                                <rect key="frame" x="115" y="373" width="90" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="耶，任務完成">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="任務完成" backgroundImage="btm.png">
+                                    <color key="titleColor" red="0.24055325259999999" green="0.24055325259999999" blue="0.24055325259999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -1131,7 +1126,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" id="tDR-xh-WvC">
-                                <rect key="frame" x="0.0" y="294" width="320" height="48"/>
+                                <rect key="frame" x="0.0" y="297" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -1176,16 +1171,16 @@
                                 <color key="backgroundColor" red="1" green="0.99338011380000002" blue="0.65123078550000002" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="呼朋引伴一起養成規律作息吧！" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VzQ-5d-P1I">
-                                <rect key="frame" x="40" y="208" width="229" height="72"/>
+                                <rect key="frame" x="40" y="208" width="240" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="任務進度：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="13i-KX-0Eo">
                                 <rect key="frame" x="40" y="294" width="130" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1193,7 +1188,7 @@
                                 <rect key="frame" x="11" y="11" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0/10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5pc-nj-NtW">
@@ -1204,11 +1199,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" userInteractionEnabled="NO" alpha="0.60000000000000009" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LCH-HZ-hi3">
-                                <rect key="frame" x="118" y="374" width="85" height="25"/>
+                                <rect key="frame" x="115.5" y="369" width="90" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="到齊囉～">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="到齊囉～" backgroundImage="btm.png">
+                                    <color key="titleColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -1219,8 +1214,8 @@
                                 <rect key="frame" x="40" y="332" width="240" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="progressTintColor" red="1" green="0.99338011380000002" blue="0.65123078550000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="trackTintColor" red="0.68235296010000002" green="0.92549026010000002" blue="0.039215687659999998" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="progressTintColor" red="0.9647059440612793" green="0.27843138575553894" blue="0.60000002384185791" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="trackTintColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1262,7 +1257,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="目前維持天數：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z0Q-5k-eS6">
                                 <rect key="frame" x="121" y="292" width="91" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1333,11 +1328,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUd-Wf-o5y">
-                                <rect key="frame" x="167" y="374" width="85" height="29"/>
+                                <rect key="frame" x="165" y="371" width="90" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="下定決心">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="下定決心" backgroundImage="btm.png">
+                                    <color key="titleColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -1345,11 +1340,11 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6NJ-2R-Mdv">
-                                <rect key="frame" x="63" y="374" width="85" height="29"/>
+                                <rect key="frame" x="61" y="371" width="90" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="砍掉重練">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="砍掉重練" backgroundImage="btm.png">
+                                    <color key="titleColor" red="0.24055325255102045" green="0.24055325255102045" blue="0.24055325255102045" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1418,6 +1413,7 @@
         <image name="brainhole2.png" width="30" height="28"/>
         <image name="brainhole3.png" width="30" height="28"/>
         <image name="brainhole4.png" width="30" height="28"/>
+        <image name="btm.png" width="180" height="70"/>
         <image name="calendar_bg.png" width="640" height="860"/>
         <image name="change_alarm_L.png" width="24" height="52"/>
         <image name="change_alarm_R.png" width="24" height="52"/>
@@ -1450,163 +1446,6 @@
         <image name="statistics_icon.png" width="55" height="55"/>
         <image name="ufo.png" width="100" height="60"/>
     </resources>
-    <classes>
-        <class className="AlarmViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlarmViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="alarmClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="alarm_pan:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="next_alarmClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="prev_alarmClick:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="alarm" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_alarm" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_hr" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_min" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_sec" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="label_alarm_time" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mask" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="next_alarm" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="prev_alarm" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="set" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="setalarm" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="BadgeCollectionCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BadgeCollectionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_thumbnail" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BadgeConditionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BadgeConditionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_condition" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="badge_description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="badge_image" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BadgeViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BadgeViewController.h"/>
-        </class>
-        <class className="BrainHoleViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrainHoleViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="holeClick:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="eye" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="CalViewLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalViewLayout.h"/>
-        </class>
-        <class className="CalendarCollectionViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCollectionViewController.h"/>
-        </class>
-        <class className="CalendarViewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_thumb" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="date_num" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CustomMissionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomMissionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="day_1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_3" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_4" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_5" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="indicator" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="target_picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="CustomViewLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomViewLayout.h"/>
-        </class>
-        <class className="InviteMissionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/InviteMissionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="check_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="invite_img" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="invite_progress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="lv_num" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="req_label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MIssionConditionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MIssionConditionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_req" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mission_badges" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mission_condition" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mission_description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mission_image" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MissionCollectionCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionCollectionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lock" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="mission_name" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thumbnail" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MissionViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionViewController.h"/>
-        </class>
-        <class className="RecordScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordScrollView.h"/>
-        </class>
-        <class className="RecordViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="record" candidateClass="RecordScrollView"/>
-            </relationships>
-        </class>
-        <class className="SettingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="fbClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="sendClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="show_picker:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="edit_time" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="fbButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mask" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="setRemindTimePicker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="timeZone" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="time_set" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="theme_OnClick:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="alarm" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="badgetable" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="calendar" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="setting" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="theme" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="ufo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="ufomsg" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="window" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

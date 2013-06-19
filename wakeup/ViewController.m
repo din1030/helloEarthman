@@ -222,6 +222,9 @@
     NSArray *msg = [temp objectForKey:@"msg"];
     int r = arc4random_uniform(9);
     _ufomsg.text = [msg objectAtIndex:r];
+    [self.ufomsg setNumberOfLines:0];
+    [self.ufomsg sizeToFit];
+    self.ufomsg.adjustsFontSizeToFitWidth =YES;
     if (!temp) {
         NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
     }
@@ -245,7 +248,7 @@ CGFloat DegreeToRadian(CGFloat degrees)
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     _itemlist = [[NSArray alloc] initWithObjects:_alarm, _calendar, _badgetable, _theme, _window, nil];
-    _random_timer = [NSTimer scheduledTimerWithTimeInterval:10  // 遊戲秒數
+    _random_timer = [NSTimer scheduledTimerWithTimeInterval:7  // 遊戲秒數
                                                      target:self
                                                    selector:@selector(item_animation)
                                                    userInfo:nil

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface CalendarCollectionViewController : UICollectionViewController
 @property (atomic,strong) NSMutableArray *dailyInfo;
+@property (nonatomic) int startday, maxmonthday;
+
++ (int) Getselectmonth;
++ (void) Setselectmonth:(int)m;
 @end

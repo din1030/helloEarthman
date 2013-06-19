@@ -37,19 +37,30 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonIMG forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     UINavigationBar *bar = self.navigationController.navigationBar ;
     bar.topItem.title = @" ";
+    self.navigationController.topViewController.title= @"自訂任務";
+    [bar setBackgroundImage:[UIImage imageNamed:@"mission_bar0.png"] forBarMetrics:UIBarMetricsDefault];
+
+    
     target_picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 118, 320, 216)];
     target_picker.delegate = self;
     //target_picker.showsSelectionIndicator = YES;
-	target_picker.backgroundColor = [UIColor blackColor];
+	target_picker.backgroundColor = [UIColor clearColor];
     
     CGAffineTransform rotate = CGAffineTransformMakeRotation(-3.14/2);
-	rotate = CGAffineTransformScale(rotate, 0.16f, 1.5f);
+	rotate = CGAffineTransformScale(rotate, 0.23f, 1.8f);
 	[target_picker setTransform:rotate];
+    
+    target_picker.layer.borderWidth=0;
+    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+    CGFloat values[4] = {0, 0, 0, 1.0};
+    CGColorRef white = CGColorCreate(space, values);
+    target_picker.layer.borderColor = white;
+    CGColorRelease(white);
+    CGColorSpaceRelease(space);
     
     [self.view addSubview:target_picker];
     [target_picker.layer setZPosition:1.0];
     [indicator.layer setZPosition:2.0];
-    
     
     CGAffineTransform rotateItem = CGAffineTransformMakeRotation(3.14/2);
 	rotateItem = CGAffineTransformScale(rotateItem, 0.7, 5);
@@ -63,8 +74,9 @@
         
         //UIImageView *badge = [[UIImageView alloc] initWithImage:[NSString stringWithFormat:@"%@.png",bid]];
         //  圖片要改？
-        NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"badge_tw.png",@"badge_tw_n.png",@"badge_jp.png",@"badge_jp_n.png",@"Squirrel.png",@"Squirrel_n.png", nil];
-        int r = a%6;
+        NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"Squirrel.png",@"Squirrel_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png", nil];
+
+        int r = a%14;
         UIImageView *badge = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[rnd_img objectAtIndex:r]]]; //[UIImage imageNamed:@"FqxZ8m5ErB.png"]];
 		[rnd_img release];
                               
@@ -114,14 +126,14 @@
 	return [badge_list count];
 }
 
-- (UIView *)pickerView:(UIPickerView *)thePickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+- (UIView *)pickerView:(UIPickerView *)thePickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {   
 	return [badge_list objectAtIndex:row];
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     //  圖片要改？
-    NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"badge_tw.png",@"badge_tw_n.png",@"badge_jp.png",@"badge_jp_n.png",@"Squirrel.png",@"Squirrel_n.png", nil];
-    int r = row%6;
+    NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"Squirrel.png",@"Squirrel_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png", nil];
+    int r = row%14;
     badge_image.image = [UIImage imageNamed:[rnd_img objectAtIndex:r]]; //[NSString stringWithFormat:@"%@.png", bid]];
     [rnd_img release];
 }

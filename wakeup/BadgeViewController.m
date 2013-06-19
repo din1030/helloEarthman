@@ -70,6 +70,20 @@
     [_person_id release];
     //[_obj_ar release];
     
+    // tab bar item background
+    UIImage *selectedImage0 = [UIImage imageNamed:@"badge_tab.png"];
+    UIImage *unselectedImage0 = [UIImage imageNamed:@"badge_tab0.png"];
+    
+    UIImage *selectedImage1 = [UIImage imageNamed:@"mission_tab.png"];
+    UIImage *unselectedImage1 = [UIImage imageNamed:@"mission_tab0.png"];
+    
+    UITabBar *tabBar = self.tabBarController.tabBar;
+    UITabBarItem *item0 = [tabBar.items objectAtIndex:0];
+    UITabBarItem *item1 = [tabBar.items objectAtIndex:1];
+    
+    [item0 setFinishedSelectedImage:selectedImage0 withFinishedUnselectedImage:unselectedImage0];
+    [item1 setFinishedSelectedImage:selectedImage1 withFinishedUnselectedImage:unselectedImage1];
+    
     // notification後進入遊戲
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(Game:)
@@ -97,8 +111,8 @@
     
     NSString *cellIdentifier = @"badge_cell";
     BadgeCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"badge_tw.png",@"badge_tw_n.png",@"badge_jp.png",@"badge_jp_n.png",@"Squirrel.png",@"Squirrel_n.png", nil];
-    int r = arc4random_uniform(6);
+    NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"Squirrel.png",@"Squirrel_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png", nil];
+    int r = arc4random_uniform(14);
     cell.badge_thumbnail.image = [UIImage imageNamed:[rnd_img objectAtIndex:r]];
     [rnd_img release];
     

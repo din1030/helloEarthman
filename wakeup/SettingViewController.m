@@ -80,8 +80,25 @@
     //setRemindTimePicker.transform = CGAffineTransformMakeTranslation(0, 40);
     _setRemindTimePicker.delegate = self;
     _setRemindTimePicker.showsSelectionIndicator = YES;
-    [_setRemindTimePicker selectRow:0 inComponent:0 animated:YES];
-    [_setRemindTimePicker selectRow:0 inComponent:1 animated:YES];
+    int c1_index=0;
+    switch (_sleeping_min) {
+        case 0:
+            c1_index=0;
+            break;
+        case 15:
+            c1_index=1;
+            break;
+        case 30:
+            c1_index=2;
+            break;
+        case 45:
+            c1_index=3;
+            break;
+        default:
+            break;
+    }
+    [_setRemindTimePicker selectRow:_sleeping_hr inComponent:0 animated:YES];
+    [_setRemindTimePicker selectRow:c1_index inComponent:1 animated:YES];
     [self.view addSubview:_setRemindTimePicker];
     _setRemindTimePicker.hidden = YES;
     //_mask.hidden = YES;
@@ -126,10 +143,10 @@
         }
         NSLog(@"time=%d,set=%d",appDelegate.hr,appDelegate.set_hr);
         
-        NSDate* firstDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",appDelegate.hr,appDelegate.min,appDelegate.sec]]];
-        NSDate* secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",appDelegate.set_hr,appDelegate.set_min]]];
+        NSDate* firstDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:%02d",appDelegate.hr,appDelegate.min,appDelegate.sec]];
+        NSDate* secondDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%02d:%02d:00",appDelegate.set_hr,appDelegate.set_min]];
         if (appDelegate.set_hr==24)
-            secondDate = [self convertToUTC:[dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]]];
+            secondDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"23:59:59"]];
         NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
         //如果時間差是小於0表示為隔天
         if (timeDifference<0)
@@ -149,8 +166,15 @@
         }
 
     }
-    appDelegate.scheduledSleep = [[[UILocalNotification alloc] init] autorelease];
+    appDelegate.scheduledSleep = [[UILocalNotification alloc] init];
     appDelegate.scheduledSleep.fireDate = [[calendar dateFromComponents:components] dateByAddingTimeInterval:-1800];
+    NSDate *firstDate = [NSDate date];
+    NSDate *secondDate = appDelegate.scheduledSleep.fireDate;
+    NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
+    NSLog(@"firstdate=%@ , seconddate=%@",firstDate,secondDate);
+    NSLog(@"%f",timeDifference);
+    if ([firstDate compare:secondDate]==NSOrderedAscending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference >=0)
+    {
     appDelegate.scheduledSleep.timeZone = [NSTimeZone defaultTimeZone];
     appDelegate.scheduledSleep.repeatInterval=0;
     //    appDelegate.scheduledSleep.soundName = @"alarm2.mp3";
@@ -159,11 +183,11 @@
     
     appDelegate.scheduledSleep.alertBody = @"已經超過您預計睡覺的時間囉！快去睡吧！";
     NSTimeInterval interval = 1800;
-    for( int i = 0; i < 5; ++i ) {
-        appDelegate.scheduledSleep.fireDate = [NSDate dateWithTimeInterval: interval*i sinceDate:[calendar dateFromComponents:components]];
-        [[UIApplication sharedApplication] scheduleLocalNotification: appDelegate.scheduledSleep];
-//        NSLog(@"%d times:%@",i,[[NSDate dateWithTimeInterval: interval*i sinceDate:[self convertToUTC:[calendar dateFromComponents:components]]] description]);
-        
+        for( int i = 0; i < 5; ++i ) {
+            appDelegate.scheduledSleep.fireDate = [NSDate dateWithTimeInterval: interval*i sinceDate:[calendar dateFromComponents:components]];
+            [[UIApplication sharedApplication] scheduleLocalNotification: appDelegate.scheduledSleep];
+            //        NSLog(@"%d times:%@",i,[[NSDate dateWithTimeInterval: interval*i sinceDate:[self convertToUTC:[calendar dateFromComponents:components]]] description]);
+        }
     }
     NSLog(@"notification count=%d",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
     appDelegate.isSleep = YES;

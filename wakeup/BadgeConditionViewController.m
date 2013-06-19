@@ -53,10 +53,19 @@
             } else if (req > 12 && req <= 17 ){
                 req_string = @"下午 %d 點睡覺代表\n你過的是%@時區唷！";
             }
-            //NSString *bid = [rs1 stringForColumn:@"id"];
+//            NSString *bid = [rs1 stringForColumn:@"id"];
             NSString *name = [rs1 stringForColumn:@"Nationality"];
 #warning 徽章圖檔
-            //self.badge_image.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",bid]];
+            // 沒有圖的話先用 custom 的圖代替
+            UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",self.b_id]];
+            if (img != nil) {
+                self.badge_image.image = img;
+            } else {
+                NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"8NM1hTHgfE.png",@"8NM1hTHgfE_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png",@"ypmSNBip8x.png",@"ypmSNBip8x_n.png", nil];
+                int r = arc4random_uniform(16);
+                self.badge_image.image = [UIImage imageNamed:[rnd_img objectAtIndex:r]];
+                [rnd_img release];
+            }
             self.badge_description.text = [rs1 stringForColumn:@"description"];
             self.badge_condition.text = [NSString stringWithFormat:req_string,req%12==0?12:(req%12),name];
             self.navigationController.topViewController.title= [rs1 stringForColumn:@"name"];
@@ -72,7 +81,16 @@
             self.badge_condition.text = [NSString stringWithFormat:req_string, req];
             self.navigationController.topViewController.title= [rs1 stringForColumn:@"name"];
         }
-        
+        // 沒有圖的話先用 custom 的圖代替
+        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",self.b_id]];
+        if (img != nil) {
+            self.badge_image.image = img;
+        } else {
+            NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"8NM1hTHgfE.png",@"8NM1hTHgfE_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png",@"ypmSNBip8x.png",@"ypmSNBip8x_n.png", nil];
+            int r = arc4random_uniform(16);
+            self.badge_image.image = [UIImage imageNamed:[rnd_img objectAtIndex:r]];
+            [rnd_img release];
+        }
     }
     
     [self.badge_description setNumberOfLines:0];

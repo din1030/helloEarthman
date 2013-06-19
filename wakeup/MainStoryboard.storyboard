@@ -1266,21 +1266,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="保持固定作息就可以換取想要的徽章唷！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1J-UP-nc3">
-                                <rect key="frame" x="24" y="259" width="271" height="38"/>
+                                <rect key="frame" x="24" y="251" width="271" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="目前維持天數：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z0Q-5k-eS6">
-                                <rect key="frame" x="121" y="292" width="91" height="21"/>
+                                <rect key="frame" x="115" y="288" width="91" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" id="9wh-Py-d61">
-                                <rect key="frame" x="35" y="313" width="250" height="56"/>
+                                <rect key="frame" x="34" y="307" width="250" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="mission_day.png" id="iQc-w1-tRZ">
@@ -1342,11 +1342,11 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Squirrel.png" id="POD-Cw-a7l">
-                                <rect key="frame" x="78" y="9" width="166" height="166"/>
+                                <rect key="frame" x="85" y="9" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sUd-Wf-o5y">
-                                <rect key="frame" x="165" y="371" width="90" height="35"/>
+                                <rect key="frame" x="170" y="371" width="90" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="下定決心" backgroundImage="btm.png">
@@ -1358,7 +1358,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6NJ-2R-Mdv">
-                                <rect key="frame" x="61" y="371" width="90" height="35"/>
+                                <rect key="frame" x="58" y="371" width="90" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="砍掉重練" backgroundImage="btm.png">
@@ -1368,8 +1368,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="down_w.png" id="r2r-uP-b2s">
-                                <rect key="frame" x="148" y="171" width="24" height="36"/>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="choose_03.png" id="r2r-uP-b2s">
+                                <rect key="frame" x="146" y="170" width="27" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
@@ -1422,7 +1422,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Squirrel.png" width="500" height="500"/>
+        <image name="Squirrel.png" width="16" height="16"/>
         <image name="alarm_hole-02.png" width="504" height="563"/>
         <image name="badge_bg.png" width="640" height="860"/>
         <image name="bg.png" width="320" height="460"/>
@@ -1435,8 +1435,8 @@
         <image name="calendar_bg.png" width="640" height="860"/>
         <image name="change_alarm_L.png" width="24" height="52"/>
         <image name="change_alarm_R.png" width="24" height="52"/>
+        <image name="choose_03.png" width="44" height="38"/>
         <image name="clock_edit.png" width="32" height="32"/>
-        <image name="down_w.png" width="52" height="47"/>
         <image name="eye-r.png" width="66" height="31"/>
         <image name="eye.png" width="66" height="31"/>
         <image name="left_r.png" width="47" height="52"/>
@@ -1464,170 +1464,6 @@
         <image name="statistics_icon.png" width="55" height="55"/>
         <image name="ufo.png" width="100" height="60"/>
     </resources>
-    <classes>
-        <class className="AlarmViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlarmViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="alarmClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="alarm_pan:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="next_alarmClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="prev_alarmClick:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="alarm" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_alarm" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_hr" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_min" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="alarm_sec" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="label_alarm_time" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mask" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="next_alarm" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="prev_alarm" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="set" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="setalarm" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="BadgeCollectionCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BadgeCollectionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_thumbnail" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BadgeConditionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BadgeConditionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_condition" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="badge_description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="badge_image" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BadgeViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BadgeViewController.h"/>
-        </class>
-        <class className="BrainHoleViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrainHoleViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="holeClick:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="eye" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="CalViewLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalViewLayout.h"/>
-        </class>
-        <class className="CalendarCollectionViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCollectionViewController.h"/>
-        </class>
-        <class className="CalendarViewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_thumb" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="date_num" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CustomMissionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomMissionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="day_1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_3" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_4" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="day_5" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="indicator" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="target_picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="CustomViewLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomViewLayout.h"/>
-        </class>
-        <class className="InviteMissionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/InviteMissionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="check_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="invite_img" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="invite_progress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="lv_num" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="req_label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MIssionConditionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MIssionConditionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="badge_req" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mission_badges" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mission_condition" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mission_description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mission_image" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MissionCollectionCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionCollectionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lock" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="thumbnail" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MissionViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionViewController.h"/>
-        </class>
-        <class className="RecordScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordScrollView.h"/>
-        </class>
-        <class className="RecordViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="next_monthClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="prev_monthClick:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="next_month" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="prev_month" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="record" candidateClass="RecordScrollView"/>
-                <relationship kind="outlet" name="selectmonth" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SettingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="fbClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="sendClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="show_picker:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="edit_time" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="fbButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mask" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="setRemindTimePicker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="timeZone" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="time_set" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="theme_OnClick:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="alarm" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="badgetable" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="calendar" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="setting" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="theme" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="ufo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="ufomsg" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="window" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -51,6 +51,11 @@
     
     //_record.tab_index = _cur_tab;
     NSLog(@"cur_tab: %d",_cur_tab);
+    
+    NSDate *today = [NSDate date];
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:today];
+    [RecordScrollView Setselectmonth:components.month];
     [_record init];
 
     // notification後進入遊戲
@@ -68,6 +73,9 @@
 
 - (void)dealloc {
     [_record release];
+    [_prev_month release];
+    [_next_month release];
+    [_selectmonth release];
     [super dealloc];
 }
 
@@ -78,6 +86,26 @@
     appDelegate.isAlarm = NO;
     BrainHoleViewController *brainhole_vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GamePage"];
     [self.navigationController pushViewController:brainhole_vc animated:NO];
+}
+
+- (IBAction)prev_monthClick:(UIButton *)sender {
+    NSLog(@"prev");
+    if ([RecordScrollView Getselectmonth]>1)
+        [RecordScrollView Setselectmonth: [RecordScrollView Getselectmonth]-1];
+    else
+        [RecordScrollView Setselectmonth: 12];
+    _selectmonth.text = [NSString stringWithFormat:@"%d",[RecordScrollView Getselectmonth]];
+    [_record init];
+}
+
+- (IBAction)next_monthClick:(UIButton *)sender {
+    NSLog(@"next");
+    if ([RecordScrollView Getselectmonth]<12)
+        [RecordScrollView Setselectmonth: [RecordScrollView Getselectmonth]+1];
+    else
+        [RecordScrollView Setselectmonth: 1];
+        _selectmonth.text = [NSString stringWithFormat:@"%d",[RecordScrollView Getselectmonth]];
+    [_record init];
 }
 
 @end

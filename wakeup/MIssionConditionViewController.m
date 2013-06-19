@@ -53,7 +53,7 @@
     if (img != nil) {
         _mission_image.image = img;
     } else {
-        _mission_image.image = [UIImage imageNamed:@"vEaCmP0Tou.png"];
+        _mission_image.image = [UIImage imageNamed:@"custom2.png"];
     }
     
     [self get_mission_req];

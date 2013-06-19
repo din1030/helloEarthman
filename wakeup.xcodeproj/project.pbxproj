@@ -32,6 +32,7 @@
 		8B7137C21771052300A6F5D7 /* mission_tab0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7137BE1771052200A6F5D7 /* mission_tab0@2x.png */; };
 		8B7137C51771063900A6F5D7 /* custom2_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7137C31771063900A6F5D7 /* custom2_s.png */; };
 		8B7137C61771063900A6F5D7 /* custom2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7137C41771063900A6F5D7 /* custom2.png */; };
+		8B7137C81771AD3E00A6F5D7 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B7137C71771AD3E00A6F5D7 /* test.plist */; };
 		8B73020B176067E100026E1F /* BadgeConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B73020A176067E100026E1F /* BadgeConditionViewController.m */; };
 		8B7E4123176793A4002E8930 /* set_alarm_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E4122176793A4002E8930 /* set_alarm_set.png */; };
 		8B7E4125176793E9002E8930 /* alarm_spirit.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E4124176793E9002E8930 /* alarm_spirit.png */; };
@@ -246,6 +247,7 @@
 		8B7137BE1771052200A6F5D7 /* mission_tab0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mission_tab0@2x.png"; sourceTree = "<group>"; };
 		8B7137C31771063900A6F5D7 /* custom2_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom2_s.png; sourceTree = "<group>"; };
 		8B7137C41771063900A6F5D7 /* custom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom2.png; sourceTree = "<group>"; };
+		8B7137C71771AD3E00A6F5D7 /* test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = test.plist; sourceTree = "<group>"; };
 		8B730209176067E100026E1F /* BadgeConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeConditionViewController.h; sourceTree = "<group>"; };
 		8B73020A176067E100026E1F /* BadgeConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeConditionViewController.m; sourceTree = "<group>"; };
 		8B7E4122176793A4002E8930 /* set_alarm_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set_alarm_set.png; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 				8BF94567176B5DE7001DBBFC /* alarm.plist */,
 				8BF94593176CBD63001DBBFC /* ufomsg.plist */,
 				8B9BB388176DE337002B37C8 /* greeting.plist */,
+				8B7137C71771AD3E00A6F5D7 /* test.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1139,6 +1142,7 @@
 				8B7137C21771052300A6F5D7 /* mission_tab0@2x.png in Resources */,
 				8B7137C51771063900A6F5D7 /* custom2_s.png in Resources */,
 				8B7137C61771063900A6F5D7 /* custom2.png in Resources */,
+				8B7137C81771AD3E00A6F5D7 /* test.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1266,6 +1270,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wakeup/wakeup-Prefix.pch";
 				INFOPLIST_FILE = "wakeup/wakeup-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "早安地球人！";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1285,6 +1290,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wakeup/wakeup-Prefix.pch";
 				INFOPLIST_FILE = "wakeup/wakeup-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "早安地球人！";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -12,4 +12,10 @@
 @interface RecordScrollView : UIScrollView
 @property (nonatomic, strong) PCLineChartView *lineChartView;
 @property (nonatomic) NSUInteger tab_index;
+
+- (NSMutableArray*) UpdateData;
+- (void) Drawlinechart:(NSMutableArray*)data_ar;
+
++ (int) Getselectmonth;
++ (void) Setselectmonth:(int)m;
 @end

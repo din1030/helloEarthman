@@ -270,9 +270,9 @@
         errorDesc = nil;
         rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES) objectAtIndex:0];
-        plistPath = [rootPath stringByAppendingPathComponent:@"greeting.plist"];
+        plistPath = [rootPath stringByAppendingPathComponent:@"test.plist"];
         if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
-            plistPath = [[NSBundle mainBundle] pathForResource:@"greeting" ofType:@"plist"];
+            plistPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"plist"];
         }
         plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
         temp = (NSDictionary *)[NSPropertyListSerialization

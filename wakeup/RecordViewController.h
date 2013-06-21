@@ -14,4 +14,9 @@
 
 @property (retain, nonatomic) IBOutlet RecordScrollView *record;
 @property (nonatomic) NSUInteger cur_tab;
+@property (retain, nonatomic) IBOutlet UIButton *prev_month;
+@property (retain, nonatomic) IBOutlet UIButton *next_month;
+@property (retain, nonatomic) IBOutlet UILabel *selectmonth;
+- (IBAction)prev_monthClick:(UIButton *)sender;
+- (IBAction)next_monthClick:(UIButton *)sender;
 @end

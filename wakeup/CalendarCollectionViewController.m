@@ -67,7 +67,6 @@ static int select_month;
 
 - (void) UpdateCalendar
 {
-    NSLog(@"XD");
     [self getMonthStartDay:YES];
     [self.collectionView reloadData];
 }
@@ -87,17 +86,18 @@ static int select_month;
     NSDate *modifydate = [formatter dateFromString:[NSString stringWithFormat:@"%d-%02d-%02d",components.year,components.month,components.day]];
     [formatter setDateFormat:@"EEEE"];
     NSString *dayname = [formatter stringFromDate:modifydate];
-    if ([dayname isEqualToString:@"Monday"])
+    NSLog(@"dayname=%@",dayname);
+    if ([dayname isEqualToString:@"Monday"] || [dayname isEqualToString:@"星期一"])
         _startday=1;
-    else     if ([dayname isEqualToString:@"Tuesday"])
+    else     if ([dayname isEqualToString:@"Tuesday"] || [dayname isEqualToString:@"星期二"])
         _startday=2;
-    else    if ([dayname isEqualToString:@"Wednesday"])
+    else    if ([dayname isEqualToString:@"Wednesday"]|| [dayname isEqualToString:@"星期三"])
         _startday=3;
-    else    if ([dayname isEqualToString:@"Thursday"])
+    else    if ([dayname isEqualToString:@"Thursday"]|| [dayname isEqualToString:@"星期四"])
         _startday=4;
-    else    if ([dayname isEqualToString:@"Friday"])
+    else    if ([dayname isEqualToString:@"Friday"]|| [dayname isEqualToString:@"星期五"])
         _startday=5;
-    else     if ([dayname isEqualToString:@"Saturday"])
+    else     if ([dayname isEqualToString:@"Saturday"]|| [dayname isEqualToString:@"星期六"])
         _startday=6;
     else
         _startday=7;

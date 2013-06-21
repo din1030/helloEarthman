@@ -155,8 +155,8 @@ static int select_month;
     NSString *cellIdentifier = @"cal_cell";
     CalendarViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"Squirrel.png",@"Squirrel_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png", nil];
-    int r = arc4random_uniform(14);
+    NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"8NM1hTHgfE.png",@"8NM1hTHgfE_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png",@"ypmSNBip8x.png",@"ypmSNBip8x_n.png", nil];
+    int r = arc4random_uniform(16);
     int offset = indexPath.item / 5;
 //    if (indexPath.item+1+(8-_startday)*(offset+1)<=_maxmonthday && _startday>5)
     if (_startday>5 && indexPath.item+1+(8-_startday)+offset*2<=_maxmonthday)

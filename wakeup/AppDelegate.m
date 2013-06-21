@@ -82,7 +82,6 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     
     NSDate *firstDate = [NSDate date];
     NSDate *secondDate =  _scheduledAlert.fireDate;
-    NSLog(@"firstdate=%@ , seconddate=%@",firstDate,secondDate);
     NSTimeInterval timeDifference = [secondDate timeIntervalSinceDate:firstDate];
     if ([firstDate compare:secondDate]==NSOrderedDescending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference >= -1800 && _isAlarm)
     {
@@ -124,7 +123,6 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         _isAlarm = NO;
     }
-    NSLog(@"%f",timeDifference);
   
     // 每日提醒設定(等待db建立）
     FMResultSet *rs = nil;
@@ -141,10 +139,15 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
     NSLog(@"time[0]: %@",time[0]);
     [components setHour:[time[0] intValue]];
     [components setMinute:[time[1] intValue]];
-    if (!_isSleep)  //如果隔天有進入app會自動設定當天的推播
+    _scheduledSleep = [[UILocalNotification alloc] init];
+    _scheduledSleep.fireDate = [[calendar dateFromComponents:components] dateByAddingTimeInterval:-1800];   //設定時間的半小時前
+    firstDate = [NSDate date];
+    secondDate = _scheduledSleep.fireDate;
+    timeDifference = [secondDate timeIntervalSinceDate:firstDate];
+    NSLog(@"firstdate=%@ , seconddate=%@",firstDate,secondDate);
+    NSLog(@"%f",timeDifference);
+    if (!_isSleep && [firstDate compare:secondDate]==NSOrderedAscending | [firstDate compare:secondDate]==NSOrderedSame && timeDifference >=0 )  //如果隔天有進入app會自動設定當天的推播
     {
-        _scheduledSleep = [[[UILocalNotification alloc] init] autorelease];
-        _scheduledSleep.fireDate = [[calendar dateFromComponents:components] dateByAddingTimeInterval:-1800];   //設定時間的半小時前
         _scheduledSleep.timeZone = [NSTimeZone defaultTimeZone];
         _scheduledSleep.repeatInterval=0;
         //    appDelegate.scheduledSleep.soundName = @"alarm2.mp3";
@@ -237,6 +240,43 @@ NSString *const FBSessionStateChangedNotification = @"din1030.wakeup:FBSessionSt
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [FBSession.activeSession close];
+}
+
+- (void) application:(UIApplication *)application didReceiveLocalNotification:    (UILocalNotification *)notification {
+    //Place your code to handle the notification here.
+   int len =[[[UIApplication sharedApplication] scheduledLocalNotifications] count];
+    for (int i=0;i<len;i++)
+    {
+        UILocalNotification * notif = [[[UIApplication sharedApplication] scheduledLocalNotifications] objectAtIndex:i];
+        if ([notif.fireDate compare:_scheduledAlert.fireDate] == NSOrderedSame && _scheduledAlert.fireDate!=nil)
+        {
+            NSLog(@"%@,%@",notif.fireDate,_scheduledAlert.fireDate);
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
+            
+            @try {
+                [[UIApplication sharedApplication] cancelLocalNotification:_scheduledAlert];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"notification doesn't exist.");
+            }
+            @finally {
+                ;
+            }
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+            _isAlarm = NO;
+            break;
+        }
+        else if (_scheduledSleep.fireDate!=nil)
+        {
+            NSLog(@"%@,%@",notif.fireDate,_scheduledAlert.fireDate);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"貼心小提醒"
+                                                            message:notification.alertBody
+                                                           delegate:self cancelButtonTitle:@"去睡覺"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            break;
+        }
+    }
 }
 
 #pragma mark - for Alarm

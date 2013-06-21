@@ -111,15 +111,8 @@
     
     NSString *cellIdentifier = @"badge_cell";
     BadgeCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"Squirrel.png",@"Squirrel_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png", nil];
-    int r = arc4random_uniform(14);
-    cell.badge_thumbnail.image = [UIImage imageNamed:[rnd_img objectAtIndex:r]];
-    [rnd_img release];
-    
     NSUInteger section = [indexPath section];
     NSUInteger index = [indexPath row];
-    //cell.cell_id = [[self.obj_ar[0] objectAtIndex:index] objectId];
-    
     // 不同 badge 給不同 type
     if (section==0) {
         cell.cell_id = [_person_id objectAtIndex:index];
@@ -131,6 +124,19 @@
         cell.cell_type = @"animal";
         //NSLog(@"%@ at sec 1 ",cell.cell_id);
     }
+
+    // 沒有圖的話先用 custom 的圖代替
+    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", cell.cell_id]];
+    if (img != nil) {
+        cell.badge_thumbnail.image = img;
+    } else {
+        NSArray *rnd_img = [[NSArray alloc] initWithObjects:@"8NM1hTHgfE.png",@"8NM1hTHgfE_n.png",@"FqxZ8m5ErB.png",@"FqxZ8m5ErB_n.png",@"9wroWWspcS.png",@"9wroWWspcS_n.png",@"FPDYGQiaQG.png",@"FPDYGQiaQG_n.png",@"j26WD3BJrw.png",@"j26WD3BJrw_n.png",@"kanX2TK012.png",@"kanX2TK012_n.png",@"o1FVKRgshs.png",@"o1FVKRgshs_n.png",@"ypmSNBip8x.png",@"ypmSNBip8x_n.png", nil];
+        int r = arc4random_uniform(16);
+        cell.badge_thumbnail.image = [UIImage imageNamed:[rnd_img objectAtIndex:r]];
+        [rnd_img release];
+    }
+    //cell.cell_id = [[self.obj_ar[0] objectAtIndex:index] objectId];
+    
     return cell;
 }
 
